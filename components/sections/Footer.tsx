@@ -1,3 +1,7 @@
+"use client";
+
+import { trackEvent } from "@/lib/analytics";
+
 export function Footer() {
 	return (
 		<footer className="footer">
@@ -11,7 +15,12 @@ export function Footer() {
 				<div>
 					<p className="footer-title">Kontakt</p>
 					<p>
-						<a href="mailto:dmezeankina@gmail.com">dmezeankina@gmail.com</a>
+						<a
+							href="mailto:dmezeankina@gmail.com"
+							onClick={() => trackEvent("contact_email_click", { location: "footer" })}
+						>
+							dmezeankina@gmail.com
+						</a>
 					</p>
 				</div>
 			</div>

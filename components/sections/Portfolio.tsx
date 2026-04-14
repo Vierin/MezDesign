@@ -1,5 +1,8 @@
+"use client";
+
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
 
 const projects = [
 	{
@@ -73,7 +76,15 @@ export function Portfolio() {
 							<div className="portfolio-copy">
 								<h3>{project.name}</h3>
 								<p>{project.description}</p>
-								<a href="#kontakt">
+								<a
+									href="#kontakt"
+									onClick={() =>
+										trackEvent('portfolio_project_click', {
+											project_id: project.id,
+											project_name: project.name,
+										})
+									}
+								>
 									<ArrowRight className="portfolio-link-icon" />
 									Zobacz projekt
 								</a>
@@ -104,7 +115,11 @@ export function Portfolio() {
 				))}
 			</div>
 
-			<a className="portfolio-cta" href="#kontakt">
+			<a
+				className="portfolio-cta"
+				href="#kontakt"
+				onClick={() => trackEvent('portfolio_all_projects_click', { location: 'portfolio_bottom' })}
+			>
 				<ArrowRight className="portfolio-cta-icon" />
 				Zobacz wszystkie projekty
 			</a>

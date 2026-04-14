@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 type FormState = {
   name: string;
@@ -47,9 +48,13 @@ export function ContactForm() {
         throw new Error(body.error ?? "Wysylka nie powiodla sie.");
       }
 
+      trackEvent("contact_form_submit_success", {
+        has_site_link: Boolean(form.siteLink.trim())
+      });
       setStatus("success");
       setForm(initialState);
     } catch (error) {
+      trackEvent("contact_form_submit_error");
       setStatus("error");
       setErrorMessage(
         error instanceof Error ? error.message : "Nieznany blad. Sprobuj ponownie za chwile."

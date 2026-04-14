@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 const navItems = [
   { href: "#o-mnie", label: "O nas" },
@@ -57,7 +58,11 @@ export function Hero() {
               ))}
             </ul>
           </nav>
-          <a className="btn btn-nav" href="#kontakt">
+          <a
+            className="btn btn-nav"
+            href="#kontakt"
+            onClick={() => trackEvent("cta_click", { location: "header_nav", target: "kontakt" })}
+          >
             Kontakt
           </a>
         </header>
@@ -82,10 +87,18 @@ export function Hero() {
             czytelne i gotowe do codziennego uzycia w Twojej marce.
           </p>
           <div className="hero-actions">
-            <a className="btn btn-primary" href="#kontakt">
+            <a
+              className="btn btn-primary"
+              href="#kontakt"
+              onClick={() => trackEvent("cta_click", { location: "hero_primary", target: "kontakt" })}
+            >
               Umow konsultacje projektowa
             </a>
-            <a className="btn btn-secondary" href="#portfolio">
+            <a
+              className="btn btn-secondary"
+              href="#portfolio"
+              onClick={() => trackEvent("cta_click", { location: "hero_secondary", target: "portfolio" })}
+            >
               Zobacz projekty
             </a>
           </div>
