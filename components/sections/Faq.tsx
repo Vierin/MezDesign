@@ -1,37 +1,73 @@
+"use client";
+
+import { useState } from "react";
+
 const faq = [
   {
-    question: "Ile trwa przygotowanie strony internetowej?",
+    question: "What services do you offer?",
     answer:
-      "Najczesciej od 2 do 5 tygodni, w zaleznosci od zakresu i tego, czy dostarczasz gotowe tresci."
+      "We provide branding, website design and development, paid campaigns, and ongoing growth support."
   },
   {
-    question: "Czy moge zamowic tylko jedna usluge?",
+    question: "How do I know which plan is right for me?",
     answer:
-      "Tak. Mozesz zamowic pojedynczy projekt, np. branding albo same materialy do druku."
+      "We start with a short discovery call, then recommend a plan based on your goals, timeline, and budget."
   },
   {
-    question: "Czy pracujesz z klientami z calej Polski?",
-    answer: "Tak, caly proces prowadzony jest online i obejmuje regularne aktualizacje postepu."
+    question: "How long does it take to see results?",
+    answer:
+      "Initial signals usually appear in the first few weeks, while stronger and more stable results build over a few months."
   },
   {
-    question: "Czy po wdrozeniu oferujesz wsparcie?",
+    question: "Can I customize a package based on my needs?",
     answer:
-      "Tak, po zakonczeniu projektu mozemy przejsc na miesieczne wsparcie i optymalizacje."
+      "Yes. Every scope is modular, so we can tailor the deliverables and pace to your exact needs."
+  },
+  {
+    question: "What makes your agency different from others?",
+    answer:
+      "We combine creative execution with measurable performance and keep communication fast, direct, and transparent."
   }
 ];
 
 export function Faq() {
+  const [openIndex, setOpenIndex] = useState(0);
+
   return (
-    <section className="section">
+    <section className="section faq-section">
       <div className="container">
-        <p className="eyebrow">FAQ</p>
-        <h2>Najczesciej zadawane pytania przed rozpoczeciem wspolpracy.</h2>
+        <div className="faq-header">
+          <p className="faq-pill">
+            <span aria-hidden>•</span>
+            Sustained Annual Growth
+          </p>
+          <h2>Got questions?</h2>
+          <p className="faq-subtitle">
+            We combine strategy, creativity, and data to deliver impactful marketing
+            solutions. From discovery to execution.
+          </p>
+        </div>
         <div className="faq-list">
-          {faq.map((item) => (
-            <details key={item.question}>
-              <summary>{item.question}</summary>
-              <p>{item.answer}</p>
-            </details>
+          {faq.map((item, index) => (
+            <article
+              key={item.question}
+              className={`faq-item${openIndex === index ? " is-open" : ""}`}
+            >
+              <button
+                type="button"
+                className="faq-trigger"
+                aria-expanded={openIndex === index}
+                aria-controls={`faq-panel-${index}`}
+                onClick={() => setOpenIndex((prev) => (prev === index ? -1 : index))}
+              >
+                {item.question}
+              </button>
+              <div id={`faq-panel-${index}`} className="faq-answer">
+                <div className="faq-answer-inner">
+                  <p>{item.answer}</p>
+                </div>
+              </div>
+            </article>
           ))}
         </div>
       </div>
