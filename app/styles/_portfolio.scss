@@ -19,7 +19,8 @@
 .portfolio-item {
   border-top: 1px solid #e3e3e3;
   background: #f3f3f3;
-  position: relative;
+  position: sticky;
+  top: 86px;
 }
 
 .portfolio-item-grid {
@@ -111,6 +112,11 @@
 }
 
 @include down-lg {
+  .portfolio-item {
+    position: relative;
+    top: auto;
+  }
+
   .portfolio-heading {
     grid-template-columns: 1fr;
   }

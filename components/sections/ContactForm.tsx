@@ -67,7 +67,10 @@ export function ContactForm() {
             Opisz krotko, czego potrzebujesz. Odpowiadam zazwyczaj w ciagu jednego dnia roboczego.
           </p>
         </div>
-        <form className="contact-form" onSubmit={handleSubmit}>
+        <form
+          className={`contact-form${status === "success" ? " is-success" : ""}`}
+          onSubmit={handleSubmit}
+        >
           <label htmlFor="name">
             Imie i nazwisko
             <input
@@ -124,8 +127,14 @@ export function ContactForm() {
             {status === "loading" ? "Wysylanie..." : "Wyslij wiadomosc"}
           </button>
 
-          {status === "success" && <p className="form-success">Dziekuje. Wiadomosc zostala wyslana.</p>}
           {status === "error" && <p className="form-error">{errorMessage}</p>}
+
+          {status === "success" && (
+            <div className="form-success-overlay" role="status" aria-live="polite">
+              <h3>Dziekuje. Wiadomosc zostala wyslana.</h3>
+              <p>Skontaktuje sie z Toba najszybciej jak to mozliwe.</p>
+            </div>
+          )}
         </form>
       </div>
     </section>

@@ -1,12 +1,5 @@
-'use client';
-
 import Image from 'next/image';
-import { useLayoutEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight } from 'lucide-react';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const projects = [
 	{
@@ -51,45 +44,6 @@ const projects = [
 ];
 
 export function Portfolio() {
-	const stackRef = useRef<HTMLDivElement>(null);
-
-	useLayoutEffect(() => {
-		const mm = gsap.matchMedia();
-		const ctx = gsap.context(() => {
-			mm.add('(min-width: 960px)', () => {
-				const cards = gsap.utils.toArray<HTMLElement>(
-					'.portfolio-item',
-					stackRef.current,
-				);
-				const sharedEndTrigger = cards[cards.length - 1];
-
-				cards.forEach((card, index) => {
-					gsap.set(card, { zIndex: cards.length + index });
-				});
-
-				cards.slice(0, -1).forEach((card) => {
-					ScrollTrigger.create({
-						trigger: card,
-						start: 'top top+=86',
-						endTrigger: sharedEndTrigger,
-						end: 'top top+=86',
-						pin: true,
-						pinSpacing: false,
-						pinType: 'transform',
-						pinReparent: true,
-						anticipatePin: 1,
-						invalidateOnRefresh: true,
-					});
-				});
-			});
-		}, stackRef);
-
-		return () => {
-			ctx.revert();
-			mm.revert();
-		};
-	}, []);
-
 	return (
 		<section id="portfolio" className="portfolio-section">
 			<div className="container portfolio-heading">
@@ -107,9 +61,13 @@ export function Portfolio() {
 				</p>
 			</div>
 
-			<div ref={stackRef}>
-				{projects.map((project) => (
-					<article className="portfolio-item" key={project.id}>
+			<div className="portfolio-stack">
+				{projects.map((project, index) => (
+					<article
+						className="portfolio-item"
+						key={project.id}
+						style={{ zIndex: projects.length + index }}
+					>
 						<div className="container portfolio-item-grid">
 							<p className="portfolio-index">{`${project.id}//`}</p>
 							<div className="portfolio-copy">

@@ -188,6 +188,7 @@
 }
 
 .contact-form {
+  position: relative;
   display: grid;
   gap: 0.8rem;
 
@@ -218,6 +219,12 @@
   }
 }
 
+.contact-form.is-success {
+  .form-error {
+    display: none;
+  }
+}
+
 .honeypot {
   position: absolute;
   opacity: 0;
@@ -225,8 +232,27 @@
   height: 0;
 }
 
-.form-success {
-  color: #177b44;
+.form-success-overlay {
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background: #fff;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  gap: 0.45rem;
+  padding: 1.5rem;
+
+  h3 {
+    font-size: 1.15rem;
+    line-height: 1.3;
+    color: #177b44;
+  }
+
+  p {
+    color: #585858;
+    margin: 0;
+  }
 }
 
 .form-error {
