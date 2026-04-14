@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useLayoutEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ArrowRight } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -114,7 +115,10 @@ export function Portfolio() {
 							<div className="portfolio-copy">
 								<h3>{project.name}</h3>
 								<p>{project.description}</p>
-								<a href="#kontakt">Zobacz projekt</a>
+								<a href="#kontakt">
+									<ArrowRight className="portfolio-link-icon" />
+									Zobacz projekt
+								</a>
 							</div>
 							<div>
 								<div className="portfolio-meta">
@@ -143,7 +147,7 @@ export function Portfolio() {
 			</div>
 
 			<a className="portfolio-cta" href="#kontakt">
-				<span>→</span>
+				<ArrowRight className="portfolio-cta-icon" />
 				Zobacz wszystkie projekty
 			</a>
 		</section>

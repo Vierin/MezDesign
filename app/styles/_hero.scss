@@ -1,92 +1,94 @@
-@use "mixins" as *;
+@use 'mixins' as *;
 
 .hero-topbar-shell {
-  height: 68px;
+	height: 68px;
 
-  .topbar {
-    position: fixed;
-    top: 0;
-    left: 50%;
-    z-index: 70;
-    width: min(1240px, calc(100% - 3rem));
-    transform: translateX(-50%) translateY(0);
-    transition: transform 0.28s ease, opacity 0.2s ease;
-    background: rgba(255, 255, 255, 0.92);
-    backdrop-filter: blur(8px);
-  }
+	.topbar {
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 70;
+		width: 100%;
+		transform: translateY(0);
+		transition:
+			transform 0.28s ease,
+			opacity 0.2s ease;
+		background: rgba(255, 255, 255, 0.92);
+		backdrop-filter: blur(8px);
+	}
 
-  &.is-hidden .topbar {
-    transform: translateX(-50%) translateY(calc(-100% - 8px));
-    opacity: 0.2;
-    pointer-events: none;
-  }
+	&.is-hidden .topbar {
+		transform: translateY(calc(-100% - 8px));
+		opacity: 0.2;
+		pointer-events: none;
+	}
 }
 
 .hero-layout {
-  min-height: 640px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid var(--border);
-  width: 100%;
+	min-height: 640px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	border: 1px solid var(--border);
+	width: 100%;
 }
 
 .hero-copy {
-  background: var(--surface);
-  padding: clamp(2rem, 6vw, 5rem) clamp(2rem, 6vw, 5.8rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+	background: var(--surface);
+	padding: clamp(2rem, 6vw, 5rem) clamp(2rem, 6vw, 5.8rem);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .hero-chip {
-  align-self: flex-start;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45rem;
-  border-radius: 999px;
-  background: var(--chip);
-  padding: 0.4rem 0.65rem;
-  font-size: 0.78rem;
-  margin-bottom: 1.2rem;
+	align-self: flex-start;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.45rem;
+	border-radius: 999px;
+	background: var(--chip);
+	padding: 0.4rem 0.65rem;
+	font-size: 0.78rem;
+	margin-bottom: 1.2rem;
 }
 
 .hero-actions {
-  margin-top: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
+	margin-top: 2rem;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.8rem;
 }
 
 .hero-media {
-  position: relative;
+	position: relative;
 
-  img {
-    object-fit: cover;
-  }
+	img {
+		object-fit: cover;
+	}
 }
 
 @include down-md {
-  .hero-topbar-shell {
-    height: auto;
+	.hero-topbar-shell {
+		height: auto;
 
-    .topbar {
-      position: static;
-      width: 100%;
-      transform: none;
-      transition: none;
-      opacity: 1;
-      pointer-events: auto;
-      background: #fff;
-      backdrop-filter: none;
-    }
-  }
+		.topbar {
+			position: static;
+			width: 100%;
+			transform: none;
+			transition: none;
+			opacity: 1;
+			pointer-events: auto;
+			background: #fff;
+			backdrop-filter: none;
+		}
+	}
 
-  .hero-layout {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
+	.hero-layout {
+		grid-template-columns: 1fr;
+		min-height: auto;
+	}
 
-  .hero-media {
-    min-height: 320px;
-  }
+	.hero-media {
+		min-height: 320px;
+	}
 }

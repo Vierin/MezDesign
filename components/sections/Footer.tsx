@@ -10,7 +10,9 @@ export function Footer() {
 				</div>
 				<div>
 					<p className="footer-title">Kontakt</p>
-					<p>dmezeankina@gmail.com</p>
+					<p>
+						<a href="mailto:dmezeankina@gmail.com">dmezeankina@gmail.com</a>
+					</p>
 				</div>
 			</div>
 			<div className="container footer-bottom">
