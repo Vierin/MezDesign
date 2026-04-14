@@ -1,0 +1,13 @@
+@use "tokens" as *;
+
+@mixin down-lg {
+  @media (max-width: $bp-lg) {
+    @content;
+  }
+}
+
+@mixin down-md {
+  @media (max-width: $bp-md) {
+    @content;
+  }
+}

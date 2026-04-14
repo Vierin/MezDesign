@@ -1,0 +1,169 @@
+@use "mixins" as *;
+
+.about-grid,
+.contact-grid,
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.about-card,
+.card,
+.contact-form,
+.faq-list details {
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: #fff;
+}
+
+.about-card,
+.card,
+.contact-form {
+  padding: 1.25rem;
+}
+
+.about-card ol {
+  margin: 0.75rem 0 0;
+  padding-left: 1rem;
+  color: var(--muted);
+}
+
+.card-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.4rem;
+}
+
+.services-grid,
+.testimonials-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.card {
+  h3 {
+    margin-bottom: 0.45rem;
+  }
+
+  p {
+    color: var(--muted);
+  }
+}
+
+.card-kicker {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #8d8d8d;
+  margin-bottom: 0.55rem;
+}
+
+.testimonial-author {
+  margin-top: 0.95rem;
+  color: #232323;
+  font-weight: 600;
+}
+
+.faq-list {
+  display: grid;
+  gap: 0.8rem;
+
+  details {
+    padding: 1rem 1.15rem;
+  }
+
+  summary {
+    cursor: pointer;
+    font-weight: 600;
+  }
+
+  p {
+    margin-top: 0.65rem;
+    color: var(--muted);
+  }
+}
+
+.contact-form {
+  display: grid;
+  gap: 0.8rem;
+
+  label {
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+    color: #404040;
+  }
+
+  input,
+  textarea {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: #fff;
+    color: var(--text);
+    padding: 0.72rem 0.82rem;
+    font: inherit;
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  button {
+    width: fit-content;
+  }
+}
+
+.honeypot {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+}
+
+.form-success {
+  color: #177b44;
+}
+
+.form-error {
+  color: #b9324a;
+}
+
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 0 2rem;
+  background: #fff;
+}
+
+.footer-title {
+  font-weight: 600;
+  margin-bottom: 0.45rem;
+}
+
+.footer p {
+  color: var(--muted);
+}
+
+.footer-bottom {
+  margin-top: 1.6rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--border);
+}
+
+@include down-lg {
+  .services-grid,
+  .testimonials-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@include down-md {
+  .about-grid,
+  .contact-grid,
+  .footer-grid,
+  .services-grid,
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+  }
+}

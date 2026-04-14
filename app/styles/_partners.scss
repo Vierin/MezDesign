@@ -1,0 +1,76 @@
+@use "mixins" as *;
+
+.partners-section {
+  border-bottom: 1px solid var(--border);
+  padding: 2.1rem 0;
+}
+
+.partners-title {
+  text-align: center;
+  color: #4f4f4f;
+  font-size: 1.05rem;
+}
+
+.partners-marquee {
+  margin-top: 1.6rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 84px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  &::before {
+    left: 0;
+    background: linear-gradient(to right, #ffffff, transparent);
+  }
+
+  &::after {
+    right: 0;
+    background: linear-gradient(to left, #ffffff, transparent);
+  }
+}
+
+.partners-track {
+  display: flex;
+  width: max-content;
+  animation: partners-scroll 22s linear infinite;
+}
+
+.partners-row {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+  min-width: max-content;
+  padding-right: 3.2rem;
+}
+
+.partner-logo {
+  width: auto;
+  max-width: 160px;
+  opacity: 0.55;
+}
+
+@keyframes partners-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 1.6rem));
+  }
+}
+
+@include down-md {
+  .partners-row {
+    gap: 2rem;
+    padding-right: 2rem;
+  }
+}
