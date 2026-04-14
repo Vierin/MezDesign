@@ -4,29 +4,29 @@ import { useState } from "react";
 
 const faq = [
   {
-    question: "What services do you offer?",
+    question: "Jak przebiega proces projektowy?",
     answer:
-      "We provide branding, website design and development, paid campaigns, and ongoing growth support."
+      "Zaczynamy od krotkiego briefu, potem przygotowuje kierunek wizualny, a po akceptacji dopracowuje finalne materialy."
   },
   {
-    question: "How do I know which plan is right for me?",
+    question: "Co zawiera pakiet identyfikacji wizualnej?",
     answer:
-      "We start with a short discovery call, then recommend a plan based on your goals, timeline, and budget."
+      "Zalezne od zakresu, ale najczesciej obejmuje logo, kolorystyke, typografie i zasady uzycia w dokumentacji marki."
   },
   {
-    question: "How long does it take to see results?",
+    question: "Ile trwa przygotowanie projektu?",
     answer:
-      "Initial signals usually appear in the first few weeks, while stronger and more stable results build over a few months."
+      "Mniejsze projekty realizuje zwykle w 7-14 dni, a pelna identyfikacja wizualna zajmuje zazwyczaj od 3 do 5 tygodni."
   },
   {
-    question: "Can I customize a package based on my needs?",
+    question: "Czy moge zlecic tylko jeden element, np. logo?",
     answer:
-      "Yes. Every scope is modular, so we can tailor the deliverables and pace to your exact needs."
+      "Tak. Mozesz zamowic pojedynczy projekt albo rozbudowac zakres o kolejne elementy wizualne."
   },
   {
-    question: "What makes your agency different from others?",
+    question: "Jak wyglada przekazanie plikow po zakonczeniu?",
     answer:
-      "We combine creative execution with measurable performance and keep communication fast, direct, and transparent."
+      "Otrzymujesz uporzadkowany pakiet plikow produkcyjnych i webowych oraz krotkie wytyczne, jak poprawnie ich uzywac."
   }
 ];
 
@@ -39,12 +39,12 @@ export function Faq() {
         <div className="faq-header">
           <p className="faq-pill">
             <span aria-hidden>•</span>
-            Sustained Annual Growth
+            Spojny System Wizualny
           </p>
-          <h2>Got questions?</h2>
+          <h2>Masz pytania?</h2>
           <p className="faq-subtitle">
-            We combine strategy, creativity, and data to deliver impactful marketing
-            solutions. From discovery to execution.
+            Projektuje identyfikacje i materialy, ktore sa estetyczne, czytelne i gotowe
+            do wdrozenia od razu po odbiorze.
           </p>
         </div>
         <div className="faq-list">

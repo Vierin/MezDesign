@@ -10,10 +10,10 @@ gsap.registerPlugin(ScrollTrigger);
 const projects = [
 	{
 		id: '01',
-		name: 'Lukox. Project Amplify',
+		name: 'Lukox. Identyfikacja Wizualna',
 		description:
-			'Spójny system wizualny i content social media, ktory pomogl marce szybciej budowac rozpoznawalnosc.',
-		tags: ['Social Media Branding', 'Rebranding'],
+			'Spojny system wizualny i zestaw materialow, ktore uporzadkowaly komunikacje marki we wszystkich punktach styku.',
+		tags: ['Identyfikacja wizualna', 'Odswiezenie marki'],
 		year: '2025',
 		images: [
 			'https://cdn.prod.website-files.com/68910e1fd50820e9f30b6e65/68910fb87566c53c935e665e_Project%20Image%201.avif',
@@ -23,10 +23,10 @@ const projects = [
 	},
 	{
 		id: '02',
-		name: 'Blux. Website Design',
+		name: 'Blux. Projekt strony WWW',
 		description:
-			'Nowoczesny landing page dla marki uslugowej z naciskiem na konwersje i UX.',
-		tags: ['Strategy', 'Web Design'],
+			'Nowoczesny projekt strony dla marki uslugowej z naciskiem na czytelnosc, hierarchie tresci i UX.',
+		tags: ['Projektowanie UX/UI', 'Projektowanie stron'],
 		year: '2025',
 		images: [
 			'https://cdn.prod.website-files.com/68910e1fd50820e9f30b6e65/689110d6202a5c67aee5aa60_Project%20Image%204.avif',
@@ -36,10 +36,10 @@ const projects = [
 	},
 	{
 		id: '03',
-		name: 'Konx. Branding & Design',
+		name: 'Konx. Identyfikacja i materialy',
 		description:
-			'Kompletny branding i materialy kampanijne, ktore uporzadkowaly komunikacje marki online.',
-		tags: ['Seo', 'Strategy'],
+			'Kompletna identyfikacja wizualna i materialy, ktore ujednolicily styl marki online i offline.',
+		tags: ['Identyfikacja wizualna', 'System projektowy'],
 		year: '2025',
 		images: [
 			'https://cdn.prod.website-files.com/68910e1fd50820e9f30b6e65/689111393712ea83a0b4e137_Project%20Image%207.avif',
@@ -66,14 +66,14 @@ export function Portfolio() {
 					gsap.set(card, { zIndex: cards.length + index });
 				});
 
-				cards.slice(0, -1).forEach((card) => {
+				cards.slice(0, -1).forEach((card, index) => {
 					ScrollTrigger.create({
 						trigger: card,
 						start: 'top top+=86',
 						endTrigger: sharedEndTrigger,
 						end: 'top top+=86',
 						pin: true,
-						pinSpacing: false,
+						pinSpacing: index === 0,
 						anticipatePin: 1,
 						invalidateOnRefresh: true,
 					});
@@ -91,16 +91,16 @@ export function Portfolio() {
 		<section id="portfolio" className="portfolio-section">
 			<div className="container portfolio-heading">
 				<div>
-					<p className="eyebrow">Selected Projects</p>
+					<p className="eyebrow">Wybrane realizacje</p>
 					<h2>
-						Portfolio of impactful and
+						Portfolio skutecznych i
 						<br />
-						successful campaigns
+						dopieszczonych projektow
 					</h2>
 				</div>
 				<p>
-					Tworze projekty graficzne i strony, ktore wzmacniaja pozycje marki
-					oraz przyspieszaja wzrost rozpoznawalnosci w social media.
+					Tworze projekty graficzne i strony, ktore porzadkuja komunikacje
+					wizualna oraz buduja spojny charakter marki.
 				</p>
 			</div>
 
@@ -112,7 +112,7 @@ export function Portfolio() {
 							<div className="portfolio-copy">
 								<h3>{project.name}</h3>
 								<p>{project.description}</p>
-								<a href="#kontakt">View Project</a>
+								<a href="#kontakt">Zobacz projekt</a>
 							</div>
 							<div>
 								<div className="portfolio-meta">
@@ -142,7 +142,7 @@ export function Portfolio() {
 
 			<a className="portfolio-cta" href="#kontakt">
 				<span>→</span>
-				View All Projects
+				Zobacz wszystkie projekty
 			</a>
 		</section>
 	);

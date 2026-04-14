@@ -20,14 +20,44 @@
 
 .testimonials-layout {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 1fr) minmax(0, 1fr);
   gap: 1rem;
   align-items: start;
 }
 
 .testimonials-column {
+  position: relative;
+  height: 560px;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 12%,
+    rgba(0, 0, 0, 1) 88%,
+    transparent 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 12%,
+    rgba(0, 0, 0, 1) 88%,
+    transparent 100%
+  );
+}
+
+.testimonials-track {
   display: grid;
   gap: 1rem;
+  will-change: transform;
+}
+
+.testimonials-column--left .testimonials-track {
+  animation: testimonials-scroll-up 22s linear infinite;
+}
+
+.testimonials-column--right .testimonials-track {
+  transform: translateY(calc(-50% - 0.5rem));
+  animation: testimonials-scroll-down 22s linear infinite;
 }
 
 .testimonial-card,
@@ -39,6 +69,9 @@
 
 .testimonial-card {
   padding: 1.2rem;
+  min-height: 220px;
+  display: grid;
+  align-content: start;
 }
 
 .testimonial-meta {
@@ -67,6 +100,7 @@
 .testimonial-quote {
   color: #303030;
   line-height: 1.55;
+  font-size: 1.03rem;
 }
 
 .testimonial-featured {
@@ -74,15 +108,7 @@
   text-align: center;
 }
 
-.testimonial-badge {
-  display: inline-flex;
-  align-items: center;
-  border-radius: 10px;
-  background: #d9c7f8;
-  padding: 0.3rem 0.65rem;
-  font-size: 0.82rem;
-  margin-bottom: 0.7rem;
-}
+ 
 
 .testimonial-featured-image {
   width: 100%;
@@ -123,7 +149,49 @@
     grid-template-columns: 1fr;
   }
 
+  .testimonials-column {
+    height: auto;
+    overflow: visible;
+    mask-image: none;
+    -webkit-mask-image: none;
+  }
+
+  .testimonials-track,
+  .testimonials-column--left .testimonials-track,
+  .testimonials-column--right .testimonials-track {
+    animation: none;
+    transform: none;
+  }
+
   .testimonial-featured {
     order: -1;
+  }
+}
+
+@keyframes testimonials-scroll-up {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(calc(-50% - 0.5rem));
+  }
+}
+
+@keyframes testimonials-scroll-down {
+  from {
+    transform: translateY(calc(-50% - 0.5rem));
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonials-column--left .testimonials-track,
+  .testimonials-column--right .testimonials-track {
+    animation: none;
+    transform: none;
   }
 }

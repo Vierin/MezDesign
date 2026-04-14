@@ -12,7 +12,7 @@ export function Partners() {
   return (
     <section className="partners-section">
       <div className="container">
-        <p className="partners-title">Wspolpraca z markami, ktore stawiaja na wzrost</p>
+        <p className="partners-title">Wspolpraca z markami, ktore stawiaja na jakosc designu</p>
         <div className="partners-marquee" aria-label="Logotypy partnerow">
           <div className="partners-track">
             <div className="partners-row">

@@ -62,7 +62,7 @@ export function ContactForm() {
       <div className="container contact-grid">
         <div>
           <p className="eyebrow">Kontakt</p>
-          <h2>Zacznijmy projekt, ktory zwiekszy Twoja widocznosc i liczbe klientow.</h2>
+          <h2>Zacznijmy projekt, ktory uporzadkuje i wzmocni Twoja komunikacje wizualna.</h2>
           <p>
             Opisz krotko, czego potrzebujesz. Odpowiadam zazwyczaj w ciagu jednego dnia roboczego.
           </p>

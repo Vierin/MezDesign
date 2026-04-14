@@ -4,7 +4,7 @@ export function Footer() {
       <div className="container footer-grid">
         <div>
           <p className="brand">MZ Studio</p>
-          <p>Projektowanie graficzne i marketing dla freelancerow oraz marek w Polsce.</p>
+          <p>Projektowanie graficzne i identyfikacja wizualna dla freelancerow oraz marek w Polsce.</p>
         </div>
         <div>
           <p className="footer-title">Kontakt</p>

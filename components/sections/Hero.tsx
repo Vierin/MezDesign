@@ -38,15 +38,15 @@ export function Hero() {
             Projektowanie graficzne dla nowoczesnych marek
           </p>
           <h1>
-            Pomagam firmom szybko zwiekszac <span>rozpoznawalnosc w social media</span>
+            Tworze projekty, ktore buduja <span>spojny i profesjonalny wizerunek marki</span>
           </h1>
           <p className="lead">
-            Tworze grafiki, branding i content wizualny, ktory od razu wyglada profesjonalnie i
-            przyciaga uwage Twoich klientow w social media.
+            Projektuje identyfikacje wizualne, strony i materialy, ktore sa estetyczne,
+            czytelne i gotowe do codziennego uzycia w Twojej marce.
           </p>
           <div className="hero-actions">
             <a className="btn btn-primary" href="#kontakt">
-              Umow bezplatna konsultacje
+              Umow konsultacje projektowa
             </a>
             <a className="btn btn-secondary" href="#portfolio">
               Zobacz projekty

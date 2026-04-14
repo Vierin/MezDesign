@@ -6,9 +6,9 @@ export function About() {
           <p className="eyebrow">O studio</p>
           <h2>Buduje marki, ktore sa zapamietywane i wybierane.</h2>
           <p>
-            Wspieram freelancerow i male firmy na polskim rynku. Lacze estetyke, strategię i
-            praktyczne podejscie do sprzedazy, aby Twoja komunikacja wizualna realnie zwiekszala
-            liczbe zapytan od klientow.
+            Wspieram freelancerow i male firmy na polskim rynku. Lacze estetyke, strategie i
+            praktyczne podejscie do projektowania, aby komunikacja wizualna byla spojna,
+            czytelna i latwa do skalowania.
           </p>
         </div>
         <div className="about-card">
