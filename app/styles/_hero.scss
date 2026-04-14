@@ -1,5 +1,27 @@
 @use "mixins" as *;
 
+.hero-topbar-shell {
+  height: 68px;
+
+  .topbar {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    z-index: 70;
+    width: min(1240px, calc(100% - 3rem));
+    transform: translateX(-50%) translateY(0);
+    transition: transform 0.28s ease, opacity 0.2s ease;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(8px);
+  }
+
+  &.is-hidden .topbar {
+    transform: translateX(-50%) translateY(calc(-100% - 8px));
+    opacity: 0.2;
+    pointer-events: none;
+  }
+}
+
 .hero-layout {
   min-height: 640px;
   display: grid;
@@ -44,6 +66,21 @@
 }
 
 @include down-md {
+  .hero-topbar-shell {
+    height: auto;
+
+    .topbar {
+      position: static;
+      width: 100%;
+      transform: none;
+      transition: none;
+      opacity: 1;
+      pointer-events: auto;
+      background: #fff;
+      backdrop-filter: none;
+    }
+  }
+
   .hero-layout {
     grid-template-columns: 1fr;
     min-height: auto;

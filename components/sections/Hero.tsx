@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 const navItems = [
   { href: "#o-mnie", label: "O nas" },
@@ -8,23 +11,57 @@ const navItems = [
 ];
 
 export function Hero() {
+  const [isHeaderHidden, setIsHeaderHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    let ticking = false;
+
+    const updateHeaderVisibility = () => {
+      const currentY = window.scrollY;
+      const delta = currentY - lastScrollY.current;
+
+      if (currentY <= 20) {
+        setIsHeaderHidden(false);
+      } else if (delta > 6 && currentY > 120) {
+        setIsHeaderHidden(true);
+      } else if (delta < -6) {
+        setIsHeaderHidden(false);
+      }
+
+      lastScrollY.current = currentY;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateHeaderVisibility);
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
     <section className="hero">
-      <header className="topbar topbar-light">
-        <p className="brand">MZ Studio</p>
-        <nav aria-label="Nawigacja glowna">
-          <ul className="nav-list">
-            {navItems.map((item) => (
-              <li key={item.href}>
-                <a href={item.href}>{item.label}</a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <a className="btn btn-nav" href="#kontakt">
-          Kontakt
-        </a>
-      </header>
+      <div className={`hero-topbar-shell${isHeaderHidden ? " is-hidden" : ""}`}>
+        <header className="topbar topbar-light">
+          <p className="brand">Mez Design</p>
+          <nav aria-label="Nawigacja glowna">
+            <ul className="nav-list">
+              {navItems.map((item) => (
+                <li key={item.href}>
+                  <a href={item.href}>{item.label}</a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+          <a className="btn btn-nav" href="#kontakt">
+            Kontakt
+          </a>
+        </header>
+      </div>
 
       <div className="hero-layout">
         <div className="hero-copy">

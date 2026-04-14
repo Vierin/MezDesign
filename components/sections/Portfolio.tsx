@@ -66,14 +66,16 @@ export function Portfolio() {
 					gsap.set(card, { zIndex: cards.length + index });
 				});
 
-				cards.slice(0, -1).forEach((card, index) => {
+				cards.slice(0, -1).forEach((card) => {
 					ScrollTrigger.create({
 						trigger: card,
 						start: 'top top+=86',
 						endTrigger: sharedEndTrigger,
 						end: 'top top+=86',
 						pin: true,
-						pinSpacing: index === 0,
+						pinSpacing: false,
+						pinType: 'transform',
+						pinReparent: true,
 						anticipatePin: 1,
 						invalidateOnRefresh: true,
 					});

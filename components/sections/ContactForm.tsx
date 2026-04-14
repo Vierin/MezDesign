@@ -5,17 +5,17 @@ import { FormEvent, useState } from "react";
 type FormState = {
   name: string;
   email: string;
-  phone: string;
+  siteLink: string;
   message: string;
-  website: string;
+  company: string;
 };
 
 const initialState: FormState = {
   name: "",
   email: "",
-  phone: "",
+  siteLink: "",
   message: "",
-  website: ""
+  company: ""
 };
 
 export function ContactForm() {
@@ -89,13 +89,13 @@ export function ContactForm() {
               required
             />
           </label>
-          <label htmlFor="phone">
-            Telefon (opcjonalnie)
+          <label htmlFor="siteLink">
+            Adres strony lub link do social media (opcjonalnie)
             <input
-              id="phone"
-              name="phone"
-              value={form.phone}
-              onChange={(event) => setForm((prev) => ({ ...prev, phone: event.target.value }))}
+              id="siteLink"
+              name="siteLink"
+              value={form.siteLink}
+              onChange={(event) => setForm((prev) => ({ ...prev, siteLink: event.target.value }))}
             />
           </label>
           <label htmlFor="message">
@@ -115,9 +115,9 @@ export function ContactForm() {
             className="honeypot"
             tabIndex={-1}
             autoComplete="off"
-            name="website"
-            value={form.website}
-            onChange={(event) => setForm((prev) => ({ ...prev, website: event.target.value }))}
+            name="company"
+            value={form.company}
+            onChange={(event) => setForm((prev) => ({ ...prev, company: event.target.value }))}
           />
 
           <button className="btn btn-primary" type="submit" disabled={status === "loading"}>

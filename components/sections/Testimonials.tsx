@@ -76,16 +76,20 @@ export function Testimonials() {
 			<div className="container">
 				<p className="eyebrow">Opinie klientow</p>
 				<h2>
-					Zaufanie marek z roznych
+					Zaufanie marek z różnych
 					<br />
-					<span>branz i zespolow</span>
+					<span>branż i zespołów</span>
 				</h2>
 
 				<div className="testimonials-layout">
 					<div className="testimonials-column testimonials-column--left">
 						<div className="testimonials-track">
-							{leftCards.map((card, index) => renderCard(card, `left-a-${index}`))}
-							{leftCards.map((card, index) => renderCard(card, `left-b-${index}`))}
+							{leftCards.map((card, index) =>
+								renderCard(card, `left-a-${index}`),
+							)}
+							{leftCards.map((card, index) =>
+								renderCard(card, `left-b-${index}`),
+							)}
 						</div>
 					</div>
 
@@ -116,8 +120,12 @@ export function Testimonials() {
 
 					<div className="testimonials-column testimonials-column--right">
 						<div className="testimonials-track">
-							{rightCards.map((card, index) => renderCard(card, `right-a-${index}`))}
-							{rightCards.map((card, index) => renderCard(card, `right-b-${index}`))}
+							{rightCards.map((card, index) =>
+								renderCard(card, `right-a-${index}`),
+							)}
+							{rightCards.map((card, index) =>
+								renderCard(card, `right-b-${index}`),
+							)}
 						</div>
 					</div>
 				</div>

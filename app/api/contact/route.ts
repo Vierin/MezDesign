@@ -5,10 +5,10 @@ import { sendContactEmail } from "@/lib/mailer";
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Imie jest za krotkie.").max(120, "Imie jest za dlugie."),
   email: z.string().trim().email("Niepoprawny adres e-mail."),
-  phone: z
+  siteLink: z
     .string()
     .trim()
-    .max(40, "Numer telefonu jest za dlugi.")
+    .max(220, "Link jest za dlugi.")
     .optional()
     .or(z.literal("")),
   message: z
@@ -16,7 +16,7 @@ const contactSchema = z.object({
     .trim()
     .min(10, "Wiadomosc powinna miec co najmniej 10 znakow.")
     .max(4000, "Wiadomosc jest za dluga."),
-  website: z.string().max(0).optional()
+  company: z.string().max(0).optional()
 });
 
 export async function POST(request: Request) {
@@ -31,14 +31,14 @@ export async function POST(request: Request) {
       );
     }
 
-    if (parsed.data.website) {
+    if (parsed.data.company) {
       return NextResponse.json({ ok: true }, { status: 200 });
     }
 
     await sendContactEmail({
       name: parsed.data.name,
       email: parsed.data.email,
-      phone: parsed.data.phone,
+      siteLink: parsed.data.siteLink,
       message: parsed.data.message
     });
 
