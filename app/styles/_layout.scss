@@ -34,15 +34,19 @@
 }
 
 .topbar {
+	display: block;
+	width: 100%;
+	border: 1px solid var(--border);
+	border-bottom: none;
+	padding: 0;
+}
+
+.topbar-inner {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 2rem;
 	min-height: 68px;
-	border: 1px solid var(--border);
-	border-bottom: none;
-	padding: 0 3rem;
-	width: 100%;
 }
 
 .topbar-end {
@@ -126,9 +130,10 @@
 		--grid-margin: 0.85rem;
 	}
 
-	.topbar {
+	.topbar-inner {
 		gap: 0.8rem;
-		padding: 1rem;
+		padding-block: 1rem;
+		flex-wrap: wrap;
 	}
 
 	.topbar-end {

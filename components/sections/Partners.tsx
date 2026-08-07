@@ -1,46 +1,63 @@
 import Image from "next/image";
 
 const logos = [
-  "https://cdn.prod.website-files.com/688d31d885372b14ca5e3d8b/68b383aad0e27a6bad7e5fa2_Logo%20(1).svg",
-  "https://cdn.prod.website-files.com/688d31d885372b14ca5e3d8b/68b383aa4c03cecaab9c8cd4_Logo%20(8).svg",
-  "https://cdn.prod.website-files.com/688d31d885372b14ca5e3d8b/68b383aa0f5b95bfbd9dc00a_Logo%20(7).svg",
-  "https://cdn.prod.website-files.com/688d31d885372b14ca5e3d8b/68b383aad9bd6601d5169c07_Logo%20(9).svg",
-  "https://cdn.prod.website-files.com/688d31d885372b14ca5e3d8b/68b383aae86b0b10ea8f97e0_Logo%20(6).svg"
+  "/logo-1.png",
+  "/logo-2.png",
+  "/logo-3.png",
+  "/logo-4.png",
+  "/logo-5.png",
+  "/logo-6.png",
+  "/logo-7.png",
+  "/logo-8.png",
+  "/logo-9.png",
+  "/logo-10.png",
+  "/logo-11.png",
+  "/logo-12.png",
+  "/logo-13.png",
+  "/logo-14.png",
+  "/logo-15.png",
+  "/logo-16.png",
 ];
+
+function MarqueeRow({
+  logos,
+  direction,
+}: {
+  logos: string[];
+  direction: "left" | "right";
+}) {
+  const sequence = [...logos, ...logos];
+
+  return (
+    <div className={`partners-marquee is-${direction}`}>
+      <div className="partners-track">
+        {sequence.map((logo, index) => (
+          <div
+            className="partners-item"
+            key={`${direction}-${logo}-${index}`}
+            aria-hidden={index >= logos.length || undefined}
+          >
+            <Image
+              src={logo}
+              alt={index < logos.length ? "Logo partnera" : ""}
+              width={160}
+              height={48}
+              className="partner-logo"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export function Partners() {
   return (
     <section className="partners-section">
-      <div className="container">
-        <p className="partners-title">Wspolpraca z markami, ktore stawiaja na jakosc designu</p>
-        <div className="partners-marquee" aria-label="Logotypy partnerow">
-          <div className="partners-track">
-            <div className="partners-row">
-              {logos.map((logo, index) => (
-                <Image
-                  key={`a-${logo}-${index}`}
-                  src={logo}
-                  alt="Logo partnera"
-                  width={158}
-                  height={34}
-                  className="partner-logo"
-                />
-              ))}
-            </div>
-            <div className="partners-row" aria-hidden="true">
-              {logos.map((logo, index) => (
-                <Image
-                  key={`b-${logo}-${index}`}
-                  src={logo}
-                  alt=""
-                  width={158}
-                  height={34}
-                  className="partner-logo"
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+      <p className="partners-title">Dołącz do grona firm, które mi zaufały</p>
+      <div className="partners-lines" aria-label="Logotypy partnerów">
+        <MarqueeRow logos={logos} direction="left" />
+        <MarqueeRow logos={[...logos].reverse()} direction="right" />
       </div>
     </section>
   );

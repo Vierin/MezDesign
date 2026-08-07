@@ -45,26 +45,30 @@ export function Header() {
   return (
     <div className={`hero-topbar-shell${isHidden ? " is-hidden" : ""}`}>
       <header className="topbar">
-        <a className="brand" href="#top">
-          Mez<span>.Design</span>
-        </a>
-        <div className="topbar-end">
-          <nav aria-label="Nawigacja główna">
-            <ul className="nav-list">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <a href={item.href}>{item.label}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <a
-            className="btn btn-nav"
-            href="#kontakt"
-            onClick={() => trackEvent("cta_click", { location: "header_nav", target: "kontakt" })}
-          >
-            Wypełnij formularz
+        <div className="container topbar-inner">
+          <a className="brand" href="#top">
+            Mez<span>.Design</span>
           </a>
+          <div className="topbar-end">
+            <nav aria-label="Nawigacja główna">
+              <ul className="nav-list">
+                {navItems.map((item) => (
+                  <li key={item.href}>
+                    <a href={item.href}>{item.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <a
+              className="btn btn-nav"
+              href="#kontakt"
+              onClick={() =>
+                trackEvent("cta_click", { location: "header_nav", target: "kontakt" })
+              }
+            >
+              Wypełnij formularz
+            </a>
+          </div>
         </div>
       </header>
     </div>
