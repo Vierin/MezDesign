@@ -109,7 +109,9 @@ export function Header() {
                 handleHashNav(event, "/#kontakt");
               }}
             >
-              Pogadajmy o twoim projekcie
+              {pathname.startsWith("/projekty")
+                ? "Wypełnij formularz"
+                : "Pogadajmy o twoim projekcie"}
             </Link>
           </div>
         </div>
