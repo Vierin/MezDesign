@@ -39,10 +39,10 @@ const testimonials = [
 	{
 		id: 'klaudia',
 		paragraphs: [
-			'Współpraca z Darią była dla mnie dużym wsparciem. Bardzo zależało mi na spójnym wizerunku marki i od początku czułam, że rozumie, jaki efekt chcemy osiągnąć. Przygotowywała nie tylko estetyczne materiały, ale też zwracała uwagę na detale i często proponowała własne pomysły. Doceniam jej zaangażowanie, wyczucie estetyki i to, że można było na niej polegać na każdym etapie współpracy.',
+			'Wsółpaca z Darią była dla mnie dużym wsparciem. Bardzo zależało mi na spójnym wizerunku marki. Przygotowywała nie tylko estetyczne materiały, ale też zwracała uwagę na detale i często proponowała własne pomysły. Doceniam jej zaangażowanie, wyczucie estetyki i to, że można było na niej polegać na każdym etapie współpracy.',
 		],
 		name: 'Klaudia Bielska-Kęsik',
-		role: 'Sales & Expansion Manager at “Adopt Parfums Poland”',
+		role: 'Sales Manager at “Adopt​ Parfums Poland”',
 		avatar: '/photo-4.png',
 	},
 ];

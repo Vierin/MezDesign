@@ -2,9 +2,10 @@
 
 import { type RefObject, useEffect } from "react";
 
-const LERP = 0.1;
-const RADIUS = 340;
-const MAX_SHIFT = 18;
+const POS_LERP = 0.045;
+const TARGET_LERP = 0.06;
+const RADIUS = 360;
+const MAX_SHIFT = 14;
 
 type ScatterItem = {
   el: HTMLElement;
@@ -13,6 +14,8 @@ type ScatterItem = {
   y: number;
   tx: number;
   ty: number;
+  rawX: number;
+  rawY: number;
 };
 
 export function useHeroScatter(collageRef: RefObject<HTMLElement | null>) {
@@ -32,6 +35,8 @@ export function useHeroScatter(collageRef: RefObject<HTMLElement | null>) {
       y: 0,
       tx: 0,
       ty: 0,
+      rawX: 0,
+      rawY: 0,
     }));
 
     if (!items.length) return;
@@ -41,8 +46,8 @@ export function useHeroScatter(collageRef: RefObject<HTMLElement | null>) {
 
     const resetTargets = () => {
       items.forEach((item) => {
-        item.tx = 0;
-        item.ty = 0;
+        item.rawX = 0;
+        item.rawY = 0;
       });
     };
 
@@ -72,14 +77,14 @@ export function useHeroScatter(collageRef: RefObject<HTMLElement | null>) {
         const dist = Math.hypot(dx, dy) || 1;
 
         if (dist >= RADIUS) {
-          item.tx = 0;
-          item.ty = 0;
+          item.rawX = 0;
+          item.rawY = 0;
           return;
         }
 
-        const force = Math.pow(1 - dist / RADIUS, 1.15) * MAX_SHIFT * item.strength;
-        item.tx = (dx / dist) * force;
-        item.ty = (dy / dist) * force;
+        const force = Math.pow(1 - dist / RADIUS, 1.85) * MAX_SHIFT * item.strength;
+        item.rawX = (dx / dist) * force;
+        item.rawY = (dy / dist) * force;
       });
     };
 
@@ -87,12 +92,24 @@ export function useHeroScatter(collageRef: RefObject<HTMLElement | null>) {
 
     const tick = () => {
       items.forEach((item) => {
-        item.x += (item.tx - item.x) * LERP;
-        item.y += (item.ty - item.y) * LERP;
+        item.tx += (item.rawX - item.tx) * TARGET_LERP;
+        item.ty += (item.rawY - item.ty) * TARGET_LERP;
+        item.x += (item.tx - item.x) * POS_LERP;
+        item.y += (item.ty - item.y) * POS_LERP;
 
-        if (Math.abs(item.x) < 0.03 && Math.abs(item.y) < 0.03 && item.tx === 0 && item.ty === 0) {
+        const settled =
+          Math.abs(item.x) < 0.02 &&
+          Math.abs(item.y) < 0.02 &&
+          Math.abs(item.tx) < 0.02 &&
+          Math.abs(item.ty) < 0.02 &&
+          item.rawX === 0 &&
+          item.rawY === 0;
+
+        if (settled) {
           item.x = 0;
           item.y = 0;
+          item.tx = 0;
+          item.ty = 0;
           item.el.style.transform = "translate3d(0,0,0)";
           return;
         }
@@ -103,7 +120,7 @@ export function useHeroScatter(collageRef: RefObject<HTMLElement | null>) {
       rafId = window.requestAnimationFrame(tick);
     };
 
-    hero.addEventListener("pointermove", onMove);
+    hero.addEventListener("pointermove", onMove, { passive: true });
     hero.addEventListener("pointerleave", onLeave);
     rafId = window.requestAnimationFrame(tick);
 

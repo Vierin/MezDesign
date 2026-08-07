@@ -1,11 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 
 const navItems = [
-  { href: "#portfolio", label: "Projekty" },
-  { href: "#kontakt", label: "Kontakt" },
+  { href: "/#portfolio", label: "Projekty" },
+  { href: "/o-mnie", label: "O mnie" },
+  { href: "/#kontakt", label: "Kontakt" },
 ];
 
 export function Header() {
@@ -45,28 +47,28 @@ export function Header() {
     <div className={`hero-topbar-shell${isHidden ? " is-hidden" : ""}`}>
       <header className="topbar">
         <div className="container topbar-inner">
-          <a className="brand" href="#top">
+          <Link className="brand" href="/">
             Mez<span>.Design</span>
-          </a>
+          </Link>
           <div className="topbar-end">
             <nav aria-label="Nawigacja główna">
               <ul className="nav-list">
                 {navItems.map((item) => (
                   <li key={item.href}>
-                    <a href={item.href}>{item.label}</a>
+                    <Link href={item.href}>{item.label}</Link>
                   </li>
                 ))}
               </ul>
             </nav>
-            <a
+            <Link
               className="btn btn-nav"
-              href="#kontakt"
+              href="/#kontakt"
               onClick={() =>
                 trackEvent("cta_click", { location: "header_nav", target: "kontakt" })
               }
             >
               Pogadajmy o twoim projekcie
-            </a>
+            </Link>
           </div>
         </div>
       </header>
