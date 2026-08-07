@@ -3,6 +3,14 @@
 .testimonials-section {
   background: #f5f5f5;
   padding: clamp(4rem, 8vw, 7rem) 0;
+
+  &.is-right {
+    background: #f6ebe8;
+
+    .testimonials-slider {
+      margin-left: auto;
+    }
+  }
 }
 
 .testimonials-slider {

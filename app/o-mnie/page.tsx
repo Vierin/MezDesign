@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/sections/Footer";
+import { AboutGallery } from "@/components/sections/AboutGallery";
 import { AboutHero } from "@/components/sections/AboutHero";
 import { AboutIntro } from "@/components/sections/AboutIntro";
 import { Partners } from "@/components/sections/Partners";
+import { Testimonials } from "@/components/sections/Testimonials";
 
 export const metadata: Metadata = {
   title: "O mnie — Mez.Design",
@@ -17,6 +19,8 @@ export default function AboutPage() {
       <AboutHero />
       <AboutIntro />
       <Partners />
+      <AboutGallery />
+      <Testimonials align="right" />
       <Footer />
     </main>
   );

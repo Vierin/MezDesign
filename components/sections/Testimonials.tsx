@@ -47,7 +47,7 @@ const testimonials = [
 	},
 ];
 
-export function Testimonials() {
+export function Testimonials({ align = 'left' }: { align?: 'left' | 'right' }) {
 	const [active, setActive] = useState(0);
 	const [paused, setPaused] = useState(false);
 
@@ -63,7 +63,10 @@ export function Testimonials() {
 	}, [paused, active]);
 
 	return (
-		<section id="opinie" className="testimonials-section">
+		<section
+			id="opinie"
+			className={`testimonials-section${align === 'right' ? ' is-right' : ''}`}
+		>
 			<div className="container">
 				<div
 					className="testimonials-slider"
