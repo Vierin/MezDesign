@@ -1,7 +1,7 @@
 @use 'mixins' as *;
 
 .case-page {
-	background: #fff;
+	background: #fafaf8;
 	min-height: 100svh;
 	color: #000;
 	display: flex;
@@ -9,7 +9,16 @@
 
 	.footer {
 		margin-top: auto;
+		background: #fafaf8;
 	}
+
+	.works-section {
+		background: #fafaf8;
+	}
+}
+
+body:has(.case-page) .site-header .topbar {
+	background: #fafaf8;
 }
 
 .case-hero {

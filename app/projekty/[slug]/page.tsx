@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CaseHero } from "@/components/sections/CaseHero";
 import { CaseImg } from "@/components/sections/CaseImg";
 import { Footer } from "@/components/sections/Footer";
+import { Works } from "@/components/sections/Works";
 import { getAllWorkSlugs, getWorkCase } from "@/lib/works";
 
 type PageProps = {
@@ -43,6 +44,7 @@ export default async function ProjectCasePage({ params }: PageProps) {
           priority={index === 0}
         />
       ))}
+      <Works />
       <Footer />
     </main>
   );

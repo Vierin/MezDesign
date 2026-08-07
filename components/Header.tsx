@@ -1,20 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { trackEvent } from "@/lib/analytics";
-import { scrollToHash } from "@/lib/scroll";
+import {
+  clearScrollIntent,
+  scrollToHash,
+  setScrollIntent,
+  type ScrollIntent,
+} from "@/lib/scroll";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 const navItems = [
-  { href: "/#portfolio", label: "Projekty" },
+  { href: "/#portfolio", label: "Projekty", intent: "portfolio" as ScrollIntent },
   { href: "/o-mnie", label: "O mnie" },
-  { href: "/#kontakt", label: "Kontakt" },
+  { href: "/#kontakt", label: "Kontakt", intent: "kontakt" as ScrollIntent },
 ];
 
 function getScrollY() {
@@ -23,6 +28,7 @@ function getScrollY() {
 
 export function Header() {
   const pathname = usePathname();
+  const router = useRouter();
   const [isHidden, setIsHidden] = useState(false);
   const lastScrollY = useRef(0);
 
@@ -59,31 +65,31 @@ export function Header() {
     };
   }, []);
 
-  const handleHashNav = (
+  const goHomeWithIntent = (
     event: React.MouseEvent<HTMLAnchorElement>,
-    href: string,
+    intent: ScrollIntent,
   ) => {
-    const hashIndex = href.indexOf("#");
-    if (hashIndex === -1) return;
+    event.preventDefault();
 
-    const hash = href.slice(hashIndex);
-    const path = href.slice(0, hashIndex) || "/";
-
-    if (pathname === path || (path === "/" && pathname === "/")) {
-      event.preventDefault();
-      scrollToHash(hash);
-      window.history.pushState(null, "", hash);
+    if (pathname === "/") {
+      scrollToHash(`#${intent}`);
+      window.history.pushState(null, "", `#${intent}`);
       return;
     }
 
-    // Cross-page: let Next navigate; SmoothScroll will pick up the hash.
+    setScrollIntent(intent);
+    router.push(`/#${intent}`);
   };
 
   return (
     <div className={`site-header${isHidden ? " is-hidden" : ""}`}>
       <header className="topbar">
         <div className="container topbar-inner">
-          <Link className="brand" href="/">
+          <Link
+            className="brand"
+            href="/"
+            onClick={() => clearScrollIntent()}
+          >
             Mez<span>.Design</span>
           </Link>
           <div className="topbar-end">
@@ -91,28 +97,34 @@ export function Header() {
               <ul className="nav-list">
                 {navItems.map((item) => (
                   <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={(event) => handleHashNav(event, item.href)}
-                    >
-                      {item.label}
-                    </Link>
+                    {item.intent ? (
+                      <a
+                        href={item.href}
+                        onClick={(event) => goHomeWithIntent(event, item.intent!)}
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link href={item.href} onClick={() => clearScrollIntent()}>
+                        {item.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
             </nav>
-            <Link
+            <a
               className="btn btn-nav"
               href="/#kontakt"
               onClick={(event) => {
                 trackEvent("cta_click", { location: "header_nav", target: "kontakt" });
-                handleHashNav(event, "/#kontakt");
+                goHomeWithIntent(event, "kontakt");
               }}
             >
               {pathname.startsWith("/projekty")
                 ? "Wypełnij formularz"
                 : "Pogadajmy o twoim projekcie"}
-            </Link>
+            </a>
           </div>
         </div>
       </header>
