@@ -5,6 +5,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { scrollToHash } from "@/lib/scroll";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -15,7 +16,12 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduceMotion) return;
+    if (reduceMotion) {
+      if (window.location.hash) {
+        requestAnimationFrame(() => scrollToHash(window.location.hash, false));
+      }
+      return;
+    }
 
     const wrapper = wrapperRef.current;
     const content = contentRef.current;
@@ -31,6 +37,13 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
     });
 
     ScrollTrigger.refresh();
+
+    if (window.location.hash) {
+      // Wait a tick so layout/images settle after route change.
+      requestAnimationFrame(() => {
+        scrollToHash(window.location.hash, true);
+      });
+    }
 
     return () => {
       smoother.kill();

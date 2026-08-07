@@ -1,11 +1,11 @@
 import Image from "next/image";
 
 const photos = [
-  "/ab-1.jpg",
-  "/ab-2.jpg",
-  "/ab-3.jpg",
-  "/ab-4.jpg",
-  "/ab-5.jpg",
+  { src: "/ab-1.jpg", variant: "a" },
+  { src: "/ab-2.jpg", variant: "b" },
+  { src: "/ab-3.jpg", variant: "c" },
+  { src: "/ab-4.jpg", variant: "d" },
+  { src: "/ab-5.jpg", variant: "e" },
 ];
 
 export function AboutGallery() {
@@ -15,14 +15,14 @@ export function AboutGallery() {
     <section className="about-gallery" aria-label="Zdjęcia z projektów">
       <div className="about-gallery-marquee">
         <div className="about-gallery-track">
-          {sequence.map((src, index) => (
+          {sequence.map((photo, index) => (
             <div
-              className="about-gallery-item"
-              key={`${src}-${index}`}
+              className={`about-gallery-item is-${photo.variant}`}
+              key={`${photo.src}-${index}`}
               aria-hidden={index >= photos.length || undefined}
             >
               <Image
-                src={src}
+                src={photo.src}
                 alt={index < photos.length ? "Zdjęcie z pracy i projektów" : ""}
                 width={480}
                 height={640}

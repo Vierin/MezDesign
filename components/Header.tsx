@@ -1,11 +1,13 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { trackEvent } from "@/lib/analytics";
+import { scrollToHash } from "@/lib/scroll";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -20,6 +22,7 @@ function getScrollY() {
 }
 
 export function Header() {
+  const pathname = usePathname();
   const [isHidden, setIsHidden] = useState(false);
   const lastScrollY = useRef(0);
 
@@ -56,6 +59,26 @@ export function Header() {
     };
   }, []);
 
+  const handleHashNav = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    const hashIndex = href.indexOf("#");
+    if (hashIndex === -1) return;
+
+    const hash = href.slice(hashIndex);
+    const path = href.slice(0, hashIndex) || "/";
+
+    if (pathname === path || (path === "/" && pathname === "/")) {
+      event.preventDefault();
+      scrollToHash(hash);
+      window.history.pushState(null, "", hash);
+      return;
+    }
+
+    // Cross-page: let Next navigate; SmoothScroll will pick up the hash.
+  };
+
   return (
     <div className={`site-header${isHidden ? " is-hidden" : ""}`}>
       <header className="topbar">
@@ -68,7 +91,12 @@ export function Header() {
               <ul className="nav-list">
                 {navItems.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href}>{item.label}</Link>
+                    <Link
+                      href={item.href}
+                      onClick={(event) => handleHashNav(event, item.href)}
+                    >
+                      {item.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -76,9 +104,10 @@ export function Header() {
             <Link
               className="btn btn-nav"
               href="/#kontakt"
-              onClick={() =>
-                trackEvent("cta_click", { location: "header_nav", target: "kontakt" })
-              }
+              onClick={(event) => {
+                trackEvent("cta_click", { location: "header_nav", target: "kontakt" });
+                handleHashNav(event, "/#kontakt");
+              }}
             >
               Pogadajmy o twoim projekcie
             </Link>
