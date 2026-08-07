@@ -70,9 +70,9 @@
 .contact-panel {
 	display: flex;
 	flex-direction: column;
-	gap: 1.25rem;
+	// gap: 1.25rem;
 	min-height: 100%;
-	padding: 3.75rem 3.75rem 2.5rem;
+	padding: 3.25rem 3.75rem 2.5rem;
 	border-radius: 16px;
 	background: #f5f5f5;
 }
@@ -81,21 +81,29 @@
 	display: flex;
 	align-items: flex-start;
 	gap: 0.95rem;
+	margin-bottom: 2.9rem;
+	min-height: 5rem;
 
 	h3 {
 		margin: 0;
-		font-size: clamp(1.2rem, 1.8vw, 1.45rem);
-		font-weight: 600;
+		font-size: clamp(1.2rem, 2.5vw, 2rem);
+		font-weight: 400;
 		letter-spacing: -0.025em;
-		color: #111;
+		color: #000;
 		line-height: 1.2;
 	}
 
 	p {
 		margin: 0.3rem 0 0;
-		color: #6e6e6e;
+		color: #686868;
 		font-size: 0.95rem;
 		line-height: 1.4;
+	}
+
+	.is-sky + div {
+		p {
+			max-width: 80%;
+		}
 	}
 }
 
@@ -183,19 +191,26 @@
 .contact-calendar-grid {
 	display: grid;
 	grid-template-columns: repeat(7, minmax(0, 1fr));
-	gap: 0.1rem;
+	column-gap: 0.15rem;
+	row-gap: 0.15rem;
 	text-align: center;
+	align-items: center;
+	justify-items: center;
 }
 
 .contact-calendar-weekdays {
-	margin-bottom: 0.2rem;
+	margin-bottom: 0.15rem;
 
 	span {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 1.1rem;
 		font-size: 0.62rem;
 		font-weight: 600;
 		letter-spacing: 0.06em;
 		color: #9a9a9a;
-		padding-block: 0.05rem;
 	}
 }
 
@@ -203,14 +218,14 @@
 	appearance: none;
 	border: 0;
 	background: transparent;
-	width: 100%;
-	aspect-ratio: 1;
-	max-width: 34px;
-	margin-inline: auto;
+	width: 2rem;
+	height: 2rem;
+	padding: 0;
 	border-radius: 50%;
 	font: inherit;
 	font-size: 0.85rem;
 	font-weight: 500;
+	line-height: 1;
 	color: #222;
 	cursor: pointer;
 	transition:
@@ -234,7 +249,8 @@
 }
 
 .contact-calendar-grid .is-empty {
-	aspect-ratio: 1;
+	width: 2rem;
+	height: 2rem;
 }
 
 .contact-form {
