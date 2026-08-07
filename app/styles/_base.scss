@@ -13,13 +13,8 @@ body {
 }
 
 html {
-	scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto;
-	}
+	/* ScrollSmoother owns scrolling; native smooth fights it */
+	scroll-behavior: auto;
 }
 
 a {
@@ -45,8 +40,4 @@ h2 {
 	line-height: 1.15;
 	margin-bottom: 1rem;
 	max-width: 24ch;
-}
-
-main {
-	overflow: clip;
 }

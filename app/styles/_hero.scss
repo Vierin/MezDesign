@@ -65,10 +65,12 @@
 
 #smooth-wrapper {
 	overflow: hidden;
+	width: 100%;
 }
 
 #smooth-content {
 	will-change: transform;
+	overflow: visible;
 }
 
 .hero-layout {

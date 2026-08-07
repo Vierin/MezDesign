@@ -31,21 +31,59 @@ export function SmoothScroll({ children }: { children: React.ReactNode }) {
       wrapper,
       content,
       smooth: 1.2,
-      effects: true,
+      effects: false,
       smoothTouch: 0.1,
       normalizeScroll: true,
     });
 
-    ScrollTrigger.refresh();
+    let refreshRaf = 0;
+    let resizeTimer = 0;
+    let lastHeight = content.offsetHeight;
+
+    const refresh = () => {
+      cancelAnimationFrame(refreshRaf);
+      refreshRaf = requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+        lastHeight = content.offsetHeight;
+      });
+    };
+
+    refresh();
+
+    const onLoad = () => refresh();
+    window.addEventListener("load", onLoad);
+
+    const fontsReady = document.fonts?.ready?.then(refresh);
+
+    const images = content.querySelectorAll("img");
+    images.forEach((img) => {
+      if (!img.complete) {
+        img.addEventListener("load", refresh, { once: true });
+        img.addEventListener("error", refresh, { once: true });
+      }
+    });
+
+    const resizeObserver = new ResizeObserver(() => {
+      const nextHeight = content.offsetHeight;
+      if (Math.abs(nextHeight - lastHeight) < 1) return;
+      lastHeight = nextHeight;
+      window.clearTimeout(resizeTimer);
+      resizeTimer = window.setTimeout(refresh, 80);
+    });
+    resizeObserver.observe(content);
 
     if (window.location.hash) {
-      // Wait a tick so layout/images settle after route change.
       requestAnimationFrame(() => {
         scrollToHash(window.location.hash, true);
       });
     }
 
     return () => {
+      cancelAnimationFrame(refreshRaf);
+      window.clearTimeout(resizeTimer);
+      window.removeEventListener("load", onLoad);
+      resizeObserver.disconnect();
+      void fontsReady;
       smoother.kill();
     };
   }, [pathname]);
