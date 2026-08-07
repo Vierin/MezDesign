@@ -1,7 +1,7 @@
 @use 'mixins' as *;
 
 .about-page {
-	background: #f6ebe8;
+	background: #faf2f0;
 	min-height: 100svh;
 	display: flex;
 	flex-direction: column;
@@ -94,12 +94,12 @@
 	h2 {
 		margin: 0 0 1.15rem;
 		max-width: none;
-		font-size: clamp(1rem, 1.4vw, 1.15rem);
-		font-weight: 600;
+		font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+		font-weight: 400;
 		letter-spacing: 0.02em;
 		text-transform: uppercase;
 		line-height: 1.3;
-		color: var(--text);
+		color: #686868;
 	}
 
 	p {
@@ -120,7 +120,7 @@
 	margin: 0;
 	padding: 0;
 	display: grid;
-	gap: 0.45rem;
+	gap: 0.15rem;
 
 	li {
 		font-size: clamp(0.95rem, 1.2vw, 1.05rem);
@@ -186,7 +186,7 @@
 .about-gallery {
 	padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(3.5rem, 7vw, 5.5rem);
 	overflow: hidden;
-	background: #f6ebe8;
+	background: #faf2f0;
 }
 
 .about-gallery-marquee {
@@ -207,12 +207,12 @@
 
 	&::before {
 		left: 0;
-		background: linear-gradient(to right, #f6ebe8, transparent);
+		background: linear-gradient(to right, #faf2f0, transparent);
 	}
 
 	&::after {
 		right: 0;
-		background: linear-gradient(to left, #f6ebe8, transparent);
+		background: linear-gradient(to left, #faf2f0, transparent);
 	}
 }
 
