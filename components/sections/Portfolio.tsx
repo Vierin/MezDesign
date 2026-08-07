@@ -49,8 +49,8 @@ const projects = [
 export function Portfolio() {
 	return (
 		<section id="portfolio" className="portfolio-section">
-			<div className="container portfolio-heading">
-				<div>
+			<div className="container grid portfolio-heading">
+				<div className="portfolio-heading-copy">
 					<p className="eyebrow">Wybrane realizacje</p>
 					<h2>
 						Portfolio skutecznych i
@@ -58,7 +58,7 @@ export function Portfolio() {
 						dopieszczonych projektow
 					</h2>
 				</div>
-				<p>
+				<p className="portfolio-heading-lead">
 					Tworze projekty graficzne i strony, ktore porzadkuja komunikacje
 					wizualna oraz buduja spojny charakter marki.
 				</p>
@@ -71,7 +71,7 @@ export function Portfolio() {
 						key={project.id}
 						style={{ zIndex: projects.length + index }}
 					>
-						<div className="container portfolio-item-grid">
+						<div className="container grid portfolio-item-grid">
 							<p className="portfolio-index">{`${project.id}//`}</p>
 							<div className="portfolio-copy">
 								<h3>{project.name}</h3>
@@ -89,7 +89,7 @@ export function Portfolio() {
 									Zobacz projekt
 								</a>
 							</div>
-							<div>
+							<div className="portfolio-media">
 								<div className="portfolio-meta">
 									<div className="portfolio-tags">
 										{project.tags.map((tag) => (

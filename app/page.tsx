@@ -10,7 +10,7 @@ import { Testimonials } from "@/components/sections/Testimonials";
 
 export default function HomePage() {
   return (
-    <main>
+    <main id="top">
       <Hero />
       <Partners />
       <About />

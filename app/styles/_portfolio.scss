@@ -6,13 +6,17 @@
 }
 
 .portfolio-heading {
-  display: grid;
-  grid-template-columns: 1fr 390px;
-  gap: 2rem;
   padding-bottom: 2.2rem;
+  align-items: end;
 
-  p {
+  .portfolio-heading-copy {
+    grid-column: 1 / span 7;
+  }
+
+  .portfolio-heading-lead {
+    grid-column: 9 / span 4;
     color: var(--muted);
+    align-self: end;
   }
 }
 
@@ -24,15 +28,13 @@
 }
 
 .portfolio-item-grid {
-  display: grid;
-  grid-template-columns: 60px 260px 1fr;
-  gap: 1.9rem;
   align-items: start;
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
 .portfolio-index {
+  grid-column: 1 / span 1;
   font-size: 1.8rem;
   color: #171717;
   line-height: 1;
@@ -40,6 +42,8 @@
 }
 
 .portfolio-copy {
+  grid-column: 2 / span 3;
+
   h3 {
     font-size: 1.85rem;
     line-height: 1.1;
@@ -65,6 +69,10 @@
   stroke-width: 2.2;
 }
 
+.portfolio-media {
+  grid-column: 5 / span 8;
+}
+
 .portfolio-meta {
   display: flex;
   justify-content: space-between;
@@ -83,7 +91,7 @@
 .portfolio-images {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.8rem;
+  gap: var(--grid-gutter);
 
   img {
     width: 100%;
@@ -118,12 +126,16 @@
   }
 
   .portfolio-heading {
-    grid-template-columns: 1fr;
+    .portfolio-heading-copy,
+    .portfolio-heading-lead {
+      grid-column: 1 / -1;
+    }
   }
 
-  .portfolio-item-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
+  .portfolio-index,
+  .portfolio-copy,
+  .portfolio-media {
+    grid-column: 1 / -1;
   }
 
   .portfolio-images {

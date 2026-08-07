@@ -1,0 +1,291 @@
+- generic [active] [ref=f1e1]:
+  - main [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - generic [ref=f1e5]:
+        - link "Mez.Design" [ref=f1e6] [cursor=pointer]:
+          - /url: "#top"
+        - generic [ref=f1e7]:
+          - navigation "Nawigacja główna" [ref=f1e8]:
+            - list [ref=f1e9]:
+              - listitem [ref=f1e10]:
+                - link "Projekty" [ref=f1e11] [cursor=pointer]:
+                  - /url: "#portfolio"
+              - listitem [ref=f1e12]:
+                - link "O mnie" [ref=f1e13] [cursor=pointer]:
+                  - /url: "#o-mnie"
+              - listitem [ref=f1e14]:
+                - link "Kontakt" [ref=f1e15] [cursor=pointer]:
+                  - /url: "#kontakt"
+          - link "Wypełnij formularz" [ref=f1e16] [cursor=pointer]:
+            - /url: "#kontakt"
+      - generic [ref=f1e17]:
+        - generic [ref=f1e18]:
+          - paragraph [ref=f1e19]:
+            - text: Multidisciplinary Designer
+            - generic [ref=f1e20]: ↘
+          - heading [level=1] [ref=f1e21]:
+            - strong [ref=f1e22]: Dbam o to,
+            - text: jak Twoja marka wygląda i komunikuje się
+            - strong [ref=f1e23]: z odbiorcami — online i offline.
+        - generic [ref=f1e24]:
+          - generic [ref=f1e25]: Ai
+          - generic [ref=f1e27]: Web design
+          - generic [ref=f1e29]: Social media
+    - generic [ref=f1e40]:
+      - paragraph [ref=f1e41]: Wspolpraca z markami, ktore stawiaja na jakosc designu
+      - generic "Logotypy partnerow" [ref=f1e42]:
+        - generic [ref=f1e44]:
+          - img "Logo partnera" [ref=f1e45]
+          - img "Logo partnera" [ref=f1e46]
+          - img "Logo partnera" [ref=f1e47]
+          - img "Logo partnera" [ref=f1e48]
+          - img "Logo partnera" [ref=f1e49]
+    - generic [ref=f1e52]:
+      - generic [ref=f1e53]:
+        - paragraph [ref=f1e54]: O studio
+        - heading "Buduje marki, ktore sa zapamietywane i wybierane." [level=2] [ref=f1e55]
+        - paragraph [ref=f1e56]: Wspieram freelancerow i male firmy na polskim rynku. Lacze estetyke, strategie i praktyczne podejscie do projektowania, aby komunikacja wizualna byla spojna, czytelna i latwa do skalowania.
+      - generic [ref=f1e57]:
+        - paragraph [ref=f1e58]: Jak pracujemy
+        - list [ref=f1e59]:
+          - listitem [ref=f1e60]: Rozpoznanie marki, celu i grupy docelowej
+          - listitem [ref=f1e61]: Propozycja konceptu i kierunku wizualnego
+          - listitem [ref=f1e62]: Realizacja i przekazanie gotowych materialow
+    - generic [ref=f1e64]:
+      - paragraph [ref=f1e65]: Uslugi
+      - heading "Kompleksowe wsparcie projektowe dla freelancerow i firm." [level=2] [ref=f1e66]
+      - generic [ref=f1e67]:
+        - article [ref=f1e68]:
+          - heading "Projektowanie stron internetowych" [level=3] [ref=f1e69]
+          - paragraph [ref=f1e70]: Nowoczesne strony i strony docelowe z czytelna hierarchia tresci, dopracowana typografia i spojnym stylem.
+        - article [ref=f1e71]:
+          - heading "Projektowanie materialow komunikacji wizualnej" [level=3] [ref=f1e72]
+          - paragraph [ref=f1e73]: Szablony postow, relacji i karuzel, ktore utrzymuja spojna estetyke marki w komunikacji cyfrowej.
+        - article [ref=f1e74]:
+          - heading "Materialy do druku" [level=3] [ref=f1e75]
+          - paragraph [ref=f1e76]: Wizytowki, ulotki, katalogi i inne materialy offline przygotowane zgodnie z wymaganiami drukarni.
+        - article [ref=f1e77]:
+          - heading "System prezentacji i dokumentow" [level=3] [ref=f1e78]
+          - paragraph [ref=f1e79]: Szablony ofert, prezentacji i dokumentow firmowych, ktore porzadkuja komunikacje wizualna.
+        - article [ref=f1e80]:
+          - heading "Identyfikacja wizualna marki" [level=3] [ref=f1e81]
+          - paragraph [ref=f1e82]: "Tozsamosc wizualna marki: logo, kolory, typografia i zasady, ktore porzadkuja caly przekaz."
+    - generic [ref=f1e83]:
+      - generic [ref=f1e84]:
+        - generic [ref=f1e85]:
+          - paragraph [ref=f1e86]: Wybrane realizacje
+          - heading "Portfolio skutecznych i dopieszczonych projektow" [level=2] [ref=f1e87]: Portfolio skutecznych idopieszczonych projektow
+        - paragraph [ref=f1e88]: Tworze projekty graficzne i strony, ktore porzadkuja komunikacje wizualna oraz buduja spojny charakter marki.
+      - generic [ref=f1e89]:
+        - article [ref=f1e90]:
+          - generic [ref=f1e91]:
+            - paragraph [ref=f1e92]: 01//
+            - generic [ref=f1e93]:
+              - heading "Lukox. Identyfikacja Wizualna" [level=3] [ref=f1e94]
+              - paragraph [ref=f1e95]: Spojny system wizualny i zestaw materialow, ktore uporzadkowaly komunikacje marki we wszystkich punktach styku.
+              - link "Zobacz projekt" [ref=f1e96] [cursor=pointer]:
+                - /url: "#kontakt"
+            - generic [ref=f1e99]:
+              - generic [ref=f1e100]:
+                - generic [ref=f1e101]:
+                  - generic [ref=f1e102]: Identyfikacja wizualna
+                  - generic [ref=f1e103]: Odswiezenie marki
+                - generic [ref=f1e104]: © 2025
+              - generic [ref=f1e105]:
+                - img "Lukox. Identyfikacja Wizualna podglad 1" [ref=f1e106]
+                - img "Lukox. Identyfikacja Wizualna podglad 2" [ref=f1e107]
+                - img "Lukox. Identyfikacja Wizualna podglad 3" [ref=f1e108]
+        - article [ref=f1e109]:
+          - generic [ref=f1e110]:
+            - paragraph [ref=f1e111]: 02//
+            - generic [ref=f1e112]:
+              - heading "Blux. Projekt strony WWW" [level=3] [ref=f1e113]
+              - paragraph [ref=f1e114]: Nowoczesny projekt strony dla marki uslugowej z naciskiem na czytelnosc, hierarchie tresci i UX.
+              - link "Zobacz projekt" [ref=f1e115] [cursor=pointer]:
+                - /url: "#kontakt"
+            - generic [ref=f1e118]:
+              - generic [ref=f1e119]:
+                - generic [ref=f1e120]:
+                  - generic [ref=f1e121]: Projektowanie UX/UI
+                  - generic [ref=f1e122]: Projektowanie stron
+                - generic [ref=f1e123]: © 2025
+              - generic [ref=f1e124]:
+                - img "Blux. Projekt strony WWW podglad 1" [ref=f1e125]
+                - img "Blux. Projekt strony WWW podglad 2" [ref=f1e126]
+                - img "Blux. Projekt strony WWW podglad 3" [ref=f1e127]
+        - article [ref=f1e128]:
+          - generic [ref=f1e129]:
+            - paragraph [ref=f1e130]: 03//
+            - generic [ref=f1e131]:
+              - heading "Konx. Identyfikacja i materialy" [level=3] [ref=f1e132]
+              - paragraph [ref=f1e133]: Kompletna identyfikacja wizualna i materialy, ktore ujednolicily styl marki online i offline.
+              - link "Zobacz projekt" [ref=f1e134] [cursor=pointer]:
+                - /url: "#kontakt"
+            - generic [ref=f1e137]:
+              - generic [ref=f1e138]:
+                - generic [ref=f1e139]:
+                  - generic [ref=f1e140]: Identyfikacja wizualna
+                  - generic [ref=f1e141]: System projektowy
+                - generic [ref=f1e142]: © 2025
+              - generic [ref=f1e143]:
+                - img "Konx. Identyfikacja i materialy podglad 1" [ref=f1e144]
+                - img "Konx. Identyfikacja i materialy podglad 2" [ref=f1e145]
+                - img "Konx. Identyfikacja i materialy podglad 3" [ref=f1e146]
+      - link "Zobacz wszystkie projekty" [ref=f1e147] [cursor=pointer]:
+        - /url: "#kontakt"
+    - generic [ref=f1e151]:
+      - paragraph [ref=f1e152]: Opinie klientow
+      - heading "Zaufanie marek z różnych branż i zespołów" [level=2] [ref=f1e153]: Zaufanie marek z różnychbranż i zespołów
+      - generic [ref=f1e154]:
+        - generic [ref=f1e156]:
+          - article [ref=f1e157]:
+            - generic [ref=f1e158]:
+              - img "Olivia Hart" [ref=f1e159]
+              - generic [ref=f1e160]:
+                - paragraph [ref=f1e161]: Olivia Hart
+                - paragraph [ref=f1e162]: Manager marki
+            - paragraph [ref=f1e163]: "\"Ich strategiczne podejscie i jakosc projektow wizualnych szybko podniosly rozpoznawalnosc naszej marki.\""
+          - article [ref=f1e164]:
+            - generic [ref=f1e165]:
+              - img "Ethan Cole" [ref=f1e166]
+              - generic [ref=f1e167]:
+                - paragraph [ref=f1e168]: Ethan Cole
+                - paragraph [ref=f1e169]: Strateg marki
+            - paragraph [ref=f1e170]: "\"Od koncepcji do wdrozenia wszystko bylo konkretne, szybkie i bardzo dobrze zaplanowane.\""
+          - article [ref=f1e171]:
+            - generic [ref=f1e172]:
+              - img "Sofia Lane" [ref=f1e173]
+              - generic [ref=f1e174]:
+                - paragraph [ref=f1e175]: Sofia Lane
+                - paragraph [ref=f1e176]: Wlascicielka studia
+            - paragraph [ref=f1e177]: "\"Wyrazna strategia i system projektowy ulatwily prace naszemu zespolowi i poprawily spojna komunikacje.\""
+          - article [ref=f1e178]:
+            - generic [ref=f1e179]:
+              - img "Olivia Hart" [ref=f1e180]
+              - generic [ref=f1e181]:
+                - paragraph [ref=f1e182]: Olivia Hart
+                - paragraph [ref=f1e183]: Manager marki
+            - paragraph [ref=f1e184]: "\"Ich strategiczne podejscie i jakosc projektow wizualnych szybko podniosly rozpoznawalnosc naszej marki.\""
+          - article [ref=f1e185]:
+            - generic [ref=f1e186]:
+              - img "Ethan Cole" [ref=f1e187]
+              - generic [ref=f1e188]:
+                - paragraph [ref=f1e189]: Ethan Cole
+                - paragraph [ref=f1e190]: Strateg marki
+            - paragraph [ref=f1e191]: "\"Od koncepcji do wdrozenia wszystko bylo konkretne, szybkie i bardzo dobrze zaplanowane.\""
+          - article [ref=f1e192]:
+            - generic [ref=f1e193]:
+              - img "Sofia Lane" [ref=f1e194]
+              - generic [ref=f1e195]:
+                - paragraph [ref=f1e196]: Sofia Lane
+                - paragraph [ref=f1e197]: Wlascicielka studia
+            - paragraph [ref=f1e198]: "\"Wyrazna strategia i system projektowy ulatwily prace naszemu zespolowi i poprawily spojna komunikacje.\""
+        - article [ref=f1e199]:
+          - img "CEO portret" [ref=f1e200]
+          - paragraph [ref=f1e201]: "\"Ich kreatywne podejscie i strategia wyniosly nasza marke na nowy poziom. Efekt koncowy byl dokladnie tym, czego potrzebowalismy.\""
+          - generic [ref=f1e202]:
+            - generic [ref=f1e203]:
+              - paragraph [ref=f1e204]: 98%
+              - paragraph [ref=f1e205]: Zadowolonych klientow
+            - generic [ref=f1e206]:
+              - paragraph [ref=f1e207]: 08+
+              - paragraph [ref=f1e208]: Lat doswiadczenia
+        - generic [ref=f1e210]:
+          - article [ref=f1e211]:
+            - generic [ref=f1e212]:
+              - img "Max Turner" [ref=f1e213]
+              - generic [ref=f1e214]:
+                - paragraph [ref=f1e215]: Max Turner
+                - paragraph [ref=f1e216]: Kierownik komunikacji
+            - paragraph [ref=f1e217]: "\"Wspolpraca przebiegla plynnie, a nowa oprawa wizualna dala nam wieksza wiarygodnosc i lepsze wyniki.\""
+          - article [ref=f1e218]:
+            - generic [ref=f1e219]:
+              - img "Leo Bennett" [ref=f1e220]
+              - generic [ref=f1e221]:
+                - paragraph [ref=f1e222]: Leo Bennett
+                - paragraph [ref=f1e223]: Dyrektor kreatywny
+            - paragraph [ref=f1e224]: "\"Dostalismy system wizualny, ktory jest latwy do wdrozenia i dziala swietnie zarowno online, jak i offline.\""
+          - article [ref=f1e225]:
+            - generic [ref=f1e226]:
+              - img "Noah Reed" [ref=f1e227]
+              - generic [ref=f1e228]:
+                - paragraph [ref=f1e229]: Noah Reed
+                - paragraph [ref=f1e230]: Dyrektor ds. marki
+            - paragraph [ref=f1e231]: "\"Tempo pracy, klarowna komunikacja i jakosc wykonania daly nam efekt, ktorego oczekiwalismy.\""
+          - article [ref=f1e232]:
+            - generic [ref=f1e233]:
+              - img "Max Turner" [ref=f1e234]
+              - generic [ref=f1e235]:
+                - paragraph [ref=f1e236]: Max Turner
+                - paragraph [ref=f1e237]: Kierownik komunikacji
+            - paragraph [ref=f1e238]: "\"Wspolpraca przebiegla plynnie, a nowa oprawa wizualna dala nam wieksza wiarygodnosc i lepsze wyniki.\""
+          - article [ref=f1e239]:
+            - generic [ref=f1e240]:
+              - img "Leo Bennett" [ref=f1e241]
+              - generic [ref=f1e242]:
+                - paragraph [ref=f1e243]: Leo Bennett
+                - paragraph [ref=f1e244]: Dyrektor kreatywny
+            - paragraph [ref=f1e245]: "\"Dostalismy system wizualny, ktory jest latwy do wdrozenia i dziala swietnie zarowno online, jak i offline.\""
+          - article [ref=f1e246]:
+            - generic [ref=f1e247]:
+              - img "Noah Reed" [ref=f1e248]
+              - generic [ref=f1e249]:
+                - paragraph [ref=f1e250]: Noah Reed
+                - paragraph [ref=f1e251]: Dyrektor ds. marki
+            - paragraph [ref=f1e252]: "\"Tempo pracy, klarowna komunikacja i jakosc wykonania daly nam efekt, ktorego oczekiwalismy.\""
+    - generic [ref=f1e254]:
+      - generic [ref=f1e255]:
+        - paragraph [ref=f1e256]:
+          - generic [ref=f1e257]: •
+          - text: Spojny System Wizualny
+        - heading "Masz pytania?" [level=2] [ref=f1e258]
+        - paragraph [ref=f1e259]: Projektuje identyfikacje i materialy, ktore sa estetyczne, czytelne i gotowe do wdrozenia od razu po odbiorze.
+      - generic [ref=f1e260]:
+        - article [ref=f1e261]:
+          - button "Jak przebiega proces projektowy? -" [expanded] [ref=f1e262] [cursor=pointer]
+          - paragraph [ref=f1e265]: Zaczynamy od krotkiego briefu, potem przygotowuje kierunek wizualny, a po akceptacji dopracowuje finalne materialy.
+        - article [ref=f1e266]:
+          - button "Co zawiera pakiet identyfikacji wizualnej? +" [ref=f1e267] [cursor=pointer]
+          - paragraph [ref=f1e268]: Zalezne od zakresu, ale najczesciej obejmuje logo, kolorystyke, typografie i zasady uzycia w dokumentacji marki.
+        - article [ref=f1e269]:
+          - button "Ile trwa przygotowanie projektu? +" [ref=f1e270] [cursor=pointer]
+          - paragraph [ref=f1e271]: Mniejsze projekty realizuje zwykle w 7-14 dni, a pelna identyfikacja wizualna zajmuje zazwyczaj od 3 do 5 tygodni.
+        - article [ref=f1e272]:
+          - button "Czy moge zlecic tylko jeden element, np. logo? +" [ref=f1e273] [cursor=pointer]
+          - paragraph [ref=f1e274]: Tak. Mozesz zamowic pojedynczy projekt albo rozbudowac zakres o kolejne elementy wizualne.
+        - article [ref=f1e275]:
+          - button "Jak wyglada przekazanie plikow po zakonczeniu? +" [ref=f1e276] [cursor=pointer]
+          - paragraph [ref=f1e277]: Otrzymujesz uporzadkowany pakiet plikow produkcyjnych i webowych oraz krotkie wytyczne, jak poprawnie ich uzywac.
+    - generic [ref=f1e279]:
+      - generic [ref=f1e280]:
+        - paragraph [ref=f1e281]: Kontakt
+        - heading "Zacznijmy projekt, ktory uporzadkuje i wzmocni Twoja komunikacje wizualna." [level=2] [ref=f1e282]
+        - paragraph [ref=f1e283]: Opisz krotko, czego potrzebujesz. Odpowiadam zazwyczaj w ciagu jednego dnia roboczego.
+      - generic [ref=f1e284]:
+        - generic [ref=f1e285]:
+          - text: Imie i nazwisko
+          - textbox "Imie i nazwisko" [ref=f1e286]
+        - generic [ref=f1e287]:
+          - text: E-mail
+          - textbox "E-mail" [ref=f1e288]
+        - generic [ref=f1e289]:
+          - text: Adres strony lub link do social media (opcjonalnie)
+          - textbox "Adres strony lub link do social media (opcjonalnie)" [ref=f1e290]
+        - generic [ref=f1e291]:
+          - text: Wiadomosc
+          - textbox "Wiadomosc" [ref=f1e292]
+        - textbox
+        - button "Wyslij wiadomosc" [ref=f1e293]
+    - generic [ref=f1e294]:
+      - generic [ref=f1e295]:
+        - generic [ref=f1e296]:
+          - paragraph [ref=f1e297]: Mez Design
+          - paragraph [ref=f1e298]: Projektowanie graficzne i identyfikacja wizualna dla Polskich marek.
+        - generic [ref=f1e299]:
+          - paragraph [ref=f1e300]: Kontakt
+          - paragraph [ref=f1e301]:
+            - link "dmezeankina@gmail.com" [ref=f1e302] [cursor=pointer]:
+              - /url: mailto:dmezeankina@gmail.com
+      - paragraph [ref=f1e304]: © 2026 Mez Design. Wszelkie prawa zastrzezone.
+  - button "Open Next.js Dev Tools" [ref=f1e310] [cursor=pointer]
+  - alert [ref=f1e314]

@@ -1,118 +1,77 @@
-"use client";
+'use client';
 
-import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
-import { trackEvent } from "@/lib/analytics";
+import Image from 'next/image';
+import { useRef } from 'react';
+import { Header } from '@/components/Header';
+import { useHeroOrb } from '@/hooks/useHeroOrb';
 
-const navItems = [
-  { href: "#o-mnie", label: "O nas" },
-  { href: "#uslugi", label: "Uslugi" },
-  { href: "#portfolio", label: "Projekty" },
-  { href: "#opinie", label: "Opinie" }
+const folders = [
+	{ label: 'Ai', className: 'is-ai' },
+	{ label: 'Web design', className: 'is-web' },
+	{ label: 'Social media', className: 'is-social' },
 ];
 
 export function Hero() {
-  const [isHeaderHidden, setIsHeaderHidden] = useState(false);
-  const lastScrollY = useRef(0);
+	const heroRef = useRef<HTMLElement>(null);
+	const orbRef = useHeroOrb(heroRef);
 
-  useEffect(() => {
-    let ticking = false;
+	return (
+		<section className="hero" ref={heroRef}>
+			<div ref={orbRef} className="hero-orb" aria-hidden="true" />
 
-    const updateHeaderVisibility = () => {
-      const currentY = window.scrollY;
-      const delta = currentY - lastScrollY.current;
+			<Header />
 
-      if (currentY <= 20) {
-        setIsHeaderHidden(false);
-      } else if (delta > 6 && currentY > 120) {
-        setIsHeaderHidden(true);
-      } else if (delta < -6) {
-        setIsHeaderHidden(false);
-      }
+			<div className="hero-layout">
+				<div className="hero-copy">
+					<p className="hero-chip">
+						Multidisciplinary Designer
+						<Image
+							src="/arrow.png"
+							alt=""
+							width={14}
+							height={14}
+							aria-hidden="true"
+						/>
+					</p>
+					<h1>
+						Dbam o to,
+						<strong> jak Twoja marka wygląda i komunikuje się</strong> <br />z
+						odbiorcami — online i offline.
+					</h1>
+				</div>
 
-      lastScrollY.current = currentY;
-      ticking = false;
-    };
+				<div className="hero-collage" aria-hidden="true">
+					{folders.map((folder) => (
+						<div
+							key={folder.label}
+							className={`hero-folder ${folder.className}`}
+						>
+							<Image src="/folder.png" alt="" width={116} height={97} />
+							<span>{folder.label}</span>
+						</div>
+					))}
 
-    const onScroll = () => {
-      if (ticking) return;
-      ticking = true;
-      window.requestAnimationFrame(updateHeaderVisibility);
-    };
+					<div className="hero-shot is-desk">
+						<Image src="/hero-2.jpg" alt="" fill sizes="220px" />
+					</div>
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+					<div className="hero-shot is-walk">
+						<Image src="/hero-1.jpg" alt="" fill sizes="280px" priority />
+					</div>
 
-  return (
-    <section className="hero">
-      <div className={`hero-topbar-shell${isHeaderHidden ? " is-hidden" : ""}`}>
-        <header className="topbar topbar-light">
-          <p className="brand">Mez Design</p>
-          <nav aria-label="Nawigacja glowna">
-            <ul className="nav-list">
-              {navItems.map((item) => (
-                <li key={item.href}>
-                  <a href={item.href}>{item.label}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <a
-            className="btn btn-nav"
-            href="#kontakt"
-            onClick={() => trackEvent("cta_click", { location: "header_nav", target: "kontakt" })}
-          >
-            Kontakt
-          </a>
-        </header>
-      </div>
+					<div className="hero-shot is-tablet">
+						<Image src="/hero-3.jpg" alt="" fill sizes="240px" />
+					</div>
 
-      <div className="hero-layout">
-        <div className="hero-copy">
-          <p className="hero-chip">
-            <Image
-              src="https://cdn.prod.website-files.com/688d31d885372b14ca5e3d8b/6890bee0bc046268f9b1496c_magic-wand.svg"
-              alt=""
-              width={16}
-              height={16}
-            />
-            Projektowanie graficzne dla nowoczesnych marek
-          </p>
-          <h1>
-            Tworze projekty, ktore buduja <span>spojny i profesjonalny wizerunek marki</span>
-          </h1>
-          <p className="lead">
-            Projektuje identyfikacje wizualne, strony i materialy, ktore sa estetyczne,
-            czytelne i gotowe do codziennego uzycia w Twojej marce.
-          </p>
-          <div className="hero-actions">
-            <a
-              className="btn btn-primary"
-              href="#kontakt"
-              onClick={() => trackEvent("cta_click", { location: "hero_primary", target: "kontakt" })}
-            >
-              Umow konsultacje projektowa
-            </a>
-            <a
-              className="btn btn-secondary"
-              href="#portfolio"
-              onClick={() => trackEvent("cta_click", { location: "hero_secondary", target: "portfolio" })}
-            >
-              Zobacz projekty
-            </a>
-          </div>
-        </div>
-        <div className="hero-media">
-          <Image
-            src="https://cdn.prod.website-files.com/688d31d885372b14ca5e3d8b/68b38088492c916cc2b2e802_203646ac22604322e486f1d149b88bc6_Hero%20Image.avif"
-            alt="Zespol pracujacy nad strategia wizualna"
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            priority
-          />
-        </div>
-      </div>
-    </section>
-  );
+					<div className="hero-shot is-phone">
+						<Image src="/hero-4.jpg" alt="" fill sizes="140px" />
+					</div>
+
+					<div className="hero-shot is-avatar">
+						<Image src="/avatar.png" alt="" fill sizes="150px" />
+					</div>
+				</div>
+			</div>
+		</section>
+	);
 }

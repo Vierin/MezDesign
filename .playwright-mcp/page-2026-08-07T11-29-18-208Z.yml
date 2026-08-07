@@ -1,0 +1,290 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e5]:
+        - link "Mez.Design" [ref=e6] [cursor=pointer]:
+          - /url: "#top"
+        - generic [ref=e7]:
+          - navigation "Nawigacja główna" [ref=e8]:
+            - list [ref=e9]:
+              - listitem [ref=e10]:
+                - link "Projekty" [ref=e11] [cursor=pointer]:
+                  - /url: "#portfolio"
+              - listitem [ref=e12]:
+                - link "O mnie" [ref=e13] [cursor=pointer]:
+                  - /url: "#o-mnie"
+              - listitem [ref=e14]:
+                - link "Kontakt" [ref=e15] [cursor=pointer]:
+                  - /url: "#kontakt"
+          - link "Wypełnij formularz" [ref=e16] [cursor=pointer]:
+            - /url: "#kontakt"
+      - generic [ref=e17]:
+        - generic [ref=e18]:
+          - paragraph [ref=e19]:
+            - text: Multidisciplinary Designer
+            - generic [ref=e20]: ↘
+          - heading [level=1] [ref=e21]:
+            - strong [ref=e22]: Dbam o to,
+            - text: jak Twoja marka wygląda i komunikuje się
+            - strong [ref=e23]: z odbiorcami — online i offline.
+        - generic [ref=e24]:
+          - generic [ref=e25]: Ai
+          - generic [ref=e27]: Web design
+          - generic [ref=e29]: Social media
+    - generic [ref=e40]:
+      - paragraph [ref=e41]: Wspolpraca z markami, ktore stawiaja na jakosc designu
+      - generic "Logotypy partnerow" [ref=e42]:
+        - generic [ref=e44]:
+          - img "Logo partnera" [ref=e45]
+          - img "Logo partnera" [ref=e46]
+          - img "Logo partnera" [ref=e47]
+          - img "Logo partnera" [ref=e48]
+          - img "Logo partnera" [ref=e49]
+    - generic [ref=e52]:
+      - generic [ref=e53]:
+        - paragraph [ref=e54]: O studio
+        - heading "Buduje marki, ktore sa zapamietywane i wybierane." [level=2] [ref=e55]
+        - paragraph [ref=e56]: Wspieram freelancerow i male firmy na polskim rynku. Lacze estetyke, strategie i praktyczne podejscie do projektowania, aby komunikacja wizualna byla spojna, czytelna i latwa do skalowania.
+      - generic [ref=e57]:
+        - paragraph [ref=e58]: Jak pracujemy
+        - list [ref=e59]:
+          - listitem [ref=e60]: Rozpoznanie marki, celu i grupy docelowej
+          - listitem [ref=e61]: Propozycja konceptu i kierunku wizualnego
+          - listitem [ref=e62]: Realizacja i przekazanie gotowych materialow
+    - generic [ref=e64]:
+      - paragraph [ref=e65]: Uslugi
+      - heading "Kompleksowe wsparcie projektowe dla freelancerow i firm." [level=2] [ref=e66]
+      - generic [ref=e67]:
+        - article [ref=e68]:
+          - heading "Projektowanie stron internetowych" [level=3] [ref=e69]
+          - paragraph [ref=e70]: Nowoczesne strony i strony docelowe z czytelna hierarchia tresci, dopracowana typografia i spojnym stylem.
+        - article [ref=e71]:
+          - heading "Projektowanie materialow komunikacji wizualnej" [level=3] [ref=e72]
+          - paragraph [ref=e73]: Szablony postow, relacji i karuzel, ktore utrzymuja spojna estetyke marki w komunikacji cyfrowej.
+        - article [ref=e74]:
+          - heading "Materialy do druku" [level=3] [ref=e75]
+          - paragraph [ref=e76]: Wizytowki, ulotki, katalogi i inne materialy offline przygotowane zgodnie z wymaganiami drukarni.
+        - article [ref=e77]:
+          - heading "System prezentacji i dokumentow" [level=3] [ref=e78]
+          - paragraph [ref=e79]: Szablony ofert, prezentacji i dokumentow firmowych, ktore porzadkuja komunikacje wizualna.
+        - article [ref=e80]:
+          - heading "Identyfikacja wizualna marki" [level=3] [ref=e81]
+          - paragraph [ref=e82]: "Tozsamosc wizualna marki: logo, kolory, typografia i zasady, ktore porzadkuja caly przekaz."
+    - generic [ref=e83]:
+      - generic [ref=e84]:
+        - generic [ref=e85]:
+          - paragraph [ref=e86]: Wybrane realizacje
+          - heading "Portfolio skutecznych i dopieszczonych projektow" [level=2] [ref=e87]: Portfolio skutecznych idopieszczonych projektow
+        - paragraph [ref=e88]: Tworze projekty graficzne i strony, ktore porzadkuja komunikacje wizualna oraz buduja spojny charakter marki.
+      - generic [ref=e89]:
+        - article [ref=e90]:
+          - generic [ref=e91]:
+            - paragraph [ref=e92]: 01//
+            - generic [ref=e93]:
+              - heading "Lukox. Identyfikacja Wizualna" [level=3] [ref=e94]
+              - paragraph [ref=e95]: Spojny system wizualny i zestaw materialow, ktore uporzadkowaly komunikacje marki we wszystkich punktach styku.
+              - link "Zobacz projekt" [ref=e96] [cursor=pointer]:
+                - /url: "#kontakt"
+            - generic [ref=e99]:
+              - generic [ref=e100]:
+                - generic [ref=e101]:
+                  - generic [ref=e102]: Identyfikacja wizualna
+                  - generic [ref=e103]: Odswiezenie marki
+                - generic [ref=e104]: © 2025
+              - generic [ref=e105]:
+                - img "Lukox. Identyfikacja Wizualna podglad 1" [ref=e106]
+                - img "Lukox. Identyfikacja Wizualna podglad 2" [ref=e107]
+                - img "Lukox. Identyfikacja Wizualna podglad 3" [ref=e108]
+        - article [ref=e109]:
+          - generic [ref=e110]:
+            - paragraph [ref=e111]: 02//
+            - generic [ref=e112]:
+              - heading "Blux. Projekt strony WWW" [level=3] [ref=e113]
+              - paragraph [ref=e114]: Nowoczesny projekt strony dla marki uslugowej z naciskiem na czytelnosc, hierarchie tresci i UX.
+              - link "Zobacz projekt" [ref=e115] [cursor=pointer]:
+                - /url: "#kontakt"
+            - generic [ref=e118]:
+              - generic [ref=e119]:
+                - generic [ref=e120]:
+                  - generic [ref=e121]: Projektowanie UX/UI
+                  - generic [ref=e122]: Projektowanie stron
+                - generic [ref=e123]: © 2025
+              - generic [ref=e124]:
+                - img "Blux. Projekt strony WWW podglad 1" [ref=e125]
+                - img "Blux. Projekt strony WWW podglad 2" [ref=e126]
+                - img "Blux. Projekt strony WWW podglad 3" [ref=e127]
+        - article [ref=e128]:
+          - generic [ref=e129]:
+            - paragraph [ref=e130]: 03//
+            - generic [ref=e131]:
+              - heading "Konx. Identyfikacja i materialy" [level=3] [ref=e132]
+              - paragraph [ref=e133]: Kompletna identyfikacja wizualna i materialy, ktore ujednolicily styl marki online i offline.
+              - link "Zobacz projekt" [ref=e134] [cursor=pointer]:
+                - /url: "#kontakt"
+            - generic [ref=e137]:
+              - generic [ref=e138]:
+                - generic [ref=e139]:
+                  - generic [ref=e140]: Identyfikacja wizualna
+                  - generic [ref=e141]: System projektowy
+                - generic [ref=e142]: © 2025
+              - generic [ref=e143]:
+                - img "Konx. Identyfikacja i materialy podglad 1" [ref=e144]
+                - img "Konx. Identyfikacja i materialy podglad 2" [ref=e145]
+                - img "Konx. Identyfikacja i materialy podglad 3" [ref=e146]
+      - link "Zobacz wszystkie projekty" [ref=e147] [cursor=pointer]:
+        - /url: "#kontakt"
+    - generic [ref=e151]:
+      - paragraph [ref=e152]: Opinie klientow
+      - heading "Zaufanie marek z różnych branż i zespołów" [level=2] [ref=e153]: Zaufanie marek z różnychbranż i zespołów
+      - generic [ref=e154]:
+        - generic [ref=e156]:
+          - article [ref=e157]:
+            - generic [ref=e158]:
+              - img "Olivia Hart" [ref=e159]
+              - generic [ref=e160]:
+                - paragraph [ref=e161]: Olivia Hart
+                - paragraph [ref=e162]: Manager marki
+            - paragraph [ref=e163]: "\"Ich strategiczne podejscie i jakosc projektow wizualnych szybko podniosly rozpoznawalnosc naszej marki.\""
+          - article [ref=e164]:
+            - generic [ref=e165]:
+              - img "Ethan Cole" [ref=e166]
+              - generic [ref=e167]:
+                - paragraph [ref=e168]: Ethan Cole
+                - paragraph [ref=e169]: Strateg marki
+            - paragraph [ref=e170]: "\"Od koncepcji do wdrozenia wszystko bylo konkretne, szybkie i bardzo dobrze zaplanowane.\""
+          - article [ref=e171]:
+            - generic [ref=e172]:
+              - img "Sofia Lane" [ref=e173]
+              - generic [ref=e174]:
+                - paragraph [ref=e175]: Sofia Lane
+                - paragraph [ref=e176]: Wlascicielka studia
+            - paragraph [ref=e177]: "\"Wyrazna strategia i system projektowy ulatwily prace naszemu zespolowi i poprawily spojna komunikacje.\""
+          - article [ref=e178]:
+            - generic [ref=e179]:
+              - img "Olivia Hart" [ref=e180]
+              - generic [ref=e181]:
+                - paragraph [ref=e182]: Olivia Hart
+                - paragraph [ref=e183]: Manager marki
+            - paragraph [ref=e184]: "\"Ich strategiczne podejscie i jakosc projektow wizualnych szybko podniosly rozpoznawalnosc naszej marki.\""
+          - article [ref=e185]:
+            - generic [ref=e186]:
+              - img "Ethan Cole" [ref=e187]
+              - generic [ref=e188]:
+                - paragraph [ref=e189]: Ethan Cole
+                - paragraph [ref=e190]: Strateg marki
+            - paragraph [ref=e191]: "\"Od koncepcji do wdrozenia wszystko bylo konkretne, szybkie i bardzo dobrze zaplanowane.\""
+          - article [ref=e192]:
+            - generic [ref=e193]:
+              - img "Sofia Lane" [ref=e194]
+              - generic [ref=e195]:
+                - paragraph [ref=e196]: Sofia Lane
+                - paragraph [ref=e197]: Wlascicielka studia
+            - paragraph [ref=e198]: "\"Wyrazna strategia i system projektowy ulatwily prace naszemu zespolowi i poprawily spojna komunikacje.\""
+        - article [ref=e199]:
+          - img "CEO portret" [ref=e200]
+          - paragraph [ref=e201]: "\"Ich kreatywne podejscie i strategia wyniosly nasza marke na nowy poziom. Efekt koncowy byl dokladnie tym, czego potrzebowalismy.\""
+          - generic [ref=e202]:
+            - generic [ref=e203]:
+              - paragraph [ref=e204]: 98%
+              - paragraph [ref=e205]: Zadowolonych klientow
+            - generic [ref=e206]:
+              - paragraph [ref=e207]: 08+
+              - paragraph [ref=e208]: Lat doswiadczenia
+        - generic [ref=e210]:
+          - article [ref=e211]:
+            - generic [ref=e212]:
+              - img "Max Turner" [ref=e213]
+              - generic [ref=e214]:
+                - paragraph [ref=e215]: Max Turner
+                - paragraph [ref=e216]: Kierownik komunikacji
+            - paragraph [ref=e217]: "\"Wspolpraca przebiegla plynnie, a nowa oprawa wizualna dala nam wieksza wiarygodnosc i lepsze wyniki.\""
+          - article [ref=e218]:
+            - generic [ref=e219]:
+              - img "Leo Bennett" [ref=e220]
+              - generic [ref=e221]:
+                - paragraph [ref=e222]: Leo Bennett
+                - paragraph [ref=e223]: Dyrektor kreatywny
+            - paragraph [ref=e224]: "\"Dostalismy system wizualny, ktory jest latwy do wdrozenia i dziala swietnie zarowno online, jak i offline.\""
+          - article [ref=e225]:
+            - generic [ref=e226]:
+              - img "Noah Reed" [ref=e227]
+              - generic [ref=e228]:
+                - paragraph [ref=e229]: Noah Reed
+                - paragraph [ref=e230]: Dyrektor ds. marki
+            - paragraph [ref=e231]: "\"Tempo pracy, klarowna komunikacja i jakosc wykonania daly nam efekt, ktorego oczekiwalismy.\""
+          - article [ref=e232]:
+            - generic [ref=e233]:
+              - img "Max Turner" [ref=e234]
+              - generic [ref=e235]:
+                - paragraph [ref=e236]: Max Turner
+                - paragraph [ref=e237]: Kierownik komunikacji
+            - paragraph [ref=e238]: "\"Wspolpraca przebiegla plynnie, a nowa oprawa wizualna dala nam wieksza wiarygodnosc i lepsze wyniki.\""
+          - article [ref=e239]:
+            - generic [ref=e240]:
+              - img "Leo Bennett" [ref=e241]
+              - generic [ref=e242]:
+                - paragraph [ref=e243]: Leo Bennett
+                - paragraph [ref=e244]: Dyrektor kreatywny
+            - paragraph [ref=e245]: "\"Dostalismy system wizualny, ktory jest latwy do wdrozenia i dziala swietnie zarowno online, jak i offline.\""
+          - article [ref=e246]:
+            - generic [ref=e247]:
+              - img "Noah Reed" [ref=e248]
+              - generic [ref=e249]:
+                - paragraph [ref=e250]: Noah Reed
+                - paragraph [ref=e251]: Dyrektor ds. marki
+            - paragraph [ref=e252]: "\"Tempo pracy, klarowna komunikacja i jakosc wykonania daly nam efekt, ktorego oczekiwalismy.\""
+    - generic [ref=e254]:
+      - generic [ref=e255]:
+        - paragraph [ref=e256]:
+          - generic [ref=e257]: •
+          - text: Spojny System Wizualny
+        - heading "Masz pytania?" [level=2] [ref=e258]
+        - paragraph [ref=e259]: Projektuje identyfikacje i materialy, ktore sa estetyczne, czytelne i gotowe do wdrozenia od razu po odbiorze.
+      - generic [ref=e260]:
+        - article [ref=e261]:
+          - button "Jak przebiega proces projektowy? -" [expanded] [ref=e262] [cursor=pointer]
+          - paragraph [ref=e265]: Zaczynamy od krotkiego briefu, potem przygotowuje kierunek wizualny, a po akceptacji dopracowuje finalne materialy.
+        - article [ref=e266]:
+          - button "Co zawiera pakiet identyfikacji wizualnej? +" [ref=e267] [cursor=pointer]
+          - paragraph [ref=e268]: Zalezne od zakresu, ale najczesciej obejmuje logo, kolorystyke, typografie i zasady uzycia w dokumentacji marki.
+        - article [ref=e269]:
+          - button "Ile trwa przygotowanie projektu? +" [ref=e270] [cursor=pointer]
+          - paragraph [ref=e271]: Mniejsze projekty realizuje zwykle w 7-14 dni, a pelna identyfikacja wizualna zajmuje zazwyczaj od 3 do 5 tygodni.
+        - article [ref=e272]:
+          - button "Czy moge zlecic tylko jeden element, np. logo? +" [ref=e273] [cursor=pointer]
+          - paragraph [ref=e274]: Tak. Mozesz zamowic pojedynczy projekt albo rozbudowac zakres o kolejne elementy wizualne.
+        - article [ref=e275]:
+          - button "Jak wyglada przekazanie plikow po zakonczeniu? +" [ref=e276] [cursor=pointer]
+          - paragraph [ref=e277]: Otrzymujesz uporzadkowany pakiet plikow produkcyjnych i webowych oraz krotkie wytyczne, jak poprawnie ich uzywac.
+    - generic [ref=e279]:
+      - generic [ref=e280]:
+        - paragraph [ref=e281]: Kontakt
+        - heading "Zacznijmy projekt, ktory uporzadkuje i wzmocni Twoja komunikacje wizualna." [level=2] [ref=e282]
+        - paragraph [ref=e283]: Opisz krotko, czego potrzebujesz. Odpowiadam zazwyczaj w ciagu jednego dnia roboczego.
+      - generic [ref=e284]:
+        - generic [ref=e285]:
+          - text: Imie i nazwisko
+          - textbox "Imie i nazwisko" [ref=e286]
+        - generic [ref=e287]:
+          - text: E-mail
+          - textbox "E-mail" [ref=e288]
+        - generic [ref=e289]:
+          - text: Adres strony lub link do social media (opcjonalnie)
+          - textbox "Adres strony lub link do social media (opcjonalnie)" [ref=e290]
+        - generic [ref=e291]:
+          - text: Wiadomosc
+          - textbox "Wiadomosc" [ref=e292]
+        - textbox
+        - button "Wyslij wiadomosc" [ref=e293]
+    - generic [ref=e294]:
+      - generic [ref=e295]:
+        - generic [ref=e296]:
+          - paragraph [ref=e297]: Mez Design
+          - paragraph [ref=e298]: Projektowanie graficzne i identyfikacja wizualna dla Polskich marek.
+        - generic [ref=e299]:
+          - paragraph [ref=e300]: Kontakt
+          - paragraph [ref=e301]:
+            - link "dmezeankina@gmail.com" [ref=e302] [cursor=pointer]:
+              - /url: mailto:dmezeankina@gmail.com
+      - paragraph [ref=e304]: © 2026 Mez Design. Wszelkie prawa zastrzezone.
+  - button "Open Next.js Dev Tools" [ref=e310] [cursor=pointer]

@@ -1,7 +1,38 @@
 @use 'mixins' as *;
 
+.hero {
+	position: relative;
+	min-height: 100svh;
+	height: 100svh;
+	display: flex;
+	flex-direction: column;
+	background: var(--bg);
+	overflow: clip;
+}
+
+.hero-orb {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 40;
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: #111;
+	pointer-events: none;
+	opacity: 0;
+	transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
+	transition: opacity 0.25s ease;
+	will-change: transform;
+
+	&.is-active {
+		opacity: 1;
+	}
+}
+
 .hero-topbar-shell {
-	height: 68px;
+	flex: 0 0 auto;
+	height: 88px;
 
 	.topbar {
 		position: fixed;
@@ -13,8 +44,13 @@
 		transition:
 			transform 0.28s ease,
 			opacity 0.2s ease;
-		background: rgba(255, 255, 255, 0.92);
-		backdrop-filter: blur(8px);
+		background: #fff;
+		border: none;
+		min-height: 88px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 1.5rem;
 	}
 
 	&.is-hidden .topbar {
@@ -25,19 +61,37 @@
 }
 
 .hero-layout {
-	min-height: 640px;
+	position: relative;
+	flex: 1 1 auto;
+	width: min(var(--grid-max), calc(100% - (2 * var(--grid-margin))));
+	margin-inline: auto;
+	min-height: 0;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	border: 1px solid var(--border);
-	width: 100%;
+	grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+	column-gap: var(--grid-gutter);
+	align-items: end;
+	padding: 0.5rem 0 2rem;
 }
 
 .hero-copy {
-	background: var(--surface);
-	padding: clamp(2rem, 6vw, 5rem) clamp(2rem, 6vw, 5.8rem);
+	position: absolute;
+	left: 0;
+	grid-column: 1 / span 6;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: flex-end;
+	align-self: end;
+	max-width: none;
+	bottom: 15svh;
+}
+
+.hero-collage {
+	grid-column: 6 / span 7;
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1.02 / 1;
+	min-height: 480px;
+	align-self: center;
 }
 
 .hero-chip {
@@ -47,27 +101,174 @@
 	gap: 0.45rem;
 	border-radius: 999px;
 	background: var(--chip);
-	padding: 0.4rem 0.65rem;
-	font-size: 0.78rem;
-	margin-bottom: 1.2rem;
+	color: #111;
+	padding: 0.45rem 0.85rem;
+	font-size: 0.84rem;
+	font-weight: 500;
+	margin-bottom: 1rem;
+	line-height: 1;
+
+	span {
+		font-size: 0.95rem;
+		line-height: 1;
+	}
 }
 
-.hero-actions {
-	margin-top: 2rem;
+.hero-copy h1 {
+	font-size: clamp(2.25rem, 4.6vw, 3.2rem);
+	line-height: 1.2;
+	letter-spacing: -0.035em;
+	max-width: 13em;
+	font-weight: 400;
+	color: var(--text);
+
+	strong {
+		font-weight: 400;
+		color: var(--text-secondary);
+	}
+}
+
+.hero-folder {
+	position: absolute;
+	z-index: 5;
 	display: flex;
-	flex-wrap: wrap;
-	gap: 0.8rem;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.3rem;
+	width: 116px;
+	text-align: center;
+	animation: hero-rise 0.8s ease both;
+
+	img {
+		width: 116px;
+		height: 97px;
+		mix-blend-mode: screen;
+		filter: brightness(1.05);
+	}
+
+	span {
+		font-size: 18px;
+		color: #000;
+		line-height: 1.2;
+		white-space: nowrap;
+	}
+
+	&.is-ai {
+		top: 2%;
+		left: 10%;
+		animation-delay: 0.2s;
+	}
+
+	&.is-web {
+		top: -1%;
+		right: 14%;
+		animation-delay: 0.28s;
+	}
+
+	&.is-social {
+		right: 1%;
+		bottom: 30%;
+		animation-delay: 0.36s;
+	}
 }
 
-.hero-media {
-	position: relative;
+.hero-shot {
+	position: absolute;
+	overflow: hidden;
+	background: #ddd;
+	box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+	animation: hero-rise 0.9s ease both;
 
 	img {
 		object-fit: cover;
 	}
+
+	&.is-desk {
+		top: 0;
+		left: 32%;
+		width: 36%;
+		aspect-ratio: 3 / 4.1;
+		border-radius: 0;
+		z-index: 2;
+		animation-delay: 0.08s;
+	}
+
+	&.is-walk {
+		top: 26%;
+		left: 0;
+		width: 54%;
+		aspect-ratio: 16 / 10.5;
+		border-radius: 0;
+		z-index: 3;
+		animation-delay: 0.16s;
+
+		img {
+			object-position: 78% center;
+		}
+	}
+
+	&.is-tablet {
+		top: 24%;
+		right: 0;
+		width: 46%;
+		aspect-ratio: 16 / 10.8;
+		border-radius: 0;
+		z-index: 4;
+		animation-delay: 0.24s;
+	}
+
+	&.is-phone {
+		left: 30%;
+		bottom: 0;
+		width: 24%;
+		aspect-ratio: 9 / 17;
+		border-radius: 0;
+		z-index: 4;
+		animation-delay: 0.32s;
+	}
+
+	&.is-avatar {
+		right: 16%;
+		bottom: 2%;
+		width: 30%;
+		aspect-ratio: 1;
+		border-radius: 50%;
+		z-index: 5;
+		background: transparent;
+		box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+		animation-delay: 0.4s;
+	}
+}
+
+@keyframes hero-rise {
+	from {
+		opacity: 0;
+		transform: translateY(18px) scale(0.98);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.hero-shot,
+	.hero-folder {
+		animation: none;
+	}
 }
 
 @include down-md {
+	.hero {
+		height: auto;
+		min-height: 100svh;
+	}
+
+	.hero-orb {
+		display: none;
+	}
+
 	.hero-topbar-shell {
 		height: auto;
 
@@ -79,16 +280,44 @@
 			opacity: 1;
 			pointer-events: auto;
 			background: #fff;
-			backdrop-filter: none;
+			min-height: auto;
+			padding: 1rem 1.1rem;
+			flex-wrap: wrap;
 		}
 	}
 
 	.hero-layout {
 		grid-template-columns: 1fr;
+		width: min(var(--grid-max), calc(100% - (2 * var(--grid-margin))));
 		min-height: auto;
+		row-gap: 2.5rem;
+		padding: 0.5rem 0 2rem;
 	}
 
-	.hero-media {
-		min-height: 320px;
+	.hero-copy,
+	.hero-collage {
+		grid-column: 1 / -1;
+	}
+
+	.hero-collage {
+		aspect-ratio: 1 / 1.05;
+		min-height: 360px;
+		max-width: 520px;
+		margin-inline: auto;
+	}
+
+	.hero-folder {
+		&.is-ai {
+			left: 2%;
+		}
+
+		&.is-web {
+			right: 8%;
+		}
+
+		&.is-social {
+			right: 0;
+			bottom: 24%;
+		}
 	}
 }
