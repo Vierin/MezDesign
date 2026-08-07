@@ -1,35 +1,5 @@
 @use "mixins" as *;
 
-.about-page {
-  background: var(--bg);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-}
-
-.about-page-content {
-  flex: 1 1 auto;
-  padding: clamp(3rem, 6vw, 5rem) 0 clamp(4rem, 8vw, 6rem);
-
-  h1 {
-    max-width: 16ch;
-    margin-bottom: 1.25rem;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-  }
-
-  p {
-    color: var(--text-secondary);
-    max-width: 42ch;
-    margin-bottom: 1rem;
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
-}
-
 .about-grid,
 .contact-grid,
 .footer-grid {
