@@ -5,7 +5,7 @@ import { type RefObject, useEffect } from "react";
 const POS_LERP = 0.045;
 const TARGET_LERP = 0.06;
 const RADIUS = 360;
-const MAX_SHIFT = 14;
+const MAX_SHIFT = 24;
 
 type ScatterItem = {
   el: HTMLElement;
@@ -42,7 +42,7 @@ export function useHeroScatter(collageRef: RefObject<HTMLElement | null>) {
     if (!items.length) return;
 
     let rafId = 0;
-    const hero = collage.closest(".hero") ?? collage;
+    const hero = (collage.closest(".hero") as HTMLElement | null) ?? collage;
 
     const resetTargets = () => {
       items.forEach((item) => {

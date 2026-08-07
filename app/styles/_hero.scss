@@ -139,6 +139,10 @@
 	text-align: center;
 	animation: hero-rise 0.8s ease both;
 
+	.hero-parallax {
+		will-change: transform;
+	}
+
 	.hero-scatter {
 		display: flex;
 		flex-direction: column;
@@ -186,6 +190,12 @@
 	overflow: visible;
 	box-shadow: none;
 	animation: hero-rise 0.9s ease both;
+
+	.hero-parallax {
+		position: absolute;
+		inset: 0;
+		will-change: transform;
+	}
 
 	.hero-scatter {
 		position: absolute;
