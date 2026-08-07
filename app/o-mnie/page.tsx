@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Footer } from "@/components/sections/Footer";
-import { Header } from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "O mnie — Mez.Design",
@@ -11,7 +10,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <main className="about-page">
-      <Header />
+      <div className="hero-topbar-shell" aria-hidden="true" />
 
       <section className="about-page-content">
         <div className="container about-grid">

@@ -2,13 +2,22 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
+import { ScrollSmoother } from "gsap/ScrollSmoother";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { trackEvent } from "@/lib/analytics";
+
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 const navItems = [
   { href: "/#portfolio", label: "Projekty" },
   { href: "/o-mnie", label: "O mnie" },
   { href: "/#kontakt", label: "Kontakt" },
 ];
+
+function getScrollY() {
+  return ScrollSmoother.get()?.scrollTop() ?? window.scrollY;
+}
 
 export function Header() {
   const [isHidden, setIsHidden] = useState(false);
@@ -18,7 +27,7 @@ export function Header() {
     let ticking = false;
 
     const updateVisibility = () => {
-      const currentY = window.scrollY;
+      const currentY = getScrollY();
       const delta = currentY - lastScrollY.current;
 
       if (currentY <= 20) {
@@ -39,12 +48,16 @@ export function Header() {
       window.requestAnimationFrame(updateVisibility);
     };
 
+    gsap.ticker.add(onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    return () => {
+      gsap.ticker.remove(onScroll);
+      window.removeEventListener("scroll", onScroll);
+    };
   }, []);
 
   return (
-    <div className={`hero-topbar-shell${isHidden ? " is-hidden" : ""}`}>
+    <div className={`site-header${isHidden ? " is-hidden" : ""}`}>
       <header className="topbar">
         <div className="container topbar-inner">
           <Link className="brand" href="/">

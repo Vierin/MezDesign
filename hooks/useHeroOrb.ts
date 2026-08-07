@@ -3,11 +3,15 @@
 import { type RefObject, useEffect, useRef } from "react";
 
 const FOLLOW_LERP = 0.12;
+const SCALE_LERP = 0.1;
+const SCALE_IDLE = 1;
+const SCALE_MIN = 0.55;
+const LAG_FOR_MIN = 72;
 
 export function useHeroOrb(containerRef: RefObject<HTMLElement | null>) {
   const orbRef = useRef<HTMLDivElement>(null);
   const pointer = useRef({ x: 0, y: 0, active: false });
-  const orb = useRef({ x: 0, y: 0 });
+  const orb = useRef({ x: 0, y: 0, scale: SCALE_IDLE });
   const rafId = useRef(0);
 
   useEffect(() => {
@@ -25,6 +29,11 @@ export function useHeroOrb(containerRef: RefObject<HTMLElement | null>) {
     const setOrbVisible = (visible: boolean) => {
       orbEl.classList.toggle("is-active", visible);
       pointer.current.active = visible;
+      if (!visible) orb.current.scale = SCALE_IDLE;
+    };
+
+    const applyTransform = () => {
+      orbEl.style.transform = `translate3d(${orb.current.x}px, ${orb.current.y}px, 0) translate(-50%, -50%) scale(${orb.current.scale})`;
     };
 
     const onMove = (event: PointerEvent) => {
@@ -48,7 +57,8 @@ export function useHeroOrb(containerRef: RefObject<HTMLElement | null>) {
       if (!pointer.current.active) {
         orb.current.x = x;
         orb.current.y = y;
-        orbEl.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
+        orb.current.scale = SCALE_IDLE;
+        applyTransform();
         setOrbVisible(true);
       }
     };
@@ -64,7 +74,13 @@ export function useHeroOrb(containerRef: RefObject<HTMLElement | null>) {
         orb.current.x += (targetX - orb.current.x) * ease;
         orb.current.y += (targetY - orb.current.y) * ease;
 
-        orbEl.style.transform = `translate3d(${orb.current.x}px, ${orb.current.y}px, 0) translate(-50%, -50%)`;
+        const lag = Math.hypot(targetX - orb.current.x, targetY - orb.current.y);
+        const moveT = Math.min(lag / LAG_FOR_MIN, 1);
+        const targetScale = SCALE_IDLE - moveT * (SCALE_IDLE - SCALE_MIN);
+        const scaleEase = reduceMotion ? 1 : SCALE_LERP;
+        orb.current.scale += (targetScale - orb.current.scale) * scaleEase;
+
+        applyTransform();
       }
 
       rafId.current = window.requestAnimationFrame(tick);

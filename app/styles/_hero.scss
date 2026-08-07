@@ -15,8 +15,8 @@
 	top: 0;
 	left: 0;
 	z-index: 40;
-	width: 28px;
-	height: 28px;
+	width: 40px;
+	height: 40px;
 	border-radius: 50%;
 	background: #fff;
 	mix-blend-mode: difference;
@@ -34,7 +34,9 @@
 .hero-topbar-shell {
 	flex: 0 0 auto;
 	height: 88px;
+}
 
+.site-header {
 	.topbar {
 		position: fixed;
 		top: 0;
@@ -59,6 +61,14 @@
 		opacity: 0.2;
 		pointer-events: none;
 	}
+}
+
+#smooth-wrapper {
+	overflow: hidden;
+}
+
+#smooth-content {
+	will-change: transform;
 }
 
 .hero-layout {
@@ -289,26 +299,17 @@
 		display: none;
 	}
 
-	.hero-topbar-shell {
-		height: auto;
-
-		.topbar {
-			position: static;
-			width: 100%;
-			transform: none;
-			transition: none;
-			opacity: 1;
-			pointer-events: auto;
-			background: #fff;
-			padding: 0;
-
-			.topbar-inner {
-				min-height: auto;
-				padding-block: 1rem;
-				flex-wrap: wrap;
-				gap: 0.8rem;
-			}
+	.site-header .topbar {
+		.topbar-inner {
+			min-height: auto;
+			padding-block: 1rem;
+			flex-wrap: wrap;
+			gap: 0.8rem;
 		}
+	}
+
+	.hero-topbar-shell {
+		height: 72px;
 	}
 
 	.hero-layout {

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import Script from "next/script";
+import { Header } from "@/components/Header";
+import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.scss";
 
 const GA_ID = "G-J3JYDC8VFG";
@@ -8,7 +10,7 @@ const GA_ID = "G-J3JYDC8VFG";
 const instrumentSans = Instrument_Sans({
   subsets: ["latin", "latin-ext"],
   weight: ["400", "500", "600", "700"],
-  variable: "--font-primary"
+  variable: "--font-primary",
 });
 
 export const metadata: Metadata = {
@@ -20,8 +22,8 @@ export const metadata: Metadata = {
     description:
       "Projektowanie graficzne, web design i social media dla marek, które chcą wyglądać i komunikować się spójnie.",
     type: "website",
-    locale: "pl_PL"
-  }
+    locale: "pl_PL",
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -40,7 +42,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             gtag('config', '${GA_ID}');
           `}
         </Script>
-        {children}
+        <Header />
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

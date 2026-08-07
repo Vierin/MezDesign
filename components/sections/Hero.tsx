@@ -2,15 +2,14 @@
 
 import Image from 'next/image';
 import { useRef } from 'react';
-import { Header } from '@/components/Header';
 import { useHeroOrb } from '@/hooks/useHeroOrb';
 import { useHeroParallax } from '@/hooks/useHeroParallax';
 import { useHeroScatter } from '@/hooks/useHeroScatter';
 
 const folders = [
-	{ label: 'Ai', className: 'is-ai', scatter: '1.35', parallax: '0.55' },
-	{ label: 'Web design', className: 'is-web', scatter: '1.3', parallax: '0.7' },
-	{ label: 'Social media', className: 'is-social', scatter: '1.4', parallax: '0.45' },
+	{ label: 'Ai', className: 'is-ai', scatter: '1.35', parallax: '0.75' },
+	{ label: 'Web design', className: 'is-web', scatter: '1.3', parallax: '0.95' },
+	{ label: 'Social media', className: 'is-social', scatter: '1.4', parallax: '0.65' },
 ];
 
 const shots = [
@@ -19,14 +18,14 @@ const shots = [
 		className: 'is-desk',
 		sizes: '220px',
 		scatter: '0.9',
-		parallax: '0.25',
+		parallax: '0.45',
 	},
 	{
 		src: '/hero-1.jpg',
 		className: 'is-walk',
 		sizes: '280px',
 		scatter: '1',
-		parallax: '0.4',
+		parallax: '0.7',
 		priority: true,
 	},
 	{
@@ -34,21 +33,21 @@ const shots = [
 		className: 'is-tablet',
 		sizes: '240px',
 		scatter: '0.95',
-		parallax: '0.55',
+		parallax: '0.9',
 	},
 	{
 		src: '/hero-4.jpg',
 		className: 'is-phone',
 		sizes: '140px',
 		scatter: '1.15',
-		parallax: '0.7',
+		parallax: '1.15',
 	},
 	{
 		src: '/avatar.png',
 		className: 'is-avatar',
 		sizes: '150px',
 		scatter: '1.25',
-		parallax: '0.85',
+		parallax: '1.35',
 	},
 ];
 
@@ -63,7 +62,7 @@ export function Hero() {
 		<section className="hero" ref={heroRef}>
 			<div ref={orbRef} className="hero-orb" aria-hidden="true" />
 
-			<Header />
+			<div className="hero-topbar-shell" aria-hidden="true" />
 
 			<div className="hero-layout">
 				<div className="hero-copy">
