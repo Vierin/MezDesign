@@ -1,0 +1,394 @@
+@use 'mixins' as *;
+
+.contact-section {
+	background: #fff;
+	padding: clamp(4rem, 8vw, 6.5rem) 0;
+}
+
+.contact-intro {
+	max-width: 40rem;
+	margin-bottom: clamp(2.25rem, 4.5vw, 3.25rem);
+}
+
+.contact-chip {
+	display: inline-flex;
+	align-items: flex-end;
+	gap: 0.45rem;
+	margin: 0 0 1.25rem;
+	padding: 0.5rem 1.05rem;
+	border-radius: 999px;
+	background: var(--accent);
+	color: #111;
+	font-size: 0.95rem;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: -0.01em;
+
+	img {
+		width: 0.6em;
+		aspect-ratio: 1;
+		object-fit: contain;
+		flex-shrink: 0;
+	}
+}
+
+.contact-title {
+	margin: 0;
+	font-size: clamp(2.15rem, 4.6vw, 2.5rem);
+	font-weight: 500;
+	line-height: 1.05;
+	letter-spacing: -0.035em;
+	color: #111;
+
+	.is-muted {
+		color: #a0a0a0;
+		font-weight: 500;
+	}
+}
+
+.contact-lead {
+	margin: 1.15rem 0 0;
+	max-width: 38ch;
+	font-size: clamp(1rem, 1.35vw, 1.12rem);
+	font-weight: 400;
+	line-height: 1.5;
+	color: #5c5c5c;
+
+	strong {
+		color: #1a1a1a;
+		font-weight: 600;
+	}
+}
+
+.contact-panels {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 2.375rem;
+	align-items: stretch;
+}
+
+.contact-panel {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	min-height: 100%;
+	padding: 3.75rem 3.75rem 2.5rem;
+	border-radius: 16px;
+	background: #f5f5f5;
+}
+
+.contact-panel-head {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.95rem;
+
+	h3 {
+		margin: 0;
+		font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+		font-weight: 600;
+		letter-spacing: -0.025em;
+		color: #111;
+		line-height: 1.2;
+	}
+
+	p {
+		margin: 0.3rem 0 0;
+		color: #6e6e6e;
+		font-size: 0.95rem;
+		line-height: 1.4;
+	}
+}
+
+.contact-panel-icon {
+	flex: 0 0 auto;
+	display: grid;
+	place-items: center;
+	width: 46px;
+	height: 46px;
+	border-radius: 50%;
+
+	img {
+		display: block;
+		width: 1.25rem;
+		height: auto;
+	}
+
+	&.is-lime {
+		background: var(--accent);
+		color: #111;
+	}
+
+	&.is-sky {
+		background: #9fd2f5;
+		color: #111;
+
+		img {
+			width: 1.4rem;
+			top: 0.1em;
+			left: -0.1rem;
+			height: auto;
+			position: relative;
+			display: block;
+		}
+	}
+}
+
+.contact-calendar {
+	padding: 0.85rem 0.9rem 0.9rem;
+	border-radius: 12px;
+	background: #fff;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+.contact-calendar-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	margin-bottom: 0.55rem;
+}
+
+.contact-calendar-month {
+	margin: 0;
+	font-size: 0.95rem;
+	font-weight: 600;
+	color: #111;
+	letter-spacing: -0.02em;
+}
+
+.contact-calendar-nav {
+	display: flex;
+	align-items: center;
+	gap: 0.1rem;
+
+	button {
+		appearance: none;
+		display: grid;
+		place-items: center;
+		width: 26px;
+		height: 26px;
+		border: 0;
+		border-radius: 6px;
+		background: transparent;
+		color: #444;
+		cursor: pointer;
+
+		&:hover {
+			background: #f2f2f2;
+		}
+	}
+}
+
+.contact-calendar-weekdays,
+.contact-calendar-grid {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	gap: 0.1rem;
+	text-align: center;
+}
+
+.contact-calendar-weekdays {
+	margin-bottom: 0.2rem;
+
+	span {
+		font-size: 0.62rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		color: #9a9a9a;
+		padding-block: 0.05rem;
+	}
+}
+
+.contact-calendar-day {
+	appearance: none;
+	border: 0;
+	background: transparent;
+	width: 100%;
+	aspect-ratio: 1;
+	max-width: 34px;
+	margin-inline: auto;
+	border-radius: 50%;
+	font: inherit;
+	font-size: 0.85rem;
+	font-weight: 500;
+	color: #222;
+	cursor: pointer;
+	transition:
+		background 0.15s ease,
+		color 0.15s ease;
+
+	&:hover:not(:disabled):not(.is-selected) {
+		background: #f0f0f0;
+	}
+
+	&:disabled {
+		color: #c8c8c8;
+		cursor: default;
+	}
+
+	&.is-selected {
+		background: var(--accent);
+		color: #111;
+		font-weight: 600;
+	}
+}
+
+.contact-calendar-grid .is-empty {
+	aspect-ratio: 1;
+}
+
+.contact-form {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+	flex: 1 1 auto;
+	min-height: 0;
+
+	input,
+	textarea {
+		width: 100%;
+		border: 1px solid #dedede;
+		border-radius: 4px;
+		background: #fff;
+		color: var(--text);
+		padding: 0.95rem 1.05rem;
+		font: inherit;
+		font-size: 0.98rem;
+		box-shadow: none;
+
+		&::placeholder {
+			color: #9b9b9b;
+		}
+
+		&:focus {
+			outline: none;
+			border-color: #c8c8c8;
+			box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
+		}
+	}
+
+	textarea {
+		resize: vertical;
+		min-height: 8rem;
+		height: 8rem;
+		flex: 0 0 auto;
+	}
+}
+
+.contact-panel-foot {
+	display: flex;
+	flex-direction: column;
+	gap: 0.85rem;
+	margin-top: auto;
+}
+
+.contact-panel-btn {
+	appearance: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	border: 0;
+	border-radius: 4px;
+	padding: 1rem 1.25rem;
+	background: #111;
+	color: #fff;
+	font: inherit;
+	font-size: 1rem;
+	font-weight: 500;
+	letter-spacing: -0.01em;
+	cursor: pointer;
+	transition: background 0.2s ease;
+
+	&:hover:not(:disabled) {
+		background: #000;
+	}
+
+	&:disabled {
+		opacity: 0.5;
+		cursor: not-allowed;
+	}
+}
+
+.contact-panel-note {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.5rem;
+	margin: 0;
+	color: #686868;
+	font-size: 1rem;
+	line-height: 1.4;
+
+	svg {
+		flex: 0 0 auto;
+		margin-top: 0.2rem;
+		color: #686868;
+	}
+}
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+.honeypot {
+	position: absolute;
+	opacity: 0;
+	pointer-events: none;
+	height: 0;
+	width: 0;
+}
+
+.form-success-overlay {
+	position: absolute;
+	inset: 0;
+	border-radius: 12px;
+	background: #fff;
+	display: grid;
+	place-content: center;
+	text-align: center;
+	gap: 0.45rem;
+	padding: 1.5rem;
+	z-index: 2;
+
+	h3 {
+		margin: 0;
+		font-size: 1.15rem;
+		line-height: 1.3;
+		color: #177b44;
+	}
+
+	p {
+		color: #585858;
+		margin: 0;
+	}
+}
+
+.form-error {
+	margin: 0;
+	color: #b9324a;
+	font-size: 0.9rem;
+}
+
+@include down-md {
+	.contact-panels {
+		grid-template-columns: 1fr;
+	}
+
+	.contact-title {
+		max-width: none;
+	}
+
+	.contact-panel {
+		padding: 1.75rem;
+		border-radius: 14px;
+	}
+}

@@ -1,7 +1,6 @@
 @use 'mixins' as *;
 
 .about-grid,
-.contact-grid,
 .footer-grid {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -10,16 +9,14 @@
 }
 
 .about-card,
-.card,
-.contact-form {
+.card {
 	border: 1px solid var(--border);
 	border-radius: 22px;
 	background: #fff;
 }
 
 .about-card,
-.card,
-.contact-form {
+.card {
 	padding: 1.25rem;
 }
 
@@ -189,78 +186,6 @@
 	outline-offset: 3px;
 }
 
-.contact-form {
-	position: relative;
-	display: grid;
-	gap: 0.8rem;
-
-	label {
-		display: grid;
-		gap: 0.35rem;
-		font-size: 0.9rem;
-		color: #404040;
-	}
-
-	input,
-	textarea {
-		border: 1px solid var(--border);
-		border-radius: 12px;
-		background: #fff;
-		color: var(--text);
-		padding: 0.72rem 0.82rem;
-		font: inherit;
-	}
-
-	textarea {
-		resize: vertical;
-		min-height: 110px;
-	}
-
-	button {
-		width: fit-content;
-	}
-}
-
-.contact-form.is-success {
-	.form-error {
-		display: none;
-	}
-}
-
-.honeypot {
-	position: absolute;
-	opacity: 0;
-	pointer-events: none;
-	height: 0;
-}
-
-.form-success-overlay {
-	position: absolute;
-	inset: 0;
-	border-radius: 22px;
-	background: #fff;
-	display: grid;
-	place-content: center;
-	text-align: center;
-	gap: 0.45rem;
-	padding: 1.5rem;
-
-	h3 {
-		font-size: 1.15rem;
-		line-height: 1.3;
-		color: #177b44;
-	}
-
-	p {
-		color: #585858;
-		margin: 0;
-	}
-}
-
-.form-error {
-	color: #b9324a;
-}
-
 .footer {
 	padding: clamp(3.5rem, 8vw, 5.5rem) 0 clamp(2.5rem, 5vw, 2.5rem);
 	background: #fff;
@@ -361,11 +286,10 @@
 }
 
 @include down-md {
-	.about-grid,
-	.contact-grid,
-	.services-grid {
-		grid-template-columns: 1fr;
-	}
+  .about-grid,
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
 
 	.footer-inner {
 		min-height: 0;

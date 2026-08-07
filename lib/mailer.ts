@@ -3,6 +3,7 @@ import { Resend } from "resend";
 type ContactPayload = {
   name: string;
   email: string;
+  companyName?: string;
   siteLink?: string;
   message: string;
 };
@@ -60,21 +61,23 @@ export async function sendContactEmail(payload: ContactPayload) {
 
   const safeName = escapeHtml(payload.name);
   const safeEmail = escapeHtml(payload.email);
-  const safeSiteLink = escapeHtml(payload.siteLink ?? "Nie podano");
+  const safeCompany = escapeHtml(payload.companyName?.trim() || "Nie podano");
+  const safeSiteLink = escapeHtml(payload.siteLink?.trim() || "Nie podano");
   const safeMessage = escapeHtml(payload.message).replaceAll("\n", "<br/>");
 
   const { error } = await resend.emails.send({
     from,
     to: mailTo,
     replyTo: payload.email,
-    subject: `Nowa wiadomosc od: ${payload.name}`,
-    text: `Imie: ${payload.name}\nE-mail: ${payload.email}\nAdres strony / social: ${payload.siteLink ?? "Nie podano"}\n\nWiadomosc:\n${payload.message}`,
+    subject: `Nowa wiadomość od: ${payload.name}`,
+    text: `Imię: ${payload.name}\nE-mail: ${payload.email}\nFirma: ${payload.companyName?.trim() || "Nie podano"}\nAdres strony / social: ${payload.siteLink?.trim() || "Nie podano"}\n\nWiadomość:\n${payload.message}`,
     html: `
       <h2>Nowe zapytanie ze strony</h2>
-      <p><strong>Imie:</strong> ${safeName}</p>
+      <p><strong>Imię:</strong> ${safeName}</p>
       <p><strong>E-mail:</strong> ${safeEmail}</p>
+      <p><strong>Firma:</strong> ${safeCompany}</p>
       <p><strong>Adres strony / social:</strong> ${safeSiteLink}</p>
-      <p><strong>Wiadomosc:</strong><br/>${safeMessage}</p>
+      <p><strong>Wiadomość:</strong><br/>${safeMessage}</p>
     `
   });
 
