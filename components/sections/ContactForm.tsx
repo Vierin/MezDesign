@@ -16,8 +16,30 @@ const initialState: FormState = {
   email: "",
   siteLink: "",
   message: "",
-  company: ""
+  company: "",
 };
+
+const CLIENT_LIMIT_KEY = "mez_contact_submits";
+const CLIENT_WINDOW_MS = 60 * 60 * 1000;
+const CLIENT_MAX = 3;
+
+function readClientSubmits(): number[] {
+  try {
+    const raw = localStorage.getItem(CLIENT_LIMIT_KEY);
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as unknown;
+    if (!Array.isArray(parsed)) return [];
+    const now = Date.now();
+    return parsed.filter((ts): ts is number => typeof ts === "number" && now - ts < CLIENT_WINDOW_MS);
+  } catch {
+    return [];
+  }
+}
+
+function recordClientSubmit() {
+  const next = [...readClientSubmits(), Date.now()];
+  localStorage.setItem(CLIENT_LIMIT_KEY, JSON.stringify(next));
+}
 
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
@@ -34,22 +56,32 @@ export function ContactForm() {
       return;
     }
 
+    if (readClientSubmits().length >= CLIENT_MAX) {
+      setStatus("error");
+      setErrorMessage(
+        "Wysłano już maksymalnie 3 wiadomości w ciągu godziny. Spróbuj ponownie później.",
+      );
+      return;
+    }
+
     setStatus("loading");
 
     try {
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form)
+        body: JSON.stringify(form),
       });
 
+      const body = (await response.json()) as { error?: string };
+
       if (!response.ok) {
-        const body = (await response.json()) as { error?: string };
         throw new Error(body.error ?? "Wysylka nie powiodla sie.");
       }
 
+      recordClientSubmit();
       trackEvent("contact_form_submit_success", {
-        has_site_link: Boolean(form.siteLink.trim())
+        has_site_link: Boolean(form.siteLink.trim()),
       });
       setStatus("success");
       setForm(initialState);
@@ -57,7 +89,7 @@ export function ContactForm() {
       trackEvent("contact_form_submit_error");
       setStatus("error");
       setErrorMessage(
-        error instanceof Error ? error.message : "Nieznany blad. Sprobuj ponownie za chwile."
+        error instanceof Error ? error.message : "Nieznany blad. Sprobuj ponownie za chwile.",
       );
     }
   }

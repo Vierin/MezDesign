@@ -84,6 +84,11 @@
 	transition:
 		filter 0.25s ease,
 		opacity 0.25s ease;
+
+	&.is-logo-6 {
+		max-width: min(180px, 82%);
+		max-height: 56px;
+	}
 }
 
 .partners-item:hover .partner-logo {

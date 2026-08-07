@@ -42,7 +42,7 @@ function MarqueeRow({
               alt={index < logos.length ? "Logo partnera" : ""}
               width={160}
               height={48}
-              className="partner-logo"
+              className={`partner-logo${logo.includes("logo-6") ? " is-logo-6" : ""}`}
             />
           </div>
         ))}

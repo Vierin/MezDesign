@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 import { sendContactEmail } from "@/lib/mailer";
+import { getClientIp, hitRateLimit, peekRateLimit } from "@/lib/rate-limit";
 
 const contactSchema = z.object({
   name: z.string().trim().min(2, "Imie jest za krotkie.").max(120, "Imie jest za dlugie."),
@@ -16,7 +17,7 @@ const contactSchema = z.object({
     .trim()
     .min(10, "Wiadomosc powinna miec co najmniej 10 znakow.")
     .max(4000, "Wiadomosc jest za dluga."),
-  company: z.string().max(0).optional()
+  company: z.string().max(0).optional(),
 });
 
 export async function POST(request: Request) {
@@ -27,7 +28,7 @@ export async function POST(request: Request) {
     if (!parsed.success) {
       return NextResponse.json(
         { error: parsed.error.issues[0]?.message ?? "Niepoprawne dane formularza." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -35,17 +36,43 @@ export async function POST(request: Request) {
       return NextResponse.json({ ok: true }, { status: 200 });
     }
 
+    const ip = getClientIp(request);
+    const emailKey = parsed.data.email.toLowerCase();
+    const ipKey = `contact:ip:${ip}`;
+    const mailKey = `contact:email:${emailKey}`;
+    const ipLimit = peekRateLimit(ipKey);
+    const emailLimit = peekRateLimit(mailKey);
+
+    if (!ipLimit.ok || !emailLimit.ok) {
+      const retryAfterSec = Math.max(ipLimit.retryAfterSec ?? 0, emailLimit.retryAfterSec ?? 0);
+      return NextResponse.json(
+        {
+          error:
+            "Wysłano już maksymalnie 3 wiadomości w ciągu godziny. Spróbuj ponownie później.",
+          retryAfterSec,
+        },
+        {
+          status: 429,
+          headers: retryAfterSec ? { "Retry-After": String(retryAfterSec) } : undefined,
+        },
+      );
+    }
+
     await sendContactEmail({
       name: parsed.data.name,
       email: parsed.data.email,
       siteLink: parsed.data.siteLink,
-      message: parsed.data.message
+      message: parsed.data.message,
     });
 
+    hitRateLimit(ipKey);
+    hitRateLimit(mailKey);
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (error) {
     const message =
-      error instanceof Error ? error.message : "Wystapil blad serwera podczas wysylki wiadomosci.";
+      error instanceof Error
+        ? error.message
+        : "Wystapil blad serwera podczas wysylki wiadomosci.";
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }

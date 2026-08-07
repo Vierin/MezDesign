@@ -5,7 +5,6 @@ import { trackEvent } from "@/lib/analytics";
 
 const navItems = [
   { href: "#portfolio", label: "Projekty" },
-  { href: "#o-mnie", label: "O mnie" },
   { href: "#kontakt", label: "Kontakt" },
 ];
 
@@ -66,7 +65,7 @@ export function Header() {
                 trackEvent("cta_click", { location: "header_nav", target: "kontakt" })
               }
             >
-              Wypełnij formularz
+              Pogadajmy o twoim projekcie
             </a>
           </div>
         </div>
