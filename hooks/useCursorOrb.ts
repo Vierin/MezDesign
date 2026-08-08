@@ -5,36 +5,39 @@ import { useEffect, useRef } from "react";
 const FOLLOW_LERP = 0.16;
 const SCALE_LERP = 0.14;
 const SCALE_LERP_HIDE = 0.28;
-const SCALE_LERP_LABEL = 0.18;
 const SCALE_IDLE = 1;
 const SCALE_MIN = 0.62;
 const SCALE_HIDDEN = 0;
-const SCALE_LABEL = 3.1;
 const LAG_FOR_MIN = 64;
 
 /** Form controls + booking — orb collapses so native cursor stays clear. */
 const HIDE_SELECTOR =
   "input:not([type='hidden']):not(.honeypot), textarea, select, [contenteditable='true'], .contact-cal, .contact-panel-btn";
 
-const LABEL_SELECTOR = "[data-cursor-label], .works-card--soon";
+const LABEL_SELECTOR = "[data-cursor-label]";
 
 function shouldHideOrb(target: EventTarget | null) {
   return target instanceof Element && Boolean(target.closest(HIDE_SELECTOR));
 }
 
-function shouldShowLabel(target: EventTarget | null) {
-  return target instanceof Element && Boolean(target.closest(LABEL_SELECTOR));
+function getCursorLabel(target: EventTarget | null): string | null {
+  if (!(target instanceof Element)) return null;
+  const host = target.closest(LABEL_SELECTOR);
+  if (!host) return null;
+  return host.getAttribute("data-cursor-label");
 }
 
 export function useCursorOrb() {
   const orbRef = useRef<HTMLDivElement>(null);
-  const pointer = useRef({ x: 0, y: 0, active: false, hide: false, label: false });
+  const pointer = useRef({ x: 0, y: 0, active: false, hide: false, label: null as string | null });
   const orb = useRef({ x: 0, y: 0, scale: SCALE_IDLE });
   const rafId = useRef(0);
 
   useEffect(() => {
     const orbEl = orbRef.current;
     if (!orbEl) return;
+
+    const labelEl = orbEl.querySelector<HTMLElement>(".cursor-orb-label");
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const finePointer = window.matchMedia("(pointer: fine)").matches;
@@ -49,7 +52,7 @@ export function useCursorOrb() {
       if (!visible) {
         orb.current.scale = SCALE_IDLE;
         pointer.current.hide = false;
-        pointer.current.label = false;
+        pointer.current.label = null;
         orbEl.classList.remove("is-label");
       }
     };
@@ -62,17 +65,18 @@ export function useCursorOrb() {
       pointer.current.x = event.clientX;
       pointer.current.y = event.clientY;
       pointer.current.hide = shouldHideOrb(event.target);
-      pointer.current.label = !pointer.current.hide && shouldShowLabel(event.target);
-      orbEl.classList.toggle("is-label", pointer.current.label);
+      const nextLabel = pointer.current.hide ? null : getCursorLabel(event.target);
+      pointer.current.label = nextLabel;
+      orbEl.classList.toggle("is-label", Boolean(nextLabel));
+
+      if (labelEl && nextLabel && labelEl.textContent !== nextLabel) {
+        labelEl.textContent = nextLabel;
+      }
 
       if (!pointer.current.active) {
         orb.current.x = event.clientX;
         orb.current.y = event.clientY;
-        orb.current.scale = pointer.current.hide
-          ? SCALE_HIDDEN
-          : pointer.current.label
-            ? SCALE_LABEL
-            : SCALE_IDLE;
+        orb.current.scale = pointer.current.hide ? SCALE_HIDDEN : SCALE_IDLE;
         applyTransform();
         setOrbVisible(true);
       }
@@ -98,8 +102,8 @@ export function useCursorOrb() {
           targetScale = SCALE_HIDDEN;
           scaleEase = reduceMotion ? 1 : SCALE_LERP_HIDE;
         } else if (pointer.current.label) {
-          targetScale = SCALE_LABEL;
-          scaleEase = reduceMotion ? 1 : SCALE_LERP_LABEL;
+          targetScale = SCALE_IDLE;
+          scaleEase = reduceMotion ? 1 : SCALE_LERP;
         } else {
           const lag = Math.hypot(targetX - orb.current.x, targetY - orb.current.y);
           const moveT = Math.min(lag / LAG_FOR_MIN, 1);

@@ -56,7 +56,7 @@
 }
 
 .brand {
-	font-size: 1.4rem;
+	font-size: 1.25rem;
 	font-weight: 500;
 	letter-spacing: -0.02em;
 	white-space: nowrap;
@@ -75,11 +75,11 @@
 	padding: 0;
 	margin: 0;
 	color: #3f3f3f;
-	font-size: 1.05rem;
+	font-size: 0.95rem;
 	font-weight: 500;
 
 	a {
-		font-size: 1.25rem;
+		font-size: 1.1rem;
 	}
 }
 
@@ -100,7 +100,7 @@
 	padding: 0.6rem 1.7rem;
 	white-space: nowrap;
 	transition: background 0.2s ease;
-	font-size: 1.2rem;
+	font-size: 1.05rem;
 
 	&:hover {
 		background: var(--accent-strong);

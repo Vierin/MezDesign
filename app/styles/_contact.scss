@@ -75,6 +75,7 @@
 	min-height: 100%;
 	padding: 3.25rem 3.75rem 2.5rem;
 	background: #f5f5f5;
+	border-radius: 4px;
 }
 
 .contact-panel-head {
@@ -143,16 +144,17 @@
 
 .contact-cal {
 	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 420px;
 	min-height: 420px;
-	padding: 0.35rem 0.35rem 0.5rem;
-	border-radius: 12px;
+	max-height: 420px;
+	padding: 1rem;
+	border-radius: 4px;
 	background: #fff;
 	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
 	overflow: hidden;
-
-	iframe {
-		border: 0 !important;
-	}
 
 	&.is-empty {
 		display: grid;
@@ -167,6 +169,287 @@
 			font-size: 0.85em;
 			color: #111;
 		}
+	}
+}
+
+.contact-cal-step {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	flex: 1 1 auto;
+	min-height: 0;
+	height: 100%;
+}
+
+.contact-calendar-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.75rem;
+	margin-bottom: 0.35rem;
+	flex: 0 0 auto;
+}
+
+.contact-calendar-month {
+	margin: 0;
+	font-size: 1.08rem;
+	font-weight: 600;
+	color: #111;
+	letter-spacing: -0.02em;
+}
+
+.contact-calendar-nav {
+	display: flex;
+	align-items: center;
+	gap: 0.1rem;
+
+	button {
+		appearance: none;
+		display: grid;
+		place-items: center;
+		width: 30px;
+		height: 30px;
+		border: 0;
+		border-radius: 6px;
+		background: transparent;
+		color: #444;
+		cursor: pointer;
+
+		&:hover {
+			background: #f2f2f2;
+		}
+	}
+}
+
+.contact-calendar-weekdays,
+.contact-calendar-grid {
+	display: grid;
+	grid-template-columns: repeat(7, minmax(0, 1fr));
+	column-gap: 0.15rem;
+	text-align: center;
+	align-items: center;
+	justify-items: center;
+}
+
+.contact-calendar-weekdays {
+	flex: 0 0 auto;
+	margin-bottom: 0.15rem;
+
+	span {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2rem;
+		height: 1.1rem;
+		font-size: 0.62rem;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		color: #9a9a9a;
+	}
+}
+
+.contact-calendar-grid {
+	flex: 1 1 auto;
+	align-content: space-evenly;
+	row-gap: 0.45rem;
+	min-height: 14rem;
+}
+
+.contact-calendar-day {
+	appearance: none;
+	border: 0;
+	background: transparent;
+	width: 2rem;
+	height: 2rem;
+	padding: 0;
+	border-radius: 50%;
+	font: inherit;
+	font-size: 0.85rem;
+	font-weight: 500;
+	line-height: 1;
+	color: #222;
+	cursor: pointer;
+	transition:
+		background 0.15s ease,
+		color 0.15s ease;
+
+	&:hover:not(:disabled):not(.is-selected) {
+		background: #f0f0f0;
+	}
+
+	&:disabled {
+		color: #c8c8c8;
+		cursor: default;
+	}
+
+	&.is-selected {
+		background: var(--accent);
+		color: #111;
+		font-weight: 600;
+	}
+}
+
+.contact-calendar-grid .is-empty {
+	width: 2rem;
+	height: 2rem;
+}
+
+.contact-cal-time-head {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 30px;
+	padding-inline: 2rem;
+}
+
+.contact-cal-back {
+	appearance: none;
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translateY(-50%);
+	display: grid;
+	place-items: center;
+	width: 30px;
+	height: 30px;
+	border: 0;
+	border-radius: 6px;
+	background: transparent;
+	padding: 0;
+	color: #444;
+	cursor: pointer;
+
+	&:hover {
+		background: #f2f2f2;
+		color: #111;
+	}
+}
+
+.contact-cal-time-date {
+	margin: 0;
+	font-size: 1.05rem;
+	font-weight: 600;
+	color: #111;
+	letter-spacing: -0.02em;
+	text-align: center;
+	text-transform: capitalize;
+}
+
+.contact-cal-slots {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.45rem;
+	margin-top: 0.35rem;
+}
+
+.contact-cal-slot {
+	appearance: none;
+	border: 1px solid #dedede;
+	border-radius: 4px;
+	background: #fff;
+	padding: 0.7rem 0.35rem;
+	font: inherit;
+	font-size: 0.92rem;
+	font-weight: 500;
+	font-variant-numeric: tabular-nums;
+	color: #111;
+	cursor: pointer;
+	transition:
+		background 0.15s ease,
+		border-color 0.15s ease;
+
+	&:hover {
+		background: #f7f7f7;
+		border-color: #cfcfcf;
+	}
+
+	&:focus-visible {
+		outline: 2px solid #111;
+		outline-offset: 2px;
+	}
+}
+
+.contact-cal-status {
+	margin: 0.5rem 0 0;
+	font-size: 0.88rem;
+	color: #686868;
+
+	&.is-error {
+		color: #b9324a;
+	}
+}
+
+.contact-cal-embed {
+	flex: 1 1 auto;
+	min-height: 420px;
+	margin-top: 0.25rem;
+
+	iframe {
+		border: 0 !important;
+	}
+}
+
+.contact-cal-book-form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.7rem;
+	margin-top: 0.5rem;
+	flex: 1 1 auto;
+	min-height: 0;
+
+	input,
+	textarea {
+		width: 100%;
+		border: 1px solid #dedede;
+		border-radius: 4px;
+		background: #fff;
+		color: var(--text);
+		padding: 0.95rem 1.05rem;
+		font: inherit;
+		font-size: 0.98rem;
+		box-shadow: none;
+
+		&::placeholder {
+			color: #9b9b9b;
+		}
+
+		&:focus {
+			outline: none;
+			border-color: #dedede;
+			box-shadow: none;
+		}
+	}
+
+	textarea {
+		resize: none;
+		min-height: 5rem;
+		flex: 0 0 auto;
+	}
+
+	.contact-panel-btn {
+		margin-top: auto;
+	}
+}
+
+.contact-cal-success {
+	display: grid;
+	place-content: center;
+	flex: 1 1 auto;
+	text-align: center;
+	gap: 0.45rem;
+	padding: 1.5rem 0.5rem;
+
+	h3 {
+		margin: 0;
+		font-size: 1.15rem;
+		line-height: 1.3;
+		color: #177b44;
+	}
+
+	p {
+		margin: 0;
+		color: #585858;
 	}
 }
 
@@ -283,7 +566,7 @@
 .form-success-overlay {
 	position: absolute;
 	inset: 0;
-	border-radius: 12px;
+	border-radius: 4px;
 	background: #fff;
 	display: grid;
 	place-content: center;
@@ -322,5 +605,9 @@
 
 	.contact-panel {
 		padding: 1.75rem;
+	}
+
+	.contact-cal-slots {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
 	}
 }

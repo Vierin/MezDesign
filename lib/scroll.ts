@@ -1,7 +1,26 @@
 const SCROLL_INTENT_KEY = "mez-scroll-intent";
-const HEADER_OFFSET = 96;
 
 export type ScrollIntent = "portfolio" | "kontakt";
+
+/** Header hides on scroll-down; pull past section padding so content sits tight. */
+function getHeaderOffset(targetY: number, el: HTMLElement) {
+  const topbar = document.querySelector<HTMLElement>(".site-header .topbar");
+  const headerH = topbar
+    ? Math.round(topbar.getBoundingClientRect().height)
+    : 70;
+
+  const padTop = parseFloat(getComputedStyle(el).paddingTop) || 0;
+  // Eat most of the section's top padding so the block doesn't look floated down
+  const padPull = Math.round(padTop * 0.65);
+
+  const scrollingDown = targetY > window.scrollY + 4;
+  if (scrollingDown && targetY > 120) return -padPull;
+
+  const header = document.querySelector(".site-header");
+  if (header?.classList.contains("is-hidden")) return -padPull;
+
+  return headerH - padPull;
+}
 
 export function setScrollIntent(intent: ScrollIntent) {
   try {
@@ -41,8 +60,9 @@ export function scrollToHash(hash: string, smooth = true) {
   const el = document.getElementById(id);
   if (!el) return false;
 
-  const top = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
-  window.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
+  const elTop = el.getBoundingClientRect().top + window.scrollY;
+  const top = elTop - getHeaderOffset(elTop, el);
+  window.scrollTo({ top: Math.max(0, top), behavior: smooth ? "smooth" : "auto" });
   return true;
 }
 

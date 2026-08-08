@@ -25,32 +25,56 @@
 	pointer-events: none;
 	opacity: 0;
 	transform: translate3d(-100px, -100px, 0) translate(-50%, -50%);
-	transition: opacity 0.2s ease;
+	transition:
+		opacity 0.25s ease,
+		width 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+		height 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+		background 0.35s ease,
+		mix-blend-mode 0s linear 0.12s;
 	will-change: transform;
 
 	&.is-active {
 		opacity: 1;
 	}
 
-	&.is-label .cursor-orb-label {
-		opacity: 1;
-		transform: scale(1);
+	&.is-label {
+		width: 108px;
+		height: 108px;
+		background: #000;
+		mix-blend-mode: normal;
+		transition:
+			opacity 0.25s ease,
+			width 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+			height 0.48s cubic-bezier(0.22, 1, 0.36, 1),
+			background 0.35s ease,
+			mix-blend-mode 0s;
+
+		.cursor-orb-label {
+			opacity: 1;
+			color: #fff;
+			transform: scale(1);
+			transition:
+				opacity 0.32s ease 0.12s,
+				transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) 0.1s,
+				color 0.25s ease;
+		}
 	}
 }
 
 .cursor-orb-label {
 	opacity: 0;
-	transform: scale(0.85);
-	font-size: 0.58rem;
-	font-weight: 600;
-	letter-spacing: -0.01em;
+	font-size: 17px;
+	font-weight: 400;
+	letter-spacing: -0.02em;
 	line-height: 1;
 	color: #000;
 	white-space: nowrap;
 	user-select: none;
+	transform: scale(0.88);
 	transition:
-		opacity 0.18s ease,
-		transform 0.18s ease;
+		opacity 0.2s ease,
+		transform 0.25s ease,
+		color 0.2s ease;
 }
 
 .hero-topbar-shell {
@@ -74,7 +98,7 @@
 		padding: 0;
 
 		.topbar-inner {
-			min-height: 88px;
+			min-height: 70px;
 		}
 	}
 

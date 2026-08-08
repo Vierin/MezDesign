@@ -20,7 +20,11 @@ export function Works() {
   return (
     <section id="portfolio" className="works-section">
       <div className="container">
-        <Link href={featured.href!} className="works-featured works-card">
+        <Link
+          href={featured.href!}
+          className="works-featured works-card"
+          data-cursor-label="Zobacz"
+        >
           <div className="works-media">
             <Image
               src={featured.image!}
@@ -39,7 +43,12 @@ export function Works() {
 
         <div className="works-pair">
           {pair.map((item) => (
-            <Link className="works-card" href={item.href!} key={item.id}>
+            <Link
+              className="works-card"
+              href={item.href!}
+              key={item.id}
+              data-cursor-label="Zobacz"
+            >
               <div className="works-media">
                 <Image
                   src={item.image!}
