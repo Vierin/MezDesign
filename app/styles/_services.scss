@@ -16,12 +16,11 @@
 
 .services-title {
 	margin: 0;
-	font-size: clamp(2.4rem, 5.5vw, 3.5rem);
+	font-size: 4rem;
 	font-weight: 400;
-	line-height: 1;
-	letter-spacing: -0.04em;
+	line-height: 0.9; 
 	text-transform: uppercase;
-	color: #111;
+	color: #000;
 }
 
 .services-lead {
@@ -29,16 +28,18 @@
 	align-items: flex-start;
 	gap: 0.55rem;
 	margin: 1.1rem 0 0;
-	color: #7a7a7a;
+	color: #686868;
 	font-size: 0.92rem;
 	line-height: 1.45;
 	font-weight: 400;
 
 	img {
 		flex-shrink: 0;
-		width: 0.7rem;
+		width: 0.5rem;
 		height: auto;
-		margin-top: 0.28em;
+		filter: invert(0.5);
+		margin-top: 0.4em;
+		display: inline-block;
 		object-fit: contain;
 	}
 }
@@ -53,7 +54,7 @@
 .services-card {
 	display: flex;
 	flex-direction: column;
-	min-height: 100%;
+	min-height: 32.0625rem;
 	padding: 1.55rem 1.45rem 1.7rem;
 	background: #faf6f3;
 	border: 1px solid #cfcfcf;
@@ -63,15 +64,15 @@
 .services-card-icon {
 	display: grid;
 	place-items: center;
-	width: 2.65rem;
-	height: 2.65rem;
+	width: 3.4375rem;
+	height: 3.4375rem;
 	margin-bottom: 1.35rem;
 	border-radius: 50%;
 	background: #9fd2f5;
 
 	img {
 		display: block;
-		width: 1.15rem;
+		width: 1.4rem;
 		height: auto;
 		position: relative;
 		top: 0.05em;
@@ -99,7 +100,7 @@
 .services-card-rule {
 	width: 100%;
 	height: 1px;
-	margin: 1.45rem 0;
+	margin: 2.6875rem 0;
 	border: 0;
 	background: #686868;
 }
@@ -108,7 +109,7 @@
 	margin: 0;
 	padding: 0 0 0 1.05rem;
 	color: #111;
-	font-size: 0.92rem;
+	font-size: 1rem;
 	line-height: 1.45;
 	display: grid;
 	gap: 0.35rem;
