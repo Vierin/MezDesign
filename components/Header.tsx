@@ -4,8 +4,6 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { trackEvent } from "@/lib/analytics";
 import {
   clearScrollIntent,
@@ -14,17 +12,11 @@ import {
   type ScrollIntent,
 } from "@/lib/scroll";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
-
 const navItems = [
   { href: "/#portfolio", label: "Projekty", intent: "portfolio" as ScrollIntent },
   { href: "/o-mnie", label: "O mnie" },
   { href: "/#kontakt", label: "Kontakt", intent: "kontakt" as ScrollIntent },
 ];
-
-function getScrollY() {
-  return ScrollSmoother.get()?.scrollTop() ?? window.scrollY;
-}
 
 export function Header() {
   const pathname = usePathname();
@@ -36,7 +28,7 @@ export function Header() {
     let ticking = false;
 
     const updateVisibility = () => {
-      const currentY = getScrollY();
+      const currentY = window.scrollY;
       const delta = currentY - lastScrollY.current;
 
       if (currentY <= 20) {

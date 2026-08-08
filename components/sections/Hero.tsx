@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 import { useRef } from 'react';
-import { useHeroOrb } from '@/hooks/useHeroOrb';
 import { useHeroParallax } from '@/hooks/useHeroParallax';
 import { useHeroScatter } from '@/hooks/useHeroScatter';
 
@@ -54,14 +53,11 @@ const shots = [
 export function Hero() {
 	const heroRef = useRef<HTMLElement>(null);
 	const collageRef = useRef<HTMLDivElement>(null);
-	const orbRef = useHeroOrb(heroRef);
 	useHeroScatter(collageRef);
 	useHeroParallax(collageRef);
 
 	return (
 		<section className="hero" ref={heroRef}>
-			<div ref={orbRef} className="hero-orb" aria-hidden="true" />
-
 			<div className="hero-topbar-shell" aria-hidden="true" />
 
 			<div className="hero-layout">

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Instrument_Sans } from "next/font/google";
 import Script from "next/script";
 import { Header } from "@/components/Header";
-import { SmoothScroll } from "@/components/SmoothScroll";
+import { CursorOrb } from "@/components/CursorOrb";
+import { RouteScroll } from "@/components/RouteScroll";
 import "./globals.scss";
 
 const GA_ID = "G-J3JYDC8VFG";
@@ -43,7 +44,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
         <Header />
-        <SmoothScroll>{children}</SmoothScroll>
+        <CursorOrb />
+        <RouteScroll />
+        {children}
       </body>
     </html>
   );

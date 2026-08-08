@@ -1,6 +1,5 @@
-import { ScrollSmoother } from "gsap/ScrollSmoother";
-
 const SCROLL_INTENT_KEY = "mez-scroll-intent";
+const HEADER_OFFSET = 96;
 
 export type ScrollIntent = "portfolio" | "kontakt";
 
@@ -32,12 +31,7 @@ export function clearScrollIntent() {
 }
 
 export function scrollToTop(smooth = false) {
-  const smoother = ScrollSmoother.get();
-  if (smoother) {
-    smoother.scrollTo(0, smooth);
-  } else {
-    window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
-  }
+  window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
 }
 
 export function scrollToHash(hash: string, smooth = true) {
@@ -47,12 +41,8 @@ export function scrollToHash(hash: string, smooth = true) {
   const el = document.getElementById(id);
   if (!el) return false;
 
-  const smoother = ScrollSmoother.get();
-  if (smoother) {
-    smoother.scrollTo(el, smooth, "top 96px");
-  } else {
-    el.scrollIntoView({ behavior: smooth ? "smooth" : "auto", block: "start" });
-  }
+  const top = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET;
+  window.scrollTo({ top, behavior: smooth ? "smooth" : "auto" });
   return true;
 }
 

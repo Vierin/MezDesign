@@ -73,7 +73,6 @@
 	// gap: 1.25rem;
 	min-height: 100%;
 	padding: 3.25rem 3.75rem 2.5rem;
-	border-radius: 16px;
 	background: #f5f5f5;
 }
 
@@ -142,7 +141,7 @@
 }
 
 .contact-calendar {
-	padding: 0.85rem 0.9rem 0.9rem;
+	padding: 1rem;
 	border-radius: 12px;
 	background: #fff;
 	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
@@ -153,12 +152,12 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 0.75rem;
-	margin-bottom: 0.55rem;
+	margin-bottom: 0.85rem;
 }
 
 .contact-calendar-month {
 	margin: 0;
-	font-size: 0.95rem;
+	font-size: 1.08rem;
 	font-weight: 600;
 	color: #111;
 	letter-spacing: -0.02em;
@@ -173,8 +172,8 @@
 		appearance: none;
 		display: grid;
 		place-items: center;
-		width: 26px;
-		height: 26px;
+		width: 30px;
+		height: 30px;
 		border: 0;
 		border-radius: 6px;
 		background: transparent;
@@ -190,12 +189,11 @@
 .contact-calendar-weekdays,
 .contact-calendar-grid {
 	display: grid;
-	grid-template-columns: repeat(7, minmax(0, 1fr));
-	column-gap: 0.15rem;
-	row-gap: 0.15rem;
+	grid-template-columns: repeat(7, 2rem);
+	justify-content: space-between;
+	row-gap: 0.28rem;
 	text-align: center;
 	align-items: center;
-	justify-items: center;
 }
 
 .contact-calendar-weekdays {
@@ -279,8 +277,8 @@
 
 		&:focus {
 			outline: none;
-			border-color: #c8c8c8;
-			box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06);
+			border-color: #dedede;
+			box-shadow: none;
 		}
 	}
 
@@ -405,6 +403,5 @@
 
 	.contact-panel {
 		padding: 1.75rem;
-		border-radius: 14px;
 	}
 }
