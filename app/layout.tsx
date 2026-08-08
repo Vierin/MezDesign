@@ -15,11 +15,11 @@ const instrumentSans = Instrument_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Mez.Design — multidisciplinary designer",
+  title: "Mez.Design — multidyscyplinarna projektantka",
   description:
     "Dbam o to, jak Twoja marka wygląda i komunikuje się z odbiorcami — online i offline.",
   openGraph: {
-    title: "Mez.Design — multidisciplinary designer",
+    title: "Mez.Design — multidyscyplinarna projektantka",
     description:
       "Projektowanie graficzne, web design i social media dla marek, które chcą wyglądać i komunikować się spójnie.",
     type: "website",

@@ -26,14 +26,14 @@ export const workCases = {
   henzo: {
     id: "henzo",
     slug: "henzo",
-    title: "End-to-End Product Design for a Fitness Marketplace",
-    heroTitle: "End-to-end product design for a fitness marketplace",
+    title: "Projektowanie produktu cyfrowego dla marketplace’u fitness",
+    heroTitle: "Projektowanie produktu cyfrowego dla marketplace’u fitness",
     heroLead:
       "Zaprojektowano spójny produkt cyfrowy — od architektury informacji po interfejsy wspierające sprzedaż i zaangażowanie użytkowników.",
     asideLabel: "↙ Co zostało zrealizowane?",
     tags: "Instagram / Facebook",
     image: "/work-1.jpg",
-    alt: "Henzo — fitness marketplace",
+    alt: "Henzo — marketplace fitness",
     href: "/projekty/henzo",
   },
   chicco: {
