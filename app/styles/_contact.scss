@@ -605,10 +605,37 @@
 	}
 
 	.contact-panel {
-		padding: 1.75rem;
+		padding: 1.75rem 1.1rem;
+	}
+
+	.contact-cal {
+		height: min(26rem, 65svh);
+		min-height: min(26rem, 65svh);
+		max-height: min(26rem, 65svh);
+		padding: 0.85rem 0.65rem;
+	}
+
+	.contact-cal-time-head {
+		padding-inline: 1.75rem;
+	}
+
+	.contact-cal-time-date {
+		font-size: 0.95rem;
 	}
 
 	.contact-cal-slots {
 		grid-template-columns: repeat(3, minmax(0, 1fr));
+		flex: 1 1 auto;
+		align-content: start;
+		overflow-y: auto;
+		min-height: 0;
+		margin-top: 0.25rem;
+		padding-bottom: 0.15rem;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.contact-cal-slot {
+		padding: 0.45rem 0.15rem;
+		font-size: 0.88rem;
 	}
 }

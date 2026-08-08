@@ -3,7 +3,8 @@
 import { type RefObject, useEffect } from "react";
 
 const LERP = 0.08;
-const MAX_OFFSET = 120;
+const MAX_OFFSET_DESKTOP = 120;
+const MAX_OFFSET_MOBILE = 64;
 
 type ParallaxItem = {
   el: HTMLElement;
@@ -19,7 +20,9 @@ export function useHeroParallax(collageRef: RefObject<HTMLElement | null>) {
 
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduceMotion) return;
-    if (window.matchMedia("(max-width: 860px)").matches) return;
+
+    const mobileQuery = window.matchMedia("(max-width: 860px)");
+    let maxOffset = mobileQuery.matches ? MAX_OFFSET_MOBILE : MAX_OFFSET_DESKTOP;
 
     const nodes = collage.querySelectorAll<HTMLElement>("[data-parallax]");
     const items: ParallaxItem[] = Array.from(nodes).map((el) => ({
@@ -34,6 +37,10 @@ export function useHeroParallax(collageRef: RefObject<HTMLElement | null>) {
     const hero = collage.closest(".hero") as HTMLElement | null;
     let rafId = 0;
 
+    const onBreakpointChange = () => {
+      maxOffset = mobileQuery.matches ? MAX_OFFSET_MOBILE : MAX_OFFSET_DESKTOP;
+    };
+
     const updateTargets = () => {
       const heroRect = (hero ?? collage).getBoundingClientRect();
       const viewport = window.innerHeight || 1;
@@ -41,7 +48,7 @@ export function useHeroParallax(collageRef: RefObject<HTMLElement | null>) {
       const progress = scrolled / (heroRect.height + viewport * 0.35);
 
       items.forEach((item) => {
-        item.ty = progress * MAX_OFFSET * item.depth;
+        item.ty = progress * maxOffset * item.depth;
       });
     };
 
@@ -61,9 +68,11 @@ export function useHeroParallax(collageRef: RefObject<HTMLElement | null>) {
       rafId = window.requestAnimationFrame(tick);
     };
 
+    mobileQuery.addEventListener("change", onBreakpointChange);
     rafId = window.requestAnimationFrame(tick);
 
     return () => {
+      mobileQuery.removeEventListener("change", onBreakpointChange);
       window.cancelAnimationFrame(rafId);
       items.forEach((item) => {
         item.el.style.transform = "";

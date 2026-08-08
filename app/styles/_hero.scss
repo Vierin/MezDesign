@@ -348,12 +348,6 @@
 	}
 
 	.site-header {
-		&.is-hidden .topbar {
-			transform: none;
-			opacity: 1;
-			pointer-events: auto;
-		}
-
 		.topbar .topbar-inner {
 			min-height: 3.75rem;
 			padding-block: 0.65rem;

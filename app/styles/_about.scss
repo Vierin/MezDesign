@@ -277,3 +277,9 @@ body:has(.about-page) .site-header .topbar {
 		animation: none;
 	}
 }
+
+@include down-md {
+	.about-gallery-track {
+		animation-duration: 55s;
+	}
+}
