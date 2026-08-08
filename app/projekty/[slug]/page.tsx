@@ -17,7 +17,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const work = getWorkCase(slug);
-  if (!work) return { title: "Projekt — Mez.Design" };
+  if (!work?.href) return { title: "Projekt — Mez.Design" };
 
   return {
     title: `${work.heroTitle} — Mez.Design`,
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ProjectCasePage({ params }: PageProps) {
   const { slug } = await params;
   const work = getWorkCase(slug);
-  if (!work) notFound();
+  if (!work?.href) notFound();
 
   return (
     <main className="case-page">

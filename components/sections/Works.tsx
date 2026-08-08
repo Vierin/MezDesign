@@ -20,7 +20,7 @@ export function Works() {
   return (
     <section id="portfolio" className="works-section">
       <div className="container">
-        <Link href={featured.href} className="works-featured works-card">
+        <Link href={featured.href!} className="works-featured works-card">
           <div className="works-media">
             <Image
               src={featured.image!}
@@ -39,15 +39,15 @@ export function Works() {
 
         <div className="works-pair">
           {pair.map((item) => (
-            <Link className="works-card" href={item.href} key={item.id}>
+            <Link className="works-card" href={item.href!} key={item.id}>
               <div className="works-media">
-            <Image
-              src={item.image!}
-              alt={item.alt}
-              width={1224}
-              height={812}
-              sizes="(max-width: 860px) 100vw, 45vw"
-            />
+                <Image
+                  src={item.image!}
+                  alt={item.alt}
+                  width={1224}
+                  height={812}
+                  sizes="(max-width: 860px) 100vw, 45vw"
+                />
               </div>
               <div className="works-copy">
                 <h3>{item.title}</h3>
@@ -57,13 +57,16 @@ export function Works() {
           ))}
         </div>
 
-        <Link href={wide.href} className="works-wide works-card">
+        <div
+          className="works-wide works-card works-card--soon"
+          data-cursor-label="Wkrótce"
+        >
           <div className="works-media works-media--placeholder" aria-hidden="true" />
           <div className="works-copy">
             <h3>{wide.title}</h3>
             <p>{wide.tags}</p>
           </div>
-        </Link>
+        </div>
       </div>
     </section>
   );

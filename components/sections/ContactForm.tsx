@@ -1,7 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useState } from "react";
+import { CalBooking } from "@/components/CalBooking";
 import { trackEvent } from "@/lib/analytics";
 
 type FormState = {
@@ -24,24 +25,6 @@ const CLIENT_LIMIT_KEY = "mez_contact_submits";
 const CLIENT_WINDOW_MS = 60 * 60 * 1000;
 const CLIENT_MAX = 3;
 
-const WEEKDAYS = ["PON", "WTO", "ŚRO", "CZW", "PIĄ", "SOB", "NIE"];
-const MONTHS_PL = [
-  "Styczeń",
-  "Luty",
-  "Marzec",
-  "Kwiecień",
-  "Maj",
-  "Czerwiec",
-  "Lipiec",
-  "Sierpień",
-  "Wrzesień",
-  "Październik",
-  "Listopad",
-  "Grudzień",
-];
-
-const BOOKING_URL = process.env.NEXT_PUBLIC_BOOKING_URL?.trim() ?? "";
-
 function readClientSubmits(): number[] {
   try {
     const raw = localStorage.getItem(CLIENT_LIMIT_KEY);
@@ -58,18 +41,6 @@ function readClientSubmits(): number[] {
 function recordClientSubmit() {
   const next = [...readClientSubmits(), Date.now()];
   localStorage.setItem(CLIENT_LIMIT_KEY, JSON.stringify(next));
-}
-
-function buildMonthGrid(anchor: Date) {
-  const year = anchor.getFullYear();
-  const month = anchor.getMonth();
-  const first = new Date(year, month, 1);
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const startOffset = (first.getDay() + 6) % 7;
-  const cells: Array<number | null> = Array.from({ length: startOffset }, () => null);
-  for (let day = 1; day <= daysInMonth; day += 1) cells.push(day);
-  while (cells.length % 7 !== 0) cells.push(null);
-  return cells;
 }
 
 function ClockIcon() {
@@ -95,36 +66,10 @@ function LockIcon() {
   );
 }
 
-function ChevronIcon({ dir }: { dir: "prev" | "next" }) {
-  return (
-    <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path
-        d={dir === "prev" ? "M15 6 9 12l6 6" : "M9 6l6 6-6 6"}
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
-
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
-  const [viewDate, setViewDate] = useState(() => new Date());
-  const [selectedDay, setSelectedDay] = useState<number | null>(() => new Date().getDate());
-
-  const cells = useMemo(() => buildMonthGrid(viewDate), [viewDate]);
-  const today = new Date();
-  const isCurrentMonth =
-    viewDate.getMonth() === today.getMonth() && viewDate.getFullYear() === today.getFullYear();
-
-  function shiftMonth(delta: number) {
-    setViewDate((prev) => new Date(prev.getFullYear(), prev.getMonth() + delta, 1));
-    setSelectedDay(null);
-  }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -181,13 +126,6 @@ export function ContactForm() {
     }
   }
 
-  function handleBookingClick() {
-    trackEvent("booking_click", { location: "contact_section" });
-    if (BOOKING_URL) {
-      window.open(BOOKING_URL, "_blank", "noopener,noreferrer");
-    }
-  }
-
   return (
     <section id="kontakt" className="contact-section">
       <div className="container">
@@ -223,53 +161,9 @@ export function ContactForm() {
               </div>
             </div>
 
-            <div className="contact-calendar">
-              <div className="contact-calendar-top">
-                <p className="contact-calendar-month">
-                  {MONTHS_PL[viewDate.getMonth()]} {viewDate.getFullYear()}
-                </p>
-                <div className="contact-calendar-nav">
-                  <button
-                    type="button"
-                    aria-label="Poprzedni miesiąc"
-                    onClick={() => shiftMonth(-1)}
-                  >
-                    <ChevronIcon dir="prev" />
-                  </button>
-                  <button type="button" aria-label="Następny miesiąc" onClick={() => shiftMonth(1)}>
-                    <ChevronIcon dir="next" />
-                  </button>
-                </div>
-              </div>
-              <div className="contact-calendar-weekdays">
-                {WEEKDAYS.map((day) => (
-                  <span key={day}>{day}</span>
-                ))}
-              </div>
-              <div className="contact-calendar-grid">
-                {cells.map((day, index) => {
-                  if (!day) return <span key={`e-${index}`} className="is-empty" />;
-                  const isSelected = day === selectedDay;
-                  const isPast = isCurrentMonth && day < today.getDate();
-                  return (
-                    <button
-                      key={day}
-                      type="button"
-                      className={`contact-calendar-day${isSelected ? " is-selected" : ""}`}
-                      disabled={isPast}
-                      onClick={() => setSelectedDay(day)}
-                    >
-                      {day}
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
+            <CalBooking />
 
             <div className="contact-panel-foot">
-              <button type="button" className="contact-panel-btn" onClick={handleBookingClick}>
-                Wybierz termin →
-              </button>
               <p className="contact-panel-note">
                 <ClockIcon />
                 <span>Po wyborze terminu otrzymasz potwierdzenie oraz link do spotkania.</span>

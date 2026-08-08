@@ -26,6 +26,7 @@
 
 	img {
 		width: 0.6em;
+		height: auto;
 		aspect-ratio: 1;
 		object-fit: contain;
 		flex-shrink: 0;
@@ -140,115 +141,33 @@
 	}
 }
 
-.contact-calendar {
-	padding: 1rem;
+.contact-cal {
+	flex: 1 1 auto;
+	min-height: 420px;
+	padding: 0.35rem 0.35rem 0.5rem;
 	border-radius: 12px;
 	background: #fff;
 	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
-}
+	overflow: hidden;
 
-.contact-calendar-top {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 0.75rem;
-	margin-bottom: 0.85rem;
-}
+	iframe {
+		border: 0 !important;
+	}
 
-.contact-calendar-month {
-	margin: 0;
-	font-size: 1.08rem;
-	font-weight: 600;
-	color: #111;
-	letter-spacing: -0.02em;
-}
-
-.contact-calendar-nav {
-	display: flex;
-	align-items: center;
-	gap: 0.1rem;
-
-	button {
-		appearance: none;
+	&.is-empty {
 		display: grid;
 		place-items: center;
-		width: 30px;
-		height: 30px;
-		border: 0;
-		border-radius: 6px;
-		background: transparent;
-		color: #444;
-		cursor: pointer;
+		padding: 1.5rem;
+		text-align: center;
+		color: #686868;
+		font-size: 0.92rem;
+		line-height: 1.45;
 
-		&:hover {
-			background: #f2f2f2;
+		code {
+			font-size: 0.85em;
+			color: #111;
 		}
 	}
-}
-
-.contact-calendar-weekdays,
-.contact-calendar-grid {
-	display: grid;
-	grid-template-columns: repeat(7, 2rem);
-	justify-content: space-between;
-	row-gap: 0.28rem;
-	text-align: center;
-	align-items: center;
-}
-
-.contact-calendar-weekdays {
-	margin-bottom: 0.15rem;
-
-	span {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 2rem;
-		height: 1.1rem;
-		font-size: 0.62rem;
-		font-weight: 600;
-		letter-spacing: 0.06em;
-		color: #9a9a9a;
-	}
-}
-
-.contact-calendar-day {
-	appearance: none;
-	border: 0;
-	background: transparent;
-	width: 2rem;
-	height: 2rem;
-	padding: 0;
-	border-radius: 50%;
-	font: inherit;
-	font-size: 0.85rem;
-	font-weight: 500;
-	line-height: 1;
-	color: #222;
-	cursor: pointer;
-	transition:
-		background 0.15s ease,
-		color 0.15s ease;
-
-	&:hover:not(:disabled):not(.is-selected) {
-		background: #f0f0f0;
-	}
-
-	&:disabled {
-		color: #c8c8c8;
-		cursor: default;
-	}
-
-	&.is-selected {
-		background: var(--accent);
-		color: #111;
-		font-weight: 600;
-	}
-}
-
-.contact-calendar-grid .is-empty {
-	width: 2rem;
-	height: 2rem;
 }
 
 .contact-form {

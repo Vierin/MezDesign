@@ -17,7 +17,8 @@ export type WorkCase = {
   tags: string;
   image?: string;
   alt: string;
-  href: string;
+  /** Case page path; omit for coming-soon cards (no link). */
+  href?: string;
   images?: WorkCaseImage[];
 };
 
@@ -87,7 +88,6 @@ export const workCases = {
     asideLabel: "↙ Co zostało zrealizowane?",
     tags: "Social media / Meta Ads / Google Ads",
     alt: "Kampania sprzedażowa",
-    href: "/projekty/campaign",
   },
 } as const satisfies Record<string, WorkCase>;
 
@@ -98,5 +98,5 @@ export function getWorkCase(slug: string): WorkCase | undefined {
 }
 
 export function getAllWorkSlugs(): WorkSlug[] {
-  return Object.keys(workCases) as WorkSlug[];
+  return (Object.keys(workCases) as WorkSlug[]).filter((slug) => Boolean(workCases[slug].href));
 }

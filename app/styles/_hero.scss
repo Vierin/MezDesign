@@ -15,6 +15,8 @@
 	top: 0;
 	left: 0;
 	z-index: 90;
+	display: grid;
+	place-items: center;
 	width: 36px;
 	height: 36px;
 	border-radius: 50%;
@@ -29,6 +31,26 @@
 	&.is-active {
 		opacity: 1;
 	}
+
+	&.is-label .cursor-orb-label {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+.cursor-orb-label {
+	opacity: 0;
+	transform: scale(0.85);
+	font-size: 0.58rem;
+	font-weight: 600;
+	letter-spacing: -0.01em;
+	line-height: 1;
+	color: #000;
+	white-space: nowrap;
+	user-select: none;
+	transition:
+		opacity 0.18s ease,
+		transform 0.18s ease;
 }
 
 .hero-topbar-shell {
@@ -115,6 +137,7 @@
 
 	img {
 		width: 0.6em;
+		height: auto;
 		aspect-ratio: 1;
 		object-fit: contain;
 		flex-shrink: 0;
@@ -156,6 +179,7 @@
 
 	img {
 		width: 100%;
+		height: auto;
 		aspect-ratio: 116 / 97;
 		object-fit: contain;
 		mix-blend-mode: screen;
