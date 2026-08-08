@@ -23,12 +23,19 @@ export function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [isHidden, setIsHidden] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const lastScrollY = useRef(0);
 
   useEffect(() => {
     let ticking = false;
 
     const updateVisibility = () => {
+      if (menuOpen) {
+        setIsHidden(false);
+        ticking = false;
+        return;
+      }
+
       const currentY = window.scrollY;
       const delta = currentY - lastScrollY.current;
 
@@ -56,13 +63,42 @@ export function Header() {
       gsap.ticker.remove(onScroll);
       window.removeEventListener("scroll", onScroll);
     };
-  }, []);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+
+    const onResize = () => {
+      if (window.matchMedia("(min-width: 861px)").matches) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    window.addEventListener("resize", onResize);
+
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKeyDown);
+      window.removeEventListener("resize", onResize);
+    };
+  }, [menuOpen]);
+
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
 
   const goHomeWithIntent = (
     event: React.MouseEvent<HTMLAnchorElement>,
     intent: ScrollIntent,
   ) => {
     event.preventDefault();
+    setMenuOpen(false);
 
     if (pathname === "/") {
       scrollToHash(`#${intent}`);
@@ -74,53 +110,91 @@ export function Header() {
     router.push(`/#${intent}`);
   };
 
+  const closeMenu = () => setMenuOpen(false);
+
+  const navContent = (
+    <>
+      <nav aria-label="Nawigacja główna">
+        <ul className="nav-list">
+          {navItems.map((item) => (
+            <li key={item.href}>
+              {item.intent ? (
+                <a
+                  href={item.href}
+                  onClick={(event) => goHomeWithIntent(event, item.intent!)}
+                >
+                  {item.label}
+                </a>
+              ) : (
+                <Link
+                  href={item.href}
+                  onClick={() => {
+                    clearScrollIntent();
+                    closeMenu();
+                  }}
+                >
+                  {item.label}
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <a
+        className="btn btn-nav"
+        href="/#kontakt"
+        onClick={(event) => {
+          trackEvent("cta_click", { location: "header_nav", target: "kontakt" });
+          goHomeWithIntent(event, "kontakt");
+        }}
+      >
+        {pathname.startsWith("/projekty")
+          ? "Wypełnij formularz"
+          : "Pogadajmy o twoim projekcie"}
+      </a>
+    </>
+  );
+
   return (
-    <div className={`site-header${isHidden ? " is-hidden" : ""}`}>
+    <div
+      className={`site-header${isHidden ? " is-hidden" : ""}${menuOpen ? " is-menu-open" : ""}`}
+    >
       <header className="topbar">
         <div className="container topbar-inner">
           <Link
             className="brand"
             href="/"
-            onClick={() => clearScrollIntent()}
+            onClick={() => {
+              clearScrollIntent();
+              closeMenu();
+            }}
           >
             Mez<span>.Design</span>
           </Link>
-          <div className="topbar-end">
-            <nav aria-label="Nawigacja główna">
-              <ul className="nav-list">
-                {navItems.map((item) => (
-                  <li key={item.href}>
-                    {item.intent ? (
-                      <a
-                        href={item.href}
-                        onClick={(event) => goHomeWithIntent(event, item.intent!)}
-                      >
-                        {item.label}
-                      </a>
-                    ) : (
-                      <Link href={item.href} onClick={() => clearScrollIntent()}>
-                        {item.label}
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </nav>
-            <a
-              className="btn btn-nav"
-              href="/#kontakt"
-              onClick={(event) => {
-                trackEvent("cta_click", { location: "header_nav", target: "kontakt" });
-                goHomeWithIntent(event, "kontakt");
-              }}
-            >
-              {pathname.startsWith("/projekty")
-                ? "Wypełnij formularz"
-                : "Pogadajmy o twoim projekcie"}
-            </a>
-          </div>
+
+          <button
+            type="button"
+            className="nav-toggle"
+            aria-expanded={menuOpen}
+            aria-controls="site-nav"
+            aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            <span className="nav-toggle-bar" aria-hidden="true" />
+            <span className="nav-toggle-bar" aria-hidden="true" />
+          </button>
+
+          <div className="topbar-end">{navContent}</div>
         </div>
       </header>
+
+      <div
+        className="mobile-nav"
+        id="site-nav"
+        hidden={!menuOpen}
+      >
+        <div className="mobile-nav-inner">{navContent}</div>
+      </div>
     </div>
   );
 }

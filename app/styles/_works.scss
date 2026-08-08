@@ -167,5 +167,7 @@
 
 	.works-media--placeholder {
 		aspect-ratio: 16 / 9;
+		min-height: 0;
+		width: 100%;
 	}
 }

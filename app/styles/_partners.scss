@@ -125,10 +125,17 @@
 
 @include down-md {
 	.partners-item {
-		flex-basis: calc(100vw / 4);
+		flex-basis: calc(100vw / 3.2);
+		padding-inline: 0.9rem;
 	}
 
 	.partner-logo {
-		max-height: 36px;
+		max-width: min(168px, 85%);
+		max-height: 52px;
+
+		&.is-logo-6 {
+			max-width: min(200px, 90%);
+			max-height: 64px;
+		}
 	}
 }
