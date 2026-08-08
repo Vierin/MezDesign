@@ -98,5 +98,5 @@ export function getWorkCase(slug: string): WorkCase | undefined {
 }
 
 export function getAllWorkSlugs(): WorkSlug[] {
-  return (Object.keys(workCases) as WorkSlug[]).filter((slug) => Boolean(workCases[slug].href));
+  return (Object.keys(workCases) as WorkSlug[]).filter((slug) => "href" in workCases[slug]);
 }
