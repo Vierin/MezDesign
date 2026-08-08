@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { trackEvent } from "@/lib/analytics";
 
@@ -382,7 +383,20 @@ export function CalBooking() {
                 className="contact-panel-btn"
                 disabled={bookStatus === "loading"}
               >
-                {bookStatus === "loading" ? "Rezerwuję..." : "Potwierdź →"}
+                {bookStatus === "loading" ? (
+                  "Rezerwuję..."
+                ) : (
+                  <>
+                    Potwierdź
+                    <Image
+                      src="/arrow-btn.svg"
+                      alt=""
+                      width={16}
+                      height={12}
+                      aria-hidden="true"
+                    />
+                  </>
+                )}
               </button>
             </form>
           )}

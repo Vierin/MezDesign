@@ -1,6 +1,6 @@
 const SCROLL_INTENT_KEY = "mez-scroll-intent";
 
-export type ScrollIntent = "portfolio" | "kontakt";
+export type ScrollIntent = "portfolio" | "uslugi" | "kontakt";
 
 /** Header hides on scroll-down; pull past section padding so content sits tight. */
 function getHeaderOffset(targetY: number, el: HTMLElement) {
@@ -34,7 +34,9 @@ export function consumeScrollIntent(): ScrollIntent | null {
   try {
     const value = sessionStorage.getItem(SCROLL_INTENT_KEY);
     sessionStorage.removeItem(SCROLL_INTENT_KEY);
-    if (value === "portfolio" || value === "kontakt") return value;
+    if (value === "portfolio" || value === "uslugi" || value === "kontakt") {
+      return value;
+    }
   } catch {
     // ignore
   }

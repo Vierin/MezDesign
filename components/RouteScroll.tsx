@@ -6,9 +6,10 @@ import {
   consumeScrollIntent,
   scrollToHashWhenReady,
   scrollToTop,
+  type ScrollIntent,
 } from "@/lib/scroll";
 
-/** Native scroll on route change (top, or intentional #portfolio / #kontakt). */
+/** Native scroll on route change (top, or intentional #portfolio / #uslugi / #kontakt). */
 export function RouteScroll() {
   const pathname = usePathname();
 
@@ -26,7 +27,9 @@ export function RouteScroll() {
     const hash = window.location.hash.replace(/^#/, "");
     const target =
       intent ??
-      (hash === "portfolio" || hash === "kontakt" ? (hash as "portfolio" | "kontakt") : null);
+      (hash === "portfolio" || hash === "uslugi" || hash === "kontakt"
+        ? (hash as ScrollIntent)
+        : null);
 
     const boot = () => {
       if (cancelled) return;

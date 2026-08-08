@@ -261,7 +261,20 @@ export function ContactForm() {
 
               <div className="contact-panel-foot">
                 <button className="contact-panel-btn" type="submit" disabled={status === "loading"}>
-                  {status === "loading" ? "Wysyłanie..." : "Wyślij wiadomość →"}
+                  {status === "loading" ? (
+                    "Wysyłanie..."
+                  ) : (
+                    <>
+                      Wyślij wiadomość
+                      <Image
+                        src="/arrow-btn.svg"
+                        alt=""
+                        width={16}
+                        height={12}
+                        aria-hidden="true"
+                      />
+                    </>
+                  )}
                 </button>
                 <p className="contact-panel-note">
                   <LockIcon />

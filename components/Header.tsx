@@ -14,6 +14,7 @@ import {
 
 const navItems = [
   { href: "/#portfolio", label: "Projekty", intent: "portfolio" as ScrollIntent },
+  { href: "/#uslugi", label: "Usługi", intent: "uslugi" as ScrollIntent },
   { href: "/o-mnie", label: "O mnie" },
   { href: "/#kontakt", label: "Kontakt", intent: "kontakt" as ScrollIntent },
 ];

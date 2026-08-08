@@ -1,0 +1,136 @@
+@use "mixins" as *;
+
+.services-section {
+	background: #faf2f0;
+	padding: clamp(4rem, 8vw, 6.5rem) 0;
+}
+
+.services-layout {
+	align-items: start;
+	row-gap: clamp(2rem, 4vw, 3rem);
+}
+
+.services-intro {
+	grid-column: 1 / span 3;
+}
+
+.services-title {
+	margin: 0;
+	font-size: clamp(2.4rem, 5.5vw, 3.5rem);
+	font-weight: 400;
+	line-height: 1;
+	letter-spacing: -0.04em;
+	text-transform: uppercase;
+	color: #111;
+}
+
+.services-lead {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.55rem;
+	margin: 1.1rem 0 0;
+	color: #7a7a7a;
+	font-size: 0.92rem;
+	line-height: 1.45;
+	font-weight: 400;
+
+	img {
+		flex-shrink: 0;
+		width: 0.7rem;
+		height: auto;
+		margin-top: 0.28em;
+		object-fit: contain;
+	}
+}
+
+.services-grid {
+	grid-column: 4 / span 9;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 1.15rem;
+}
+
+.services-card {
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	padding: 1.55rem 1.45rem 1.7rem;
+	background: #faf6f3;
+	border: 1px solid #cfcfcf;
+	border-radius: 4px;
+}
+
+.services-card-icon {
+	display: grid;
+	place-items: center;
+	width: 2.65rem;
+	height: 2.65rem;
+	margin-bottom: 1.35rem;
+	border-radius: 50%;
+	background: #9fd2f5;
+
+	img {
+		display: block;
+		width: 1.15rem;
+		height: auto;
+		position: relative;
+		top: 0.05em;
+		left: -0.05rem;
+	}
+}
+
+.services-card-title {
+	margin: 0;
+	font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+	font-weight: 400;
+	letter-spacing: -0.03em;
+	line-height: 1.15;
+	color: #111;
+}
+
+.services-card-subtitle {
+	margin: 0.45rem 0 0;
+	color: #686868;
+	font-size: 0.875rem;
+	line-height: 1.35;
+	font-weight: 400;
+}
+
+.services-card-rule {
+	width: 100%;
+	height: 1px;
+	margin: 1.45rem 0;
+	border: 0;
+	background: #686868;
+}
+
+.services-card-list {
+	margin: 0;
+	padding: 0 0 0 1.05rem;
+	color: #111;
+	font-size: 0.92rem;
+	line-height: 1.45;
+	display: grid;
+	gap: 0.35rem;
+
+	li::marker {
+		color: #111;
+	}
+}
+
+@include down-lg {
+	.services-intro,
+	.services-grid {
+		grid-column: 1 / -1;
+	}
+
+	.services-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+@include down-md {
+	.services-grid {
+		grid-template-columns: 1fr;
+	}
+}

@@ -1,42 +1,112 @@
-const services = [
+import Image from "next/image";
+
+type Service = {
+  title: string;
+  subtitle: string;
+  features: string[];
+};
+
+const services: Service[] = [
   {
-    title: "Projektowanie stron internetowych",
-    description:
-      "Nowoczesne strony i strony docelowe z czytelna hierarchia tresci, dopracowana typografia i spojnym stylem."
+    title: "Web Design",
+    subtitle: "Landing pages · Strony internetowe",
+    features: [
+      "Landing pages, e-commerce",
+      "Analiza konkurencji",
+      "Projekt UI/UX",
+      "Wersja desktop + mobile",
+      "Przygotowanie do wdrożenia",
+      "Dokładny brief dotyczący wdrożenia projektu",
+    ],
   },
   {
-    title: "Projektowanie materialow komunikacji wizualnej",
-    description:
-      "Szablony postow, relacji i karuzel, ktore utrzymuja spojna estetyke marki w komunikacji cyfrowej."
+    title: "Social Media + Mailingi",
+    subtitle: "Grafiki · Karuzele · Reels · Mailingi",
+    features: [
+      "Opracowywanie koncepcji i planu publikacji opartej na celach biznesowych",
+      "Montaż rolek / tworzenie karuzeli / postów / stories",
+      "Spójna linia wizualna",
+    ],
   },
   {
-    title: "Materialy do druku",
-    description:
-      "Wizytowki, ulotki, katalogi i inne materialy offline przygotowane zgodnie z wymaganiami drukarni."
+    title: "Google & Meta Ads",
+    subtitle: "Kreacje reklamowe · Kampanie wizualne",
+    features: [
+      "Koncepcja kreatywna",
+      "Adaptacje do platform i formatów (Meta, Google)",
+      "Przygotowanie plików do publikacji",
+    ],
   },
   {
-    title: "System prezentacji i dokumentow",
-    description:
-      "Szablony ofert, prezentacji i dokumentow firmowych, ktore porzadkuja komunikacje wizualna."
+    title: "Print Design",
+    subtitle: "Ulotki · Katalogi · Materiały drukowane",
+    features: [
+      "Projekt graficzny",
+      "Przygotowanie materiałów do drukarni",
+      "Wsparcie w doborze formatu",
+    ],
   },
   {
-    title: "Identyfikacja wizualna marki",
-    description:
-      "Tozsamosc wizualna marki: logo, kolory, typografia i zasady, ktore porzadkuja caly przekaz."
-  }
+    title: "Branding",
+    subtitle: "Logo · Identyfikacja wizualna",
+    features: [
+      "Logo (3 koncepcje)",
+      "3 formaty (post + karuzele + stories)",
+      "Spójna linia wizualna",
+      "2 rundy poprawek",
+    ],
+  },
+  {
+    title: "AI Content",
+    subtitle: "AI visuals · Video content",
+    features: [
+      "Koncepcja wizualna",
+      "Grafiki/video generowane AI",
+      "Selekcja i retusz",
+      "Adaptacja do SM",
+    ],
+  },
 ];
 
 export function Services() {
   return (
-    <section id="uslugi" className="section">
-      <div className="container">
-        <p className="eyebrow">Uslugi</p>
-        <h2>Kompleksowe wsparcie projektowe dla freelancerow i firm.</h2>
-        <div className="card-grid services-grid">
+    <section id="uslugi" className="services-section">
+      <div className="container grid services-layout">
+        <header className="services-intro">
+          <h2 className="services-title">Usługi</h2>
+          <p className="services-lead">
+            <Image
+              src="/arrow.png"
+              alt=""
+              width={14}
+              height={14}
+              aria-hidden="true"
+            />
+            <span>
+              Zakres i warunki współpracy dopasowuję indywidualnie — w zależności
+              od celów, skali i potrzeb projektu. Każda realizacja wyceniana jest
+              osobno.
+            </span>
+          </p>
+        </header>
+
+        <div className="services-grid">
           {services.map((service) => (
-            <article className="card" key={service.title}>
-              <h3>{service.title}</h3>
-              <p>{service.description}</p>
+            <article className="services-card" key={service.title}>
+              <span className="services-card-icon" aria-hidden="true">
+                <Image src="/plane.svg" alt="" width={22} height={22} />
+              </span>
+
+              <h3 className="services-card-title">{service.title}</h3>
+              <p className="services-card-subtitle">{service.subtitle}</p>
+
+              <hr className="services-card-rule" />
+
+              <ul className="services-card-list">
+                {service.features.map((feature) => (
+                  <li key={feature}>{feature}</li>
+                ))}
+              </ul>
             </article>
           ))}
         </div>
