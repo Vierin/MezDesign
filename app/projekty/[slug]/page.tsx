@@ -31,7 +31,7 @@ export default async function ProjectCasePage({ params }: PageProps) {
   if (!work?.href) notFound();
 
   return (
-    <main className="case-page">
+    <main className={`case-page${work.flushImages ? " is-flush-images" : ""}`}>
       <div className="hero-topbar-shell" aria-hidden="true" />
       <CaseHero work={work} />
       {work.images?.map((image, index) => (
@@ -44,7 +44,7 @@ export default async function ProjectCasePage({ params }: PageProps) {
           priority={index === 0}
         />
       ))}
-      <Works />
+      <Works hideSoon />
       <Footer />
     </main>
   );

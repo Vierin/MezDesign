@@ -73,19 +73,30 @@ export function Services() {
     <section id="uslugi" className="services-section">
       <div className="container grid services-layout">
         <header className="services-intro">
-          <h2 className="services-title">Usługi</h2>
+          <h2 className="services-title">
+            Usługi
+            <Image
+              className="services-star"
+              src="/icon-star.png"
+              alt=""
+              width={28}
+              height={28}
+              aria-hidden="true"
+            />
+          </h2>
           <p className="services-lead">
             <Image
-              src="/arrow.png"
+              className="services-lead-star"
+              src="/icon-star.png"
               alt=""
-              width={14}
-              height={14}
+              width={18}
+              height={18}
               aria-hidden="true"
             />
             <span>
-              Zakres i warunki współpracy dopasowuję indywidualnie — w zależności
-              od celów, skali i potrzeb projektu. Każda realizacja wyceniana jest
-              osobno.
+              Poniższe ceny mają charakter orientacyjny i mogą się różnić w
+              zależności od zakresu, celów i indywidualnych potrzeb projektu.
+              Każda realizacja wyceniana jest indywidualnie.
             </span>
           </p>
         </header>

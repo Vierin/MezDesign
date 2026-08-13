@@ -87,7 +87,7 @@ export function Hero() {
 						>
 							<div className="hero-parallax" data-parallax={folder.parallax}>
 								<div className="hero-scatter" data-scatter={folder.scatter}>
-									<Image src="/folder.png" alt="" width={116} height={97} />
+									<Image src="/folder.webp" alt="" width={116} height={97} />
 									<span>{folder.label}</span>
 								</div>
 							</div>

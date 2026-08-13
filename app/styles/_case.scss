@@ -1,7 +1,7 @@
 @use 'mixins' as *;
 
 .case-page {
-	background: #fafaf8;
+	background: #f5f5f5;
 	min-height: 100svh;
 	color: #000;
 	display: flex;
@@ -9,16 +9,20 @@
 
 	.footer {
 		margin-top: auto;
-		background: #fafaf8;
+		background: #f5f5f5;
 	}
 
 	.works-section {
-		background: #fafaf8;
+		background: #f5f5f5;
+	}
+
+	.works-copy h3 {
+		font-size: 1.5rem;
 	}
 }
 
 body:has(.case-page) .site-header .topbar {
-	background: #fafaf8;
+	background: #f5f5f5;
 }
 
 .case-hero {
@@ -40,6 +44,17 @@ body:has(.case-page) .site-header .topbar {
 	letter-spacing: -0.03em;
 	text-transform: uppercase;
 	color: #000;
+	white-space: pre-line;
+
+	.tm {
+		font-size: 0.32em;
+		font-weight: 400;
+		line-height: 0;
+		vertical-align: super;
+		position: relative;
+		top: -0.85em;
+		margin-left: 0.12em;
+	}
 }
 
 .case-hero-aside {
@@ -50,7 +65,8 @@ body:has(.case-page) .site-header .topbar {
 	font-weight: 400;
 	line-height: 1.35;
 	color: var(--text-secondary);
-	justify-self: start;
+	justify-self: end;
+	text-align: right;
 }
 
 .case-hero-lead {
@@ -64,18 +80,96 @@ body:has(.case-page) .site-header .topbar {
 }
 
 .case-img {
-	padding: 0 0 clamp(0.75rem, 1.5vw, 1.25rem);
+	padding: 0;
+}
+
+.case-img + .case-img {
+	padding-top: 2.8125rem;
+}
+
+.case-page.is-flush-images .case-img + .case-img {
+	padding-top: 0;
 }
 
 .case-img-media {
+	position: relative;
 	overflow: hidden;
-	border-radius: 8px;
-	background: #f0f0f0;
+	background: #eaeaea;
+	isolation: isolate;
+
+	&::after {
+		content: "";
+		position: absolute;
+		inset: 0;
+		z-index: 1;
+		background: linear-gradient(
+			105deg,
+			transparent 30%,
+			rgba(255, 255, 255, 0.45) 48%,
+			transparent 64%
+		);
+		background-size: 220% 100%;
+		animation: case-img-shimmer 1.35s ease-in-out infinite;
+		pointer-events: none;
+		opacity: 1;
+		transition: opacity 0.35s ease;
+	}
+
+	&.is-loaded {
+		background: transparent;
+
+		&::after {
+			opacity: 0;
+			animation: none;
+		}
+	}
+
+	&.is-priority img {
+		opacity: 1;
+		transform: none;
+	}
 
 	img {
 		display: block;
 		width: 100%;
-		height: auto;
+		height: 100%;
+		object-fit: cover;
+		background: transparent;
+		opacity: 0;
+		transform: translateY(6px) scale(1.01);
+		transition:
+			opacity 0.45s ease,
+			transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+	}
+
+	&.is-loaded img {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes case-img-shimmer {
+	from {
+		background-position: 100% 0;
+	}
+
+	to {
+		background-position: -100% 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.case-img-media {
+		&::after {
+			animation: none;
+		}
+
+		img,
+		&.is-loaded img {
+			opacity: 1;
+			transform: none;
+			transition: none;
+		}
 	}
 }
 
@@ -113,9 +207,5 @@ body:has(.case-page) .site-header .topbar {
 		display: flex;
 		flex-direction: column;
 		gap: 1.5rem;
-	}
-
-	.case-img-media {
-		border-radius: 6px;
 	}
 }
