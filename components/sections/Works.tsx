@@ -1,14 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { workCases } from "@/lib/works";
+import { withRegisteredMark } from "@/lib/trademark";
 
 const featured = {
-  ...workCases.henzo,
+  ...workCases.smeg,
   titleNode: (
     <>
-      End-to-End Product Design
+      Redesign strony internetowej SMEG<sup className="tm">®</sup> Poland
       <br />
-      for a Fitness Marketplace
+      i nowy kierunek wizualny marki
     </>
   ),
 };
@@ -16,7 +17,7 @@ const featured = {
 const pair = [workCases.chicco, workCases.oknoplus];
 const wide = workCases.campaign;
 
-export function Works() {
+export function Works({ hideSoon = false }: { hideSoon?: boolean }) {
   return (
     <section id="portfolio" className="works-section">
       <div className="container">
@@ -59,23 +60,25 @@ export function Works() {
                 />
               </div>
               <div className="works-copy">
-                <h3>{item.title}</h3>
+                <h3>{withRegisteredMark(item.title)}</h3>
                 <p>{item.tags}</p>
               </div>
             </Link>
           ))}
         </div>
 
-        <div
-          className="works-wide works-card works-card--soon"
-          data-cursor-label="Wkrótce"
-        >
-          <div className="works-media works-media--placeholder" aria-hidden="true" />
-          <div className="works-copy">
-            <h3>{wide.title}</h3>
-            <p>{wide.tags}</p>
+        {!hideSoon && (
+          <div
+            className="works-wide works-card works-card--soon"
+            data-cursor-label="Wkrótce"
+          >
+            <div className="works-media works-media--placeholder" aria-hidden="true" />
+            <div className="works-copy">
+              <h3>{wide.title}</h3>
+              <p>{wide.tags}</p>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

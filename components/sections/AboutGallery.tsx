@@ -1,11 +1,11 @@
 import Image from "next/image";
 
 const photos = [
-  { src: "/ab-1.jpg", variant: "a" },
-  { src: "/ab-2.jpg", variant: "b" },
-  { src: "/ab-3.jpg", variant: "c" },
-  { src: "/ab-4.jpg", variant: "d" },
-  { src: "/ab-5.jpg", variant: "e" },
+  { src: "/ab-1.webp", variant: "a" },
+  { src: "/ab-2.webp", variant: "b" },
+  { src: "/ab-3.webp", variant: "c" },
+  { src: "/ab-4.webp", variant: "d" },
+  { src: "/ab-5.webp", variant: "e" },
 ];
 
 export function AboutGallery() {
