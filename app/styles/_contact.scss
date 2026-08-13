@@ -595,9 +595,37 @@
 	font-size: 0.9rem;
 }
 
+.contact-booking-toggle {
+	display: none;
+}
+
 @include down-md {
 	.contact-panels {
+		display: flex;
+		flex-direction: column;
 		grid-template-columns: 1fr;
+	}
+
+	.contact-panel.is-message {
+		order: 1;
+	}
+
+	.contact-panel.is-booking {
+		order: 2;
+	}
+
+	.contact-booking-toggle {
+		display: inline-flex;
+	}
+
+	.contact-panel.is-booking:not(.is-open) {
+		.contact-booking-flow {
+			display: none;
+		}
+	}
+
+	.contact-panel.is-booking.is-open .contact-booking-toggle {
+		display: none;
 	}
 
 	.contact-title {
@@ -605,7 +633,26 @@
 	}
 
 	.contact-panel {
-		padding: 1.75rem 1.1rem;
+		min-height: 0;
+		padding: 1.35rem 1.15rem 1.5rem;
+	}
+
+	.contact-panel-head {
+		min-height: 0;
+		margin-bottom: 1.1rem;
+		gap: 0.7rem;
+	}
+
+	.contact-booking-toggle {
+		margin-top: 0;
+	}
+
+	.contact-panel.is-booking:not(.is-open) .contact-panel-foot {
+		margin-top: 0.9rem;
+	}
+
+	.contact-panel.is-booking.is-open .contact-panel-foot {
+		margin-top: 1rem;
 	}
 
 	.contact-cal {

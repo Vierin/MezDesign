@@ -70,6 +70,7 @@ export function ContactForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
+  const [bookingOpen, setBookingOpen] = useState(false);
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -150,7 +151,7 @@ export function ContactForm() {
         </div>
 
         <div className="contact-panels">
-          <article className="contact-panel">
+          <article className={`contact-panel is-booking${bookingOpen ? " is-open" : ""}`}>
             <div className="contact-panel-head">
               <span className="contact-panel-icon is-lime" aria-hidden="true">
                 <Image src="/calendar.svg" alt="" width={26} height={25} />
@@ -161,7 +162,27 @@ export function ContactForm() {
               </div>
             </div>
 
-            <CalBooking />
+            <button
+              type="button"
+              className="contact-panel-btn contact-booking-toggle"
+              onClick={() => {
+                setBookingOpen(true);
+                trackEvent("booking_calendar_open", { location: "contact_mobile" });
+              }}
+            >
+              Wybierz termin
+              <Image
+                src="/arrow-btn.svg"
+                alt=""
+                width={16}
+                height={12}
+                aria-hidden="true"
+              />
+            </button>
+
+            <div className="contact-booking-flow">
+              <CalBooking />
+            </div>
 
             <div className="contact-panel-foot">
               <p className="contact-panel-note">
@@ -171,7 +192,7 @@ export function ContactForm() {
             </div>
           </article>
 
-          <article className="contact-panel">
+          <article className="contact-panel is-message">
             <div className="contact-panel-head">
               <span className="contact-panel-icon is-sky" aria-hidden="true">
                 <Image src="/plane.svg" alt="" width={28} height={28} />
