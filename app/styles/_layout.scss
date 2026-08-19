@@ -165,7 +165,9 @@
 		border-radius: 999px;
 		background: transparent;
 		cursor: pointer;
-		z-index: 2;
+		pointer-events: auto;
+		z-index: 3;
+		-webkit-tap-highlight-color: transparent;
 	}
 
 	.nav-toggle-bar {
@@ -182,28 +184,15 @@
 	}
 
 	.mobile-nav {
-		display: block;
+		display: none;
 		position: fixed;
 		top: 0;
 		left: 0;
 		right: 0;
-		bottom: auto;
-		z-index: 75;
+		z-index: 290;
 		height: auto;
 		background: #fff;
 		padding: 5.5rem var(--grid-margin) 1.75rem;
-		opacity: 0;
-		visibility: hidden;
-		pointer-events: none;
-		transform: translateY(-0.5rem);
-		transition:
-			opacity 0.25s ease,
-			transform 0.28s ease,
-			visibility 0.28s ease;
-
-		&[hidden] {
-			display: block;
-		}
 	}
 
 	.mobile-nav-inner {
@@ -224,10 +213,7 @@
 		}
 
 		.mobile-nav {
-			opacity: 1;
-			visibility: visible;
-			pointer-events: auto;
-			transform: none;
+			display: block;
 		}
 	}
 

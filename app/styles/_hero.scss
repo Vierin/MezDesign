@@ -87,7 +87,7 @@
 		position: fixed;
 		top: 0;
 		left: 0;
-		z-index: 80;
+		z-index: 300;
 		width: 100%;
 		transition:
 			transform 0.28s ease,
@@ -338,9 +338,9 @@
 
 @include down-md {
 	.hero {
-		height: 73svh; 
-		min-height: 0;
-		overflow: visible;
+		height: 100svh;
+		min-height: 100svh;
+		overflow: clip;
 	}
 
 	.cursor-orb {

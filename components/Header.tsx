@@ -3,7 +3,6 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
 import { trackEvent } from "@/lib/analytics";
 import {
   clearScrollIntent,
@@ -57,10 +56,8 @@ export function Header() {
       window.requestAnimationFrame(updateVisibility);
     };
 
-    gsap.ticker.add(onScroll);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
-      gsap.ticker.remove(onScroll);
       window.removeEventListener("scroll", onScroll);
     };
   }, [menuOpen]);
@@ -72,20 +69,19 @@ export function Header() {
       if (event.key === "Escape") setMenuOpen(false);
     };
 
-    const onResize = () => {
-      if (window.matchMedia("(min-width: 861px)").matches) {
-        setMenuOpen(false);
-      }
+    const desktopQuery = window.matchMedia("(min-width: 861px)");
+    const onDesktop = () => {
+      if (desktopQuery.matches) setMenuOpen(false);
     };
 
     document.body.style.overflow = "hidden";
     window.addEventListener("keydown", onKeyDown);
-    window.addEventListener("resize", onResize);
+    desktopQuery.addEventListener("change", onDesktop);
 
     return () => {
       document.body.style.overflow = "";
       window.removeEventListener("keydown", onKeyDown);
-      window.removeEventListener("resize", onResize);
+      desktopQuery.removeEventListener("change", onDesktop);
     };
   }, [menuOpen]);
 
@@ -178,7 +174,10 @@ export function Header() {
             aria-expanded={menuOpen}
             aria-controls="site-nav"
             aria-label={menuOpen ? "Zamknij menu" : "Otwórz menu"}
-            onClick={() => setMenuOpen((open) => !open)}
+            onClick={(event) => {
+              event.stopPropagation();
+              setMenuOpen((open) => !open);
+            }}
           >
             <span className="nav-toggle-bar" aria-hidden="true" />
             <span className="nav-toggle-bar" aria-hidden="true" />
@@ -191,7 +190,7 @@ export function Header() {
       <div
         className="mobile-nav"
         id="site-nav"
-        hidden={!menuOpen}
+        aria-hidden={!menuOpen}
       >
         <div className="mobile-nav-inner">{navContent}</div>
       </div>

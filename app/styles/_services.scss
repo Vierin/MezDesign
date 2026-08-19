@@ -1,4 +1,4 @@
-@use "mixins" as *;
+@use 'mixins' as *;
 
 .services-section {
 	background: #fff;
@@ -140,6 +140,14 @@
 }
 
 @include down-md {
+	.services-layout {
+		row-gap: 2rem;
+	}
+
+	.services-lead {
+		margin-top: 6rem;
+	}
+
 	.services-grid {
 		grid-template-columns: 1fr;
 	}
